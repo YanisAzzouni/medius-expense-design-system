@@ -13,6 +13,10 @@ export type { TypographyStyle, HeadingStyles, BodyStyles } from "./tokens/typogr
 export { elevation, generateElevationCSSVars } from "./tokens/elevation";
 export type { ElevationTokens } from "./tokens/elevation";
 
+// Components
+export { Button } from "./components/Button";
+export type { ButtonProps, ButtonHierarchy, ButtonAppearance, ButtonSize } from "./components/Button";
+
 // Icons
 export { Icon } from "./icons/Icon";
 export type { IconProps, IconSize } from "./icons/Icon";
