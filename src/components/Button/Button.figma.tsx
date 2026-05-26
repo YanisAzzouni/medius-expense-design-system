@@ -5,16 +5,17 @@ import { Icon } from "../../icons/Icon";
 /**
  * Code Connect mapping for the Medius Expense Button component.
  *
- * Figma file: Medius Expense – Components – New
- * Node: Button (1:432)
+ * Figma file: Medius Expense – Components (New)
+ * File key:   ul424E6sV0pCsCIxzA7ZMC
+ * Node:       Button ComponentSet (0:385)
  *
- * When a designer hands off a Button frame in Figma, Dev Mode and
+ * When a designer selects a Button in Figma Dev Mode or hands it off,
  * AI tools (Claude Code) will see the exact React usage below instead
  * of generated HTML/CSS.
  */
 figma.connect(
   Button,
-  "https://www.figma.com/design/t6KLtH938MuZ9nCk9GBDTW/Medius-Expense--Components--New-?node-id=1-432",
+  "https://www.figma.com/design/ul424E6sV0pCsCIxzA7ZMC/Medius-Expense--Components--New-?node-id=0-385",
   {
     props: {
       hierarchy: figma.enum("Hierarchy", {
