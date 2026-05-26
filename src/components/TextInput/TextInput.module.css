@@ -118,15 +118,15 @@
 
 /* ─── State: highlighted ─── */
 .state_highlighted {
-  border-color: var(--color-olive-400);
-  background: var(--color-olive-100);
+  border-color: var(--color-orange-400);
+  background: var(--color-orange-100);
 }
 .state_highlighted:hover {
-  border-color: var(--color-olive-500);
+  border-color: var(--color-orange-500);
 }
 .state_highlighted:focus-within {
-  border-color: var(--color-olive-500);
-  box-shadow: 0 0 0 2px var(--color-olive-200);
+  border-color: var(--color-orange-400);
+  box-shadow: 0 0 0 2px var(--color-orange-200);
 }
 
 /* ─── State: read-only ─── */

@@ -18,7 +18,7 @@ const meta: Meta<typeof TextInput> = {
     placeholder: { control: "text" },
     unit: { control: "text" },
     hint: { control: "text" },
-    helpText: { control: "text" },
+    helpIcon: { control: "boolean" },
     required: { control: "boolean" },
   },
 };
@@ -106,17 +106,8 @@ export const WithUnit: Story = {
 export const WithHelpIcon: Story = {
   render: () => (
     <div style={{ display: "flex", flexDirection: "column", gap: 16, maxWidth: 480 }}>
-      <TextInput
-        label="VAT number"
-        placeholder="Enter VAT number…"
-        helpText="Your VAT number is printed on your tax registration certificate."
-      />
-      <TextInput
-        label="Cost centre"
-        placeholder="Enter cost centre…"
-        helpText="The cost centre code associated with this expense."
-        required
-      />
+      <TextInput label="VAT number" placeholder="Enter VAT number…" helpIcon />
+      <TextInput label="Cost centre" placeholder="Enter cost centre…" helpIcon required />
     </div>
   ),
 };

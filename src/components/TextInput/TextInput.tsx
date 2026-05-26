@@ -19,8 +19,8 @@ export interface TextInputProps
   label?: string;
   /** Appends an asterisk to the label and sets aria-required. */
   required?: boolean;
-  /** Shows a help icon next to the label. The string is used as the button's aria-label / title. */
-  helpText?: string;
+  /** Shows a help icon next to the label. */
+  helpIcon?: boolean;
   /** Validation / behavioural state. Defaults to "default". */
   state?: TextInputState;
   /** Optional unit suffix inside the trailing edge (e.g. "USD", "kg"). */
@@ -36,7 +36,7 @@ export const TextInput = forwardRef<HTMLInputElement, TextInputProps>(
     {
       label,
       required = false,
-      helpText,
+      helpIcon = false,
       state = "default",
       unit,
       hint,
@@ -67,12 +67,11 @@ export const TextInput = forwardRef<HTMLInputElement, TextInputProps>(
                 </span>
               )}
             </label>
-            {helpText && (
+            {helpIcon && (
               <button
                 type="button"
                 className={styles.helpButton}
-                aria-label={helpText}
-                title={helpText}
+                aria-label="Help"
                 tabIndex={-1}
               >
                 <Icon name="actions--help-outline" size="small" />

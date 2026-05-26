@@ -20,7 +20,7 @@ export interface TextAreaProps
   /** Appends an asterisk to the label and sets aria-required. */
   required?: boolean;
   /** Shows a help icon next to the label. */
-  helpText?: string;
+  helpIcon?: boolean;
   /** Validation / behavioural state. Defaults to "default". */
   state?: TextAreaState;
   /** Helper / error text rendered below the textarea. */
@@ -34,7 +34,7 @@ export const TextArea = forwardRef<HTMLTextAreaElement, TextAreaProps>(
     {
       label,
       required = false,
-      helpText,
+      helpIcon = false,
       state = "default",
       hint,
       hintType = "neutral",
@@ -65,12 +65,11 @@ export const TextArea = forwardRef<HTMLTextAreaElement, TextAreaProps>(
                 </span>
               )}
             </label>
-            {helpText && (
+            {helpIcon && (
               <button
                 type="button"
                 className={styles.helpButton}
-                aria-label={helpText}
-                title={helpText}
+                aria-label="Help"
                 tabIndex={-1}
               >
                 <Icon name="actions--help-outline" size="small" />

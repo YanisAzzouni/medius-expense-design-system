@@ -26,7 +26,7 @@ export interface SelectProps {
   /** Appends an asterisk to the label. */
   required?: boolean;
   /** Shows a help icon next to the label. */
-  helpText?: string;
+  helpIcon?: boolean;
   /** Placeholder shown when no value is selected. */
   placeholder?: string;
   /** Currently selected value (controlled). */
@@ -51,7 +51,7 @@ export const Select = forwardRef<HTMLDivElement, SelectProps>(function Select(
   {
     label,
     required = false,
-    helpText,
+    helpIcon = false,
     placeholder = "Select…",
     value,
     onChange,
@@ -127,12 +127,11 @@ export const Select = forwardRef<HTMLDivElement, SelectProps>(function Select(
               <span className={styles.required} aria-hidden="true">{" *"}</span>
             )}
           </label>
-          {helpText && (
+          {helpIcon && (
             <button
               type="button"
               className={styles.helpButton}
-              aria-label={helpText}
-              title={helpText}
+              aria-label="Help"
               tabIndex={-1}
             >
               <Icon name="actions--help-outline" size="small" />
