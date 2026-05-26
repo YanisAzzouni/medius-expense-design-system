@@ -17,6 +17,15 @@ export type { ElevationTokens } from "./tokens/elevation";
 export { Button } from "./components/Button";
 export type { ButtonProps, ButtonHierarchy, ButtonAppearance, ButtonSize } from "./components/Button";
 
+export { TextInput } from "./components/TextInput/TextInput";
+export type { TextInputProps, TextInputState, TextInputHintType } from "./components/TextInput/TextInput";
+
+export { TextArea } from "./components/TextArea/TextArea";
+export type { TextAreaProps, TextAreaState, TextAreaHintType } from "./components/TextArea/TextArea";
+
+export { Select } from "./components/Select/Select";
+export type { SelectProps, SelectOption, SelectState, SelectHintType } from "./components/Select/Select";
+
 // Icons
 export { Icon } from "./icons/Icon";
 export type { IconProps, IconSize } from "./icons/Icon";

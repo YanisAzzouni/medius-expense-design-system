@@ -1,0 +1,172 @@
+/* ─── Field wrapper ─── */
+.field {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+/* ─── Label ─── */
+.label {
+  font-family: var(--font-family);
+  font-size: var(--type-small-semibold-size);
+  font-weight: var(--type-small-semibold-weight);
+  line-height: var(--type-small-semibold-line-height);
+  letter-spacing: var(--type-small-semibold-letter-spacing);
+  color: var(--color-chalk-700);
+  -webkit-font-smoothing: antialiased;
+}
+
+.required {
+  color: var(--color-red-500);
+}
+
+/* ─── Input wrapper (owns the border + background) ─── */
+.inputWrapper {
+  display: flex;
+  align-items: center;
+  height: 40px;
+  border: 1px solid var(--color-chalk-300);
+  border-radius: 4px;
+  background: var(--color-white);
+  padding: 0 12px;
+  gap: 8px;
+  transition: border-color 120ms ease, background-color 120ms ease,
+    box-shadow 120ms ease;
+  box-sizing: border-box;
+}
+
+/* Hover — only when not disabled / read-only */
+.inputWrapper:hover:not(.state_disabled):not(.state_read_only) {
+  border-color: var(--color-chalk-400);
+}
+
+/* Focus — driven by native :focus-within */
+.inputWrapper:focus-within:not(.state_disabled):not(.state_read_only) {
+  border-color: var(--color-olive-500);
+  box-shadow: 0 0 0 2px var(--color-olive-200);
+}
+
+/* ─── State: danger ─── */
+.state_danger {
+  border-color: var(--color-red-500);
+  background: var(--color-red-100);
+}
+.state_danger:hover:not(.state_disabled) {
+  border-color: var(--color-red-600);
+}
+.state_danger:focus-within {
+  border-color: var(--color-red-500);
+  box-shadow: 0 0 0 2px var(--color-red-200);
+}
+
+/* ─── State: success ─── */
+.state_success {
+  border-color: var(--color-green-500);
+  background: var(--color-green-100);
+}
+.state_success:hover:not(.state_disabled) {
+  border-color: var(--color-green-600);
+}
+.state_success:focus-within {
+  border-color: var(--color-green-500);
+  box-shadow: 0 0 0 2px var(--color-green-200);
+}
+
+/* ─── State: highlighted ─── */
+.state_highlighted {
+  border-color: var(--color-olive-400);
+  background: var(--color-olive-100);
+}
+.state_highlighted:hover {
+  border-color: var(--color-olive-500);
+}
+.state_highlighted:focus-within {
+  border-color: var(--color-olive-500);
+  box-shadow: 0 0 0 2px var(--color-olive-200);
+}
+
+/* ─── State: read-only ─── */
+.state_read_only {
+  background: var(--color-chalk-100);
+  border-color: var(--color-chalk-300);
+  cursor: default;
+}
+.state_read_only:hover {
+  border-color: var(--color-chalk-300);
+}
+
+/* ─── State: disabled ─── */
+.state_disabled {
+  background: var(--color-chalk-200);
+  border-color: var(--color-chalk-200);
+  cursor: not-allowed;
+}
+.state_disabled:hover {
+  border-color: var(--color-chalk-200);
+}
+
+/* ─── Native <input> element ─── */
+.input {
+  flex: 1;
+  min-width: 0;
+  border: none;
+  background: transparent;
+  outline: none;
+  font-family: var(--font-family);
+  font-size: var(--type-body-default-size);
+  font-weight: var(--type-body-default-weight);
+  line-height: var(--type-body-default-line-height);
+  letter-spacing: var(--type-body-default-letter-spacing);
+  color: var(--color-chalk-900);
+  -webkit-font-smoothing: antialiased;
+}
+
+.input::placeholder {
+  color: var(--color-chalk-400);
+}
+
+.input:disabled {
+  cursor: not-allowed;
+  color: var(--color-chalk-400);
+}
+
+.input:read-only {
+  cursor: default;
+}
+
+/* ─── Unit suffix ─── */
+.unit {
+  flex-shrink: 0;
+  font-family: var(--font-family);
+  font-size: var(--type-body-default-size);
+  font-weight: var(--type-body-default-weight);
+  line-height: var(--type-body-default-line-height);
+  color: var(--color-chalk-500);
+  -webkit-font-smoothing: antialiased;
+  white-space: nowrap;
+}
+
+/* ─── Hint / helper text ─── */
+.hint {
+  margin: 0;
+  font-family: var(--font-family);
+  font-size: var(--type-small-size);
+  font-weight: var(--type-small-weight);
+  line-height: var(--type-small-line-height);
+  letter-spacing: var(--type-small-letter-spacing);
+  -webkit-font-smoothing: antialiased;
+}
+
+.hint_neutral {
+  color: var(--color-chalk-500);
+}
+
+.hint_danger {
+  color: var(--color-red-500);
+}
+
+.hint_success {
+  color: var(--color-green-500);
+}
