@@ -1,13 +1,24 @@
-/* ─── Field wrapper ─── */
+/* ─── Field: horizontal row layout ─── */
 .field {
   display: flex;
-  flex-direction: column;
-  gap: 4px;
+  flex-direction: row;
+  align-items: flex-start; /* label stays at the top of tall textareas */
   width: 100%;
   box-sizing: border-box;
 }
 
-/* ─── Label ─── */
+/* ─── Label column ─── */
+.labelColumn {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  flex: 0 0 160px;
+  min-height: 40px; /* baseline height so short labels stay vertically sensible */
+  padding-top: 10px; /* nudge label to align with the first text line */
+  padding-right: 12px;
+  box-sizing: border-box;
+}
+
 .label {
   font-family: var(--font-family);
   font-size: var(--type-small-semibold-size);
@@ -22,17 +33,51 @@
   color: var(--color-red-500);
 }
 
-/* ─── Textarea wrapper (owns the border + background) ─── */
+.helpButton {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  width: 16px;
+  height: 16px;
+  padding: 0;
+  border: none;
+  background: transparent;
+  cursor: pointer;
+  color: var(--color-chalk-400);
+  border-radius: 50%;
+  outline: none;
+}
+
+.helpButton:hover {
+  color: var(--color-chalk-600);
+}
+
+.helpButton:focus-visible {
+  outline: 2px solid var(--color-olive-500);
+  outline-offset: 1px;
+}
+
+/* ─── Input column ─── */
+.inputColumn {
+  flex: 1;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+/* ─── Textarea wrapper (border + background) ─── */
 .textareaWrapper {
   display: flex;
   border: 1px solid var(--color-chalk-300);
   border-radius: 4px;
   background: var(--color-white);
   padding: 8px 12px;
+  min-height: 80px;
   transition: border-color 120ms ease, background-color 120ms ease,
     box-shadow 120ms ease;
   box-sizing: border-box;
-  min-height: 80px;
 }
 
 .textareaWrapper:hover:not(.state_disabled):not(.state_read_only) {
@@ -49,9 +94,6 @@
   border-color: var(--color-red-500);
   background: var(--color-red-100);
 }
-.state_danger:hover:not(.state_disabled) {
-  border-color: var(--color-red-600);
-}
 .state_danger:focus-within {
   border-color: var(--color-red-500);
   box-shadow: 0 0 0 2px var(--color-red-200);
@@ -62,9 +104,6 @@
   border-color: var(--color-green-500);
   background: var(--color-green-100);
 }
-.state_success:hover:not(.state_disabled) {
-  border-color: var(--color-green-600);
-}
 .state_success:focus-within {
   border-color: var(--color-green-500);
   box-shadow: 0 0 0 2px var(--color-green-200);
@@ -74,9 +113,6 @@
 .state_highlighted {
   border-color: var(--color-olive-400);
   background: var(--color-olive-100);
-}
-.state_highlighted:hover {
-  border-color: var(--color-olive-500);
 }
 .state_highlighted:focus-within {
   border-color: var(--color-olive-500);
@@ -96,7 +132,7 @@
   cursor: not-allowed;
 }
 
-/* ─── Native <textarea> element ─── */
+/* ─── Native <textarea> ─── */
 .textarea {
   flex: 1;
   min-width: 0;
@@ -128,7 +164,7 @@
   resize: none;
 }
 
-/* ─── Hint / helper text ─── */
+/* ─── Hint ─── */
 .hint {
   margin: 0;
   font-family: var(--font-family);
@@ -139,14 +175,6 @@
   -webkit-font-smoothing: antialiased;
 }
 
-.hint_neutral {
-  color: var(--color-chalk-500);
-}
-
-.hint_danger {
-  color: var(--color-red-500);
-}
-
-.hint_success {
-  color: var(--color-green-500);
-}
+.hint_neutral { color: var(--color-chalk-500); }
+.hint_danger  { color: var(--color-red-500); }
+.hint_success { color: var(--color-green-500); }

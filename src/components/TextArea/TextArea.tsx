@@ -1,5 +1,6 @@
 import { forwardRef, useId } from "react";
 import type { TextareaHTMLAttributes } from "react";
+import { Icon } from "../../icons/Icon";
 import styles from "./TextArea.module.css";
 
 export type TextAreaState =
@@ -14,10 +15,12 @@ export type TextAreaHintType = "neutral" | "danger" | "success";
 
 export interface TextAreaProps
   extends Omit<TextareaHTMLAttributes<HTMLTextAreaElement>, "disabled" | "readOnly"> {
-  /** Visible label rendered above the textarea. */
+  /** Visible label rendered to the left of the textarea. */
   label?: string;
   /** Appends an asterisk to the label and sets aria-required. */
   required?: boolean;
+  /** Shows a help icon next to the label. */
+  helpText?: string;
   /** Validation / behavioural state. Defaults to "default". */
   state?: TextAreaState;
   /** Helper / error text rendered below the textarea. */
@@ -31,6 +34,7 @@ export const TextArea = forwardRef<HTMLTextAreaElement, TextAreaProps>(
     {
       label,
       required = false,
+      helpText,
       state = "default",
       hint,
       hintType = "neutral",
@@ -47,45 +51,59 @@ export const TextArea = forwardRef<HTMLTextAreaElement, TextAreaProps>(
 
     const isDisabled = state === "disabled";
     const isReadOnly = state === "read-only";
-
     const stateClass = styles[`state_${state.replace(/-/g, "_")}`] ?? "";
 
     return (
       <div className={`${styles.field} ${className ?? ""}`}>
         {label && (
-          <label htmlFor={id} className={styles.label}>
-            {label}
-            {required && (
-              <span className={styles.required} aria-hidden="true">
-                {" *"}
-              </span>
+          <div className={styles.labelColumn}>
+            <label htmlFor={id} className={styles.label}>
+              {label}
+              {required && (
+                <span className={styles.required} aria-hidden="true">
+                  {" *"}
+                </span>
+              )}
+            </label>
+            {helpText && (
+              <button
+                type="button"
+                className={styles.helpButton}
+                aria-label={helpText}
+                title={helpText}
+                tabIndex={-1}
+              >
+                <Icon name="actions--help-outline" size="small" />
+              </button>
             )}
-          </label>
+          </div>
         )}
 
-        <div className={`${styles.textareaWrapper} ${stateClass}`}>
-          <textarea
-            ref={ref}
-            id={id}
-            className={styles.textarea}
-            disabled={isDisabled}
-            readOnly={isReadOnly}
-            required={required}
-            rows={rows}
-            aria-invalid={state === "danger" ? true : undefined}
-            aria-describedby={hint ? hintId : undefined}
-            {...rest}
-          />
+        <div className={styles.inputColumn}>
+          <div className={`${styles.textareaWrapper} ${stateClass}`}>
+            <textarea
+              ref={ref}
+              id={id}
+              className={styles.textarea}
+              disabled={isDisabled}
+              readOnly={isReadOnly}
+              required={required}
+              rows={rows}
+              aria-invalid={state === "danger" ? true : undefined}
+              aria-describedby={hint ? hintId : undefined}
+              {...rest}
+            />
+          </div>
+
+          {hint && (
+            <p
+              id={hintId}
+              className={`${styles.hint} ${styles[`hint_${hintType}`] ?? ""}`}
+            >
+              {hint}
+            </p>
+          )}
         </div>
-
-        {hint && (
-          <p
-            id={hintId}
-            className={`${styles.hint} ${styles[`hint_${hintType}`] ?? ""}`}
-          >
-            {hint}
-          </p>
-        )}
       </div>
     );
   }

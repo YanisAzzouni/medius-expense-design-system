@@ -1,8 +1,8 @@
 import { forwardRef, useId } from "react";
 import type { InputHTMLAttributes } from "react";
+import { Icon } from "../../icons/Icon";
 import styles from "./TextInput.module.css";
 
-/** Validation / behavioural state of the input. Hover and focus are CSS-only. */
 export type TextInputState =
   | "default"
   | "danger"
@@ -15,13 +15,15 @@ export type TextInputHintType = "neutral" | "danger" | "success";
 
 export interface TextInputProps
   extends Omit<InputHTMLAttributes<HTMLInputElement>, "disabled" | "readOnly"> {
-  /** Visible label rendered above the input. */
+  /** Visible label rendered to the left of the input. */
   label?: string;
   /** Appends an asterisk to the label and sets aria-required. */
   required?: boolean;
+  /** Shows a help icon next to the label. The string is used as the button's aria-label / title. */
+  helpText?: string;
   /** Validation / behavioural state. Defaults to "default". */
   state?: TextInputState;
-  /** Optional unit suffix displayed inside the trailing edge (e.g. "USD", "kg"). */
+  /** Optional unit suffix inside the trailing edge (e.g. "USD", "kg"). */
   unit?: string;
   /** Helper / error text rendered below the input. */
   hint?: string;
@@ -34,6 +36,7 @@ export const TextInput = forwardRef<HTMLInputElement, TextInputProps>(
     {
       label,
       required = false,
+      helpText,
       state = "default",
       unit,
       hint,
@@ -50,46 +53,59 @@ export const TextInput = forwardRef<HTMLInputElement, TextInputProps>(
 
     const isDisabled = state === "disabled";
     const isReadOnly = state === "read-only";
-
-    // CSS class name: "state_read_only" etc.
     const stateClass = styles[`state_${state.replace(/-/g, "_")}`] ?? "";
 
     return (
       <div className={`${styles.field} ${className ?? ""}`}>
         {label && (
-          <label htmlFor={id} className={styles.label}>
-            {label}
-            {required && (
-              <span className={styles.required} aria-hidden="true">
-                {" *"}
-              </span>
+          <div className={styles.labelColumn}>
+            <label htmlFor={id} className={styles.label}>
+              {label}
+              {required && (
+                <span className={styles.required} aria-hidden="true">
+                  {" *"}
+                </span>
+              )}
+            </label>
+            {helpText && (
+              <button
+                type="button"
+                className={styles.helpButton}
+                aria-label={helpText}
+                title={helpText}
+                tabIndex={-1}
+              >
+                <Icon name="actions--help-outline" size="small" />
+              </button>
             )}
-          </label>
+          </div>
         )}
 
-        <div className={`${styles.inputWrapper} ${stateClass}`}>
-          <input
-            ref={ref}
-            id={id}
-            className={styles.input}
-            disabled={isDisabled}
-            readOnly={isReadOnly}
-            required={required}
-            aria-invalid={state === "danger" ? true : undefined}
-            aria-describedby={hint ? hintId : undefined}
-            {...rest}
-          />
-          {unit && <span className={styles.unit}>{unit}</span>}
+        <div className={styles.inputColumn}>
+          <div className={`${styles.inputWrapper} ${stateClass}`}>
+            <input
+              ref={ref}
+              id={id}
+              className={styles.input}
+              disabled={isDisabled}
+              readOnly={isReadOnly}
+              required={required}
+              aria-invalid={state === "danger" ? true : undefined}
+              aria-describedby={hint ? hintId : undefined}
+              {...rest}
+            />
+            {unit && <span className={styles.unit}>{unit}</span>}
+          </div>
+
+          {hint && (
+            <p
+              id={hintId}
+              className={`${styles.hint} ${styles[`hint_${hintType}`] ?? ""}`}
+            >
+              {hint}
+            </p>
+          )}
         </div>
-
-        {hint && (
-          <p
-            id={hintId}
-            className={`${styles.hint} ${styles[`hint_${hintType}`] ?? ""}`}
-          >
-            {hint}
-          </p>
-        )}
       </div>
     );
   }
