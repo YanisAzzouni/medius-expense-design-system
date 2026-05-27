@@ -32,6 +32,9 @@ export type { BannerProps, BannerType } from "./components/Banner/Banner";
 export { StatusTag } from "./components/StatusTag/StatusTag";
 export type { StatusTagProps, StatusTagVariant } from "./components/StatusTag/StatusTag";
 
+export { LabelTag } from "./components/LabelTag/LabelTag";
+export type { LabelTagProps, LabelTagColor, LabelTagSize } from "./components/LabelTag/LabelTag";
+
 // Icons
 export { Icon } from "./icons/Icon";
 export type { IconProps, IconSize } from "./icons/Icon";
