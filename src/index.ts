@@ -38,6 +38,9 @@ export type { LabelTagProps, LabelTagColor, LabelTagSize } from "./components/La
 export { Tooltip } from "./components/Tooltip/Tooltip";
 export type { TooltipProps, TooltipPlacement } from "./components/Tooltip/Tooltip";
 
+export { Tabs, Tab } from "./components/Tabs/Tabs";
+export type { TabsProps, TabProps } from "./components/Tabs/Tabs";
+
 // Icons
 export { Icon } from "./icons/Icon";
 export type { IconProps, IconSize } from "./icons/Icon";
