@@ -35,6 +35,9 @@ export type { StatusTagProps, StatusTagVariant } from "./components/StatusTag/St
 export { LabelTag } from "./components/LabelTag/LabelTag";
 export type { LabelTagProps, LabelTagColor, LabelTagSize } from "./components/LabelTag/LabelTag";
 
+export { Tooltip } from "./components/Tooltip/Tooltip";
+export type { TooltipProps, TooltipPlacement } from "./components/Tooltip/Tooltip";
+
 // Icons
 export { Icon } from "./icons/Icon";
 export type { IconProps, IconSize } from "./icons/Icon";
