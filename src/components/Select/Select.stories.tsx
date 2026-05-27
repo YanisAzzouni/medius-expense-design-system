@@ -68,7 +68,6 @@ export const States: Story = {
         label="Default (no selection)"
         placeholder="Select a category…"
         options={EXPENSE_CATEGORIES}
-        leadingIcon={<Icon name="editor--attach-money" size="small" />}
         onChange={() => {}}
       />
       <Select
@@ -132,20 +131,31 @@ export const WithHint: Story = {
 /* ─── With leading icon ─── */
 export const WithLeadingIcon: Story = {
   render: () => {
-    const [value, setValue] = useState<string | undefined>();
+    const [iconValue, setIconValue] = useState<string | undefined>();
+    const [flagValue, setFlagValue] = useState<string | undefined>();
     return (
-      <div style={containerStyle}>
+      <div style={{ display: "flex", flexDirection: "column", gap: 16, maxWidth: 320 }}>
+        {/* Any icon from the icon library */}
         <Select
-          label="Currency"
-          placeholder="Select currency…"
-          value={value}
-          onChange={setValue}
-          leadingIcon={<Icon name="editor--attach-money" size="small" />}
+          label="Category"
+          placeholder="Select a category…"
+          value={iconValue}
+          onChange={setIconValue}
+          leadingIcon={<Icon name="actions--search" size="small" />}
+          options={EXPENSE_CATEGORIES}
+        />
+        {/* Flag variant */}
+        <Select
+          label="Country"
+          placeholder="Select a country…"
+          value={flagValue}
+          onChange={setFlagValue}
+          leadingIcon={<Icon name="content--flag" size="small" />}
           options={[
-            { label: "Euro (EUR)", value: "eur" },
-            { label: "US Dollar (USD)", value: "usd" },
-            { label: "British Pound (GBP)", value: "gbp" },
-            { label: "Swedish Krona (SEK)", value: "sek" },
+            { label: "France", value: "fr" },
+            { label: "United States", value: "us" },
+            { label: "United Kingdom", value: "gb" },
+            { label: "Sweden", value: "se" },
           ]}
         />
       </div>
