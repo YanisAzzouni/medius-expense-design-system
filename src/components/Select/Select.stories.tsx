@@ -68,6 +68,7 @@ export const States: Story = {
         label="Default (no selection)"
         placeholder="Select a category…"
         options={EXPENSE_CATEGORIES}
+        leadingIcon={<Icon name="editor--attach-money" size="small" />}
         onChange={() => {}}
       />
       <Select
@@ -139,7 +140,7 @@ export const WithLeadingIcon: Story = {
           placeholder="Select currency…"
           value={value}
           onChange={setValue}
-          leadingIcon={<Icon name="actions--attach-money" size="small" />}
+          leadingIcon={<Icon name="editor--attach-money" size="small" />}
           options={[
             { label: "Euro (EUR)", value: "eur" },
             { label: "US Dollar (USD)", value: "usd" },
