@@ -29,6 +29,9 @@ export type { SelectProps, SelectOption, SelectState, SelectHintType } from "./c
 export { Banner } from "./components/Banner/Banner";
 export type { BannerProps, BannerType } from "./components/Banner/Banner";
 
+export { StatusTag } from "./components/StatusTag/StatusTag";
+export type { StatusTagProps, StatusTagVariant } from "./components/StatusTag/StatusTag";
+
 // Icons
 export { Icon } from "./icons/Icon";
 export type { IconProps, IconSize } from "./icons/Icon";
