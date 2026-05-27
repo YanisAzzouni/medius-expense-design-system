@@ -60,45 +60,53 @@ export const Banner = forwardRef<HTMLDivElement, BannerProps>(function Banner(
       role="alert"
       className={[styles.banner, styles[`type_${type}`], className ?? ""].filter(Boolean).join(" ")}
     >
-      {/* Leading icon */}
-      {showIcon && (
-        <span className={styles.icon} aria-hidden="true">
-          <Icon name={TYPE_ICON[type] as never} size="small" />
-        </span>
-      )}
-
-      {/* Body */}
-      <div className={styles.body}>
-        {title && <p className={styles.title}>{title}</p>}
-        {children && <p className={styles.message}>{children}</p>}
-
-        {hasActions && (
-          <div className={styles.actions}>
-            {action1Label && (
-              <button type="button" className={styles.actionBtn} onClick={onAction1}>
-                {action1Label}
-              </button>
-            )}
-            {action2Label && (
-              <button type="button" className={`${styles.actionBtn} ${styles.actionBtnSecondary}`} onClick={onAction2}>
-                {action2Label}
-              </button>
-            )}
-          </div>
-        )}
+      {/* Left accent bar */}
+      <div className={styles.dashWrapper}>
+        <div className={styles.dash} />
       </div>
 
-      {/* Dismiss */}
-      {dismissible && (
-        <button
-          type="button"
-          className={styles.dismissBtn}
-          aria-label="Dismiss"
-          onClick={onDismiss}
-        >
-          <Icon name="navigation--close" size="small" />
-        </button>
-      )}
+      {/* Main content row */}
+      <div className={styles.content}>
+        {/* Leading icon */}
+        {showIcon && (
+          <div className={styles.iconWrapper} aria-hidden="true">
+            <Icon name={TYPE_ICON[type] as never} size="large" />
+          </div>
+        )}
+
+        {/* Body */}
+        <div className={styles.body}>
+          {title && <p className={styles.title}>{title}</p>}
+          {children && <p className={styles.message}>{children}</p>}
+
+          {hasActions && (
+            <div className={styles.actions}>
+              {action1Label && (
+                <button type="button" className={styles.actionBtn} onClick={onAction1}>
+                  {action1Label}
+                </button>
+              )}
+              {action2Label && (
+                <button type="button" className={styles.actionBtn} onClick={onAction2}>
+                  {action2Label}
+                </button>
+              )}
+            </div>
+          )}
+        </div>
+
+        {/* Dismiss */}
+        {dismissible && (
+          <button
+            type="button"
+            className={styles.dismissBtn}
+            aria-label="Dismiss"
+            onClick={onDismiss}
+          >
+            <Icon name="navigation--close" size="small" />
+          </button>
+        )}
+      </div>
     </div>
   );
 });
