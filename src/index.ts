@@ -44,6 +44,9 @@ export type { TabsProps, TabProps } from "./components/Tabs/Tabs";
 export { Checkbox } from "./components/Checkbox/Checkbox";
 export type { CheckboxProps, CheckboxState } from "./components/Checkbox/Checkbox";
 
+export { ExpenseModal } from "./components/ExpenseModal/ExpenseModal";
+export type { ExpenseModalProps, ExpenseTag } from "./components/ExpenseModal/ExpenseModal";
+
 // Icons
 export { Icon } from "./icons/Icon";
 export type { IconProps, IconSize } from "./icons/Icon";
