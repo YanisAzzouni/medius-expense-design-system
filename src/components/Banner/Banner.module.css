@@ -1,0 +1,158 @@
+/* ─── Banner shell ─── */
+.banner {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  width: 100%;
+  padding: 12px 14px;
+  border-radius: 4px;
+  border: 1px solid transparent;
+  box-sizing: border-box;
+  font-family: var(--font-family);
+  -webkit-font-smoothing: antialiased;
+}
+
+/* ─── Type: information (blue) ─── */
+.type_information {
+  background: var(--color-blue-100);
+  border-color: var(--color-blue-300);
+  color: var(--color-blue-800);
+}
+.type_information .icon     { color: var(--color-blue-600); }
+.type_information .actionBtn { color: var(--color-blue-700); border-color: var(--color-blue-400); }
+.type_information .actionBtn:hover { background: var(--color-blue-200); }
+
+/* ─── Type: warning (orange) ─── */
+.type_warning {
+  background: var(--color-orange-100);
+  border-color: var(--color-orange-300);
+  color: var(--color-orange-900);
+}
+.type_warning .icon     { color: var(--color-orange-600); }
+.type_warning .actionBtn { color: var(--color-orange-800); border-color: var(--color-orange-400); }
+.type_warning .actionBtn:hover { background: var(--color-orange-200); }
+
+/* ─── Type: error (red) ─── */
+.type_error {
+  background: var(--color-red-100);
+  border-color: var(--color-red-300);
+  color: var(--color-red-900);
+}
+.type_error .icon     { color: var(--color-red-600); }
+.type_error .actionBtn { color: var(--color-red-700); border-color: var(--color-red-400); }
+.type_error .actionBtn:hover { background: var(--color-red-200); }
+
+/* ─── Type: success (green) ─── */
+.type_success {
+  background: var(--color-green-100);
+  border-color: var(--color-green-300);
+  color: var(--color-green-900);
+}
+.type_success .icon     { color: var(--color-green-600); }
+.type_success .actionBtn { color: var(--color-green-700); border-color: var(--color-green-400); }
+.type_success .actionBtn:hover { background: var(--color-green-200); }
+
+/* ─── Leading icon ─── */
+.icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  width: 16px;
+  height: 16px;
+  margin-top: 1px; /* optically align with first text line */
+}
+
+/* ─── Body ─── */
+.body {
+  flex: 1;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.title {
+  margin: 0;
+  font-size: var(--type-small-semibold-size);
+  font-weight: var(--type-small-semibold-weight);
+  line-height: var(--type-small-semibold-line-height);
+  letter-spacing: var(--type-small-semibold-letter-spacing);
+}
+
+.message {
+  margin: 0;
+  font-size: var(--type-small-size);
+  font-weight: var(--type-small-weight);
+  line-height: var(--type-small-line-height);
+  letter-spacing: var(--type-small-letter-spacing);
+}
+
+/* ─── Action buttons ─── */
+.actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-top: 6px;
+}
+
+.actionBtn {
+  display: inline-flex;
+  align-items: center;
+  height: 28px;
+  padding: 0 10px;
+  border: 1px solid transparent;
+  border-radius: 4px;
+  background: transparent;
+  font-family: var(--font-family);
+  font-size: var(--type-small-semibold-size);
+  font-weight: var(--type-small-semibold-weight);
+  line-height: 1;
+  cursor: pointer;
+  transition: background-color 100ms ease;
+  -webkit-font-smoothing: antialiased;
+  outline: none;
+}
+
+.actionBtn:focus-visible {
+  outline: 2px solid var(--color-olive-500);
+  outline-offset: 1px;
+}
+
+.actionBtnSecondary {
+  border-color: transparent !important;
+  opacity: 0.75;
+}
+
+.actionBtnSecondary:hover {
+  opacity: 1;
+}
+
+/* ─── Dismiss button ─── */
+.dismissBtn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  width: 24px;
+  height: 24px;
+  padding: 0;
+  border: none;
+  border-radius: 4px;
+  background: transparent;
+  cursor: pointer;
+  color: inherit;
+  opacity: 0.6;
+  transition: opacity 100ms ease, background-color 100ms ease;
+  outline: none;
+}
+
+.dismissBtn:hover {
+  opacity: 1;
+  background: rgba(0, 0, 0, 0.06);
+}
+
+.dismissBtn:focus-visible {
+  outline: 2px solid var(--color-olive-500);
+  outline-offset: 1px;
+}

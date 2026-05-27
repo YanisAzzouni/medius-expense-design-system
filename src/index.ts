@@ -26,6 +26,9 @@ export type { TextAreaProps, TextAreaState, TextAreaHintType } from "./component
 export { Select } from "./components/Select/Select";
 export type { SelectProps, SelectOption, SelectState, SelectHintType } from "./components/Select/Select";
 
+export { Banner } from "./components/Banner/Banner";
+export type { BannerProps, BannerType } from "./components/Banner/Banner";
+
 // Icons
 export { Icon } from "./icons/Icon";
 export type { IconProps, IconSize } from "./icons/Icon";
