@@ -79,6 +79,9 @@ export const Select = forwardRef<HTMLDivElement, SelectProps>(function Select(
   const isInteractive = !isDisabled && !isReadOnly;
 
   const selectedOption = options.find((o) => o.value === value);
+  // When the selected option carries its own icon, use that in the trigger.
+  // Falls back to the static leadingIcon prop when no selection or the option has no icon.
+  const triggerIcon = selectedOption?.icon ?? leadingIcon;
   const stateClass = styles[`state_${state.replace(/-/g, "_")}`] ?? "";
 
   // Close on outside click
@@ -161,9 +164,9 @@ export const Select = forwardRef<HTMLDivElement, SelectProps>(function Select(
             onClick={handleToggle}
             onKeyDown={handleTriggerKeyDown}
           >
-            {leadingIcon && (
+            {triggerIcon && (
               <span className={styles.leadingIcon} aria-hidden="true">
-                {leadingIcon}
+                {triggerIcon}
               </span>
             )}
 

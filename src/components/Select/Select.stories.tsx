@@ -128,35 +128,55 @@ export const WithHint: Story = {
   ),
 };
 
-/* ─── With leading icon ─── */
+// Expense categories — each option carries its own icon.
+// The trigger automatically mirrors whichever option is selected.
+const CATEGORIES_WITH_ICONS = [
+  { label: "Accommodation",       value: "accommodation", icon: <Icon name="maps--hotel"          size="small" /> },
+  { label: "Air travel",          value: "air-travel",    icon: <Icon name="maps--flight"          size="small" /> },
+  { label: "Car rental",          value: "car-rental",    icon: <Icon name="maps--directions-car"  size="small" /> },
+  { label: "Meals & subsistence", value: "meals",         icon: <Icon name="maps--restaurant"      size="small" /> },
+  { label: "Office supplies",     value: "office",        icon: <Icon name="actions--work"         size="small" /> },
+  { label: "Other",               value: "other",         icon: <Icon name="actions--receipt"      size="small" /> },
+];
+
+// Flag helper: converts an ISO 3166-1 alpha-2 code to its emoji flag.
+function flagEmoji(code: string): string {
+  return [...code.toUpperCase()]
+    .map((c) => String.fromCodePoint(0x1f1e6 - 65 + c.charCodeAt(0)))
+    .join("");
+}
+
+const COUNTRIES = [
+  { label: "France",         value: "fr", icon: <span style={{ fontSize: 16, lineHeight: 1 }}>{flagEmoji("fr")}</span> },
+  { label: "United States",  value: "us", icon: <span style={{ fontSize: 16, lineHeight: 1 }}>{flagEmoji("us")}</span> },
+  { label: "United Kingdom", value: "gb", icon: <span style={{ fontSize: 16, lineHeight: 1 }}>{flagEmoji("gb")}</span> },
+  { label: "Sweden",         value: "se", icon: <span style={{ fontSize: 16, lineHeight: 1 }}>{flagEmoji("se")}</span> },
+  { label: "Germany",        value: "de", icon: <span style={{ fontSize: 16, lineHeight: 1 }}>{flagEmoji("de")}</span> },
+  { label: "Spain",          value: "es", icon: <span style={{ fontSize: 16, lineHeight: 1 }}>{flagEmoji("es")}</span> },
+];
+
+/* ─── With leading icon (dynamic — mirrors selected option) ─── */
 export const WithLeadingIcon: Story = {
   render: () => {
-    const [iconValue, setIconValue] = useState<string | undefined>();
-    const [flagValue, setFlagValue] = useState<string | undefined>();
+    const [category, setCategory] = useState<string | undefined>();
+    const [country, setCountry]   = useState<string | undefined>();
     return (
       <div style={{ display: "flex", flexDirection: "column", gap: 16, maxWidth: 320 }}>
-        {/* Any icon from the icon library */}
+        {/* Icon changes to match the selected category */}
         <Select
           label="Category"
           placeholder="Select a category…"
-          value={iconValue}
-          onChange={setIconValue}
-          leadingIcon={<Icon name="actions--search" size="small" />}
-          options={EXPENSE_CATEGORIES}
+          value={category}
+          onChange={setCategory}
+          options={CATEGORIES_WITH_ICONS}
         />
-        {/* Flag variant */}
+        {/* Flag updates to the selected country's real flag */}
         <Select
           label="Country"
           placeholder="Select a country…"
-          value={flagValue}
-          onChange={setFlagValue}
-          leadingIcon={<Icon name="content--flag" size="small" />}
-          options={[
-            { label: "France", value: "fr" },
-            { label: "United States", value: "us" },
-            { label: "United Kingdom", value: "gb" },
-            { label: "Sweden", value: "se" },
-          ]}
+          value={country}
+          onChange={setCountry}
+          options={COUNTRIES}
         />
       </div>
     );
