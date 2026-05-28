@@ -177,6 +177,32 @@ disabled?:  boolean   // alias for state="disabled"
 // + id, name, value, className
 ```
 
+### NavBar
+
+```ts
+import { NavBar } from "medius-expense-design-system";
+import type { NavItemKey } from "medius-expense-design-system";
+
+// NavItemKey: "dashboard" | "expenses" | "reports" | "requests"
+//           | "manager" | "medius-card" | "admin" | "accountant"
+
+activeItem?:     NavItemKey   // default: "dashboard"
+onNavigate?:     (key: NavItemKey) => void
+userInitials?:   string       // default: "YA"
+onUserClick?:    () => void
+showRequests?:   boolean      // default: false
+showManager?:    boolean      // default: false
+showMediusCard?: boolean      // default: false
+showAdmin?:      boolean      // default: false
+showAccountant?: boolean      // default: false
+```
+
+72px horizontal bar with Medius Expense logo, nav tabs, and user avatar.
+Always-visible tabs: Dashboard, Expenses, Reports. Optional tabs toggled via props.
+Tab states: default (white/chalk-600), hover (chalk-200/chalk-900), active (olive-200/olive-700).
+
+---
+
 ### ExpenseModal
 
 ```ts
