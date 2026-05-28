@@ -6,7 +6,8 @@ figma.connect(
   "https://www.figma.com/design/ul424E6sV0pCsCIxzA7ZMC/Medius-Expense--Components--New-?node-id=25-3518",
   {
     props: {
-      label: figma.string("Label"),
+      // "Label" is hardcoded text in Figma — not a component property.
+      // "Show icon" controls whether the leading icon slot is visible.
       color: figma.enum("Color", {
         Neutral: "neutral",
         Grey:    "grey",
@@ -19,10 +20,10 @@ figma.connect(
         Default: "default",
         Small:   "small",
       }),
-      showIcon: figma.boolean("Show Icon"),
+      showIcon: figma.boolean("Show icon"),
     },
-    example: ({ label, color, size }) => (
-      <LabelTag label={label} color={color} size={size} />
+    example: ({ color, size }) => (
+      <LabelTag label="Label tag" color={color} size={size} />
     ),
   }
 );

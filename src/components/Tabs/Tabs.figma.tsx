@@ -24,8 +24,8 @@ figma.connect(
     props: {
       label:    figma.string("Label"),
       disabled: figma.enum("State", { Disabled: true }),
-      badge:    figma.boolean("Show Counter", { true: 9, false: undefined }),
-      icon:     figma.boolean("Show Icon",    { true: figma.instance("Icon"), false: undefined }),
+      badge:    figma.boolean("Show counter", { true: 9, false: undefined }),
+      icon:     figma.boolean("Show icon",    { true: figma.instance("Icon"), false: undefined }),
     },
     example: ({ label, disabled, badge }) => (
       <Tab value="tab" label={label} disabled={disabled} badge={badge} />

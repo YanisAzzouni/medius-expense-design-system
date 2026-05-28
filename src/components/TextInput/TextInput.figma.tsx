@@ -13,25 +13,18 @@ figma.connect(
   "https://www.figma.com/design/ul424E6sV0pCsCIxzA7ZMC/Medius-Expense--Components--New-?node-id=4-10611",
   {
     props: {
+      // "State" lives on the inner .Input/TextBox node, not on the Field/Text wrapper.
+      // Only "Show label" is a property of the outer field component.
       label: figma.boolean("Show label", {
-        true: "Label",
+        true:  "Label",
         false: undefined,
-      }),
-      state: figma.enum("State", {
-        Default: "default",
-        Danger: "danger",
-        Success: "success",
-        "Read Only": "read-only",
-        Highlighted: "highlighted",
-        Disabled: "disabled",
       }),
     },
 
-    example: ({ label, state }) => (
+    example: ({ label }) => (
       <TextInput
         label={label}
         placeholder="Enter value…"
-        state={state}
       />
     ),
   }

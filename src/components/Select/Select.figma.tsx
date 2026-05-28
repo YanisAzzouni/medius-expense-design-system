@@ -13,22 +13,18 @@ figma.connect(
   "https://www.figma.com/design/ul424E6sV0pCsCIxzA7ZMC/Medius-Expense--Components--New-?node-id=23-15152",
   {
     props: {
+      // "State" lives on the inner .Input/dropdown node, not on Field/Dropdown.
+      // Only "Show Label" is a property at the outer field level.
       label: figma.boolean("Show Label", {
-        true: "Label",
+        true:  "Label",
         false: undefined,
-      }),
-      state: figma.enum("State", {
-        Default: "default",
-        "Read Only": "read-only",
-        Highlighted: "highlighted",
       }),
     },
 
-    example: ({ label, state }) => (
+    example: ({ label }) => (
       <Select
         label={label}
         placeholder="Select an option…"
-        state={state}
         options={[
           { label: "Option 1", value: "option-1" },
           { label: "Option 2", value: "option-2" },

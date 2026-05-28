@@ -6,10 +6,8 @@ figma.connect(
   ExpenseModal,
   "https://www.figma.com/design/ul424E6sV0pCsCIxzA7ZMC/Medius-Expense--Components--New-?node-id=26-4646",
   {
-    props: {
-      showBanner: figma.boolean("Show banner"),
-    },
-    example: ({ showBanner }) => (
+    // The ExpenseModal Figma frame has no variant/boolean properties defined.
+    example: () => (
       <ExpenseModal
         title="Expense"
         tags={[
@@ -19,7 +17,6 @@ figma.connect(
         ]}
         statusLabel="Draft"
         statusVariant="neutral"
-        showBanner={showBanner}
         onClose={() => {}}
         onSave={() => {}}
         onNext={() => {}}

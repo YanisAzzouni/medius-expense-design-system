@@ -12,26 +12,12 @@ figma.connect(
   TextArea,
   "https://www.figma.com/design/ul424E6sV0pCsCIxzA7ZMC/Medius-Expense--Components--New-?node-id=26-4981",
   {
-    props: {
-      label: figma.boolean("Show label", {
-        true: "Label",
-        false: undefined,
-      }),
-      state: figma.enum("State", {
-        Default: "default",
-        Danger: "danger",
-        Success: "success",
-        "Read Only": "read-only",
-        Highlighted: "highlighted",
-        Disabled: "disabled",
-      }),
-    },
-
-    example: ({ label, state }) => (
+    // The Field/Text Area outer component has no Figma variant properties.
+    // Label visibility and state are controlled on inner sub-components.
+    example: () => (
       <TextArea
-        label={label}
+        label="Label"
         placeholder="Enter text…"
-        state={state}
       />
     ),
   }
