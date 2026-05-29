@@ -229,12 +229,12 @@ function HeaderCell({ col, isSorted, sortDirection, onSort }: HeaderCellProps) {
     <div
       className={[
         styles.headerCell,
-        col.size === "S" ? styles.headerCell_S : "",
-        col.size === "L" ? styles.headerCell_L : "",
-        col.type === "expense-title" ? styles.headerCell_title : "",
-        col.type === "alerts" || col.type === "thumbnail" || col.type === "icon" || col.type === "actions"
+        col.size === "S" || col.type === "alerts" || col.type === "thumbnail" || col.type === "icon" || col.type === "actions"
           ? styles.headerCell_S : "",
+        col.size === "L" || col.type === "text-long" ? styles.headerCell_L : "",
+        col.type === "expense-title" ? styles.headerCell_title : "",
         col.type === "check" ? styles.headerCell_check : "",
+        col.type === "date" ? styles.headerCell_date : "",
         col.type === "status" ? styles.headerCell_status : "",
       ].filter(Boolean).join(" ")}
     >
