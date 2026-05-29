@@ -189,7 +189,9 @@
   height: 70px;
   padding: 10px 4px;
   box-sizing: border-box;
-  overflow: hidden;
+  /* overflow: visible so Tooltip bubbles (position:absolute) are not clipped.
+     Text truncation is handled by individual inner elements (text-overflow: ellipsis). */
+  overflow: visible;
 }
 
 /* Size variants */

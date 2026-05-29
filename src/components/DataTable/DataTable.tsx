@@ -278,21 +278,21 @@ function AlertsCell({ data }: { data: AlertsCellData }) {
   return (
     <div className={styles.alertsCell}>
       {data.warning && (
-        <Tooltip content="Warning" placement="right">
+        <Tooltip content="Warning" placement="top">
           <span className={styles.alertIcon_warning} aria-label="Warning">
             <Icon name="alert--warning-filled" size="small" />
           </span>
         </Tooltip>
       )}
       {data.duplicate && (
-        <Tooltip content="Duplicate" placement="right">
+        <Tooltip content="Duplicate" placement="top">
           <span className={styles.alertIcon_duplicate} aria-label="Duplicate">
             <Icon name="content--file-copy" size="small" />
           </span>
         </Tooltip>
       )}
       {data.policyAlert && (
-        <Tooltip content="Policy alert" placement="right">
+        <Tooltip content="Policy alert" placement="top">
           <span className={styles.alertIcon_policy} aria-label="Policy alert">
             <Icon name="actions--gavel" size="small" />
           </span>
