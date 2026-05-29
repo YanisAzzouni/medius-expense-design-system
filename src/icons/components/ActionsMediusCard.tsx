@@ -1,0 +1,3 @@
+import type { SVGProps } from "react";
+const ActionsMediusCard = (props: SVGProps<SVGSVGElement>) => <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" aria-hidden="true" {...props}><path fill="currentColor" d="M22 3a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2zm-7.704 3.457A6 6 0 1 0 12 18a6.006 6.006 0 0 0 6-6 6 6 0 0 0-3.704-5.543M12 7.333A4.673 4.673 0 0 1 16.667 12a4.668 4.668 0 0 1-5.577 4.577A4.667 4.667 0 0 1 12 7.333M12 10a2.001 2.001 0 1 0 0 4.002A2.001 2.001 0 0 0 12 10" /></svg>;
+export default ActionsMediusCard;

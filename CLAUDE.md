@@ -227,17 +227,87 @@ Receipt preview panel is a placeholder — not yet a component.
 
 ---
 
+### AdminPanel
+
+```ts
+import { AdminPanel, DEFAULT_ADMIN_SECTIONS } from "medius-expense-design-system";
+import type { AdminSectionDef, AdminSectionItem } from "medius-expense-design-system";
+
+// AdminSectionItem: { key: string; label: string }
+// AdminSectionDef:  { key: string; label: string; icon: string; items?: AdminSectionItem[] }
+//   items present (even if []) → collapsible section with chevron
+//   items absent               → leaf node (no chevron), click calls onNavigate directly
+
+companyName?:   string               // default: "Company name"
+sections?:      AdminSectionDef[]    // default: DEFAULT_ADMIN_SECTIONS (9 standard sections)
+activeSection?: string               // section key to pre-expand and highlight
+activeItem?:    string               // sub-item key to highlight (within activeSection)
+onNavigate?:    (sectionKey: string, itemKey?: string) => void
+```
+
+320px left sidebar with right border. Default sections (from Figma):
+Users and Access (Users, Groups, Delegations, Contacts, Absences) · Expenses and Requests · Payment · Advanced Settings · Rates and Vehicles · Global Settings · Integrations · Import/Export Histories · Insights and reporting.
+Expanded section header: olive-600 text, semibold. Selected sub-item: olive-200 bg, olive-700 text.
+
+---
+
+### DataTable
+
+```ts
+import { DataTable } from "medius-expense-design-system";
+import type { ColumnDef, RowData, CellType, AttributeType } from "medius-expense-design-system";
+
+columns:             ColumnDef[]   // column definitions (order = render order)
+rows:                RowData[]     // row data — each row must have an `id: string`
+selectable?:         boolean       // prepend checkbox column (default: false)
+selectedIds?:        string[]      // controlled row selection
+onSelectionChange?:  (ids: string[]) => void
+sortKey?:            string        // key of currently sorted column
+sortDirection?:      "asc" | "desc"
+onSort?:             (key: string, direction: "asc" | "desc") => void
+onRowClick?:         (id: string) => void
+emptyMessage?:       string        // shown when rows.length === 0
+```
+
+**ColumnDef shape:**
+```ts
+{ key: string; title?: string; type: CellType; size?: "S"|"M"|"L"; sortable?: boolean }
+```
+
+**12 cell types and their row data shape (key → value in RowData):**
+| type | width behaviour | value shape |
+|------|-----------------|-------------|
+| `alerts` | 60px fixed | `{ warning?, duplicate?, policyAlert? }` |
+| `thumbnail` | 60px fixed | `{ src: string; alt?: string }` |
+| `status` | **hugs content** (fit-content) | `{ label: string; variant?: StatusTagVariant }` |
+| `amount` | 120px min | `{ amount, currency, amount2?, currency2? }` |
+| `date` | **120px fixed** (min + max) | `string` |
+| `icon` | 60px fixed | `string` (icon name) |
+| `actions` | 60px fixed | `{ icon, label?, onClick, secondary?: { icon, label?, onClick } }` |
+| `expense-title` | **flex: 1 0 0**, min 220px | `{ title: string; attributes?: AttributeType[] }` |
+| `check` | 24px fixed | `{ checked: boolean; onChange?: (v: boolean) => void }` |
+| `text-link` | 120px min | `{ text, href?, onClick? }` |
+| `text` | 120px min | `string` |
+| `text-long` | 220px min | `string` |
+
+**12 AttributeType values** (for `expense-title` cells):
+`manual-addition` · `split` · `email` · `card-statement` · `file-attached` · `guest` · `merged` · `medius-card` · `e-invoice` · `e-invoice-expected` · `e-invoice-not-expected` · `transaction-expected`
+
+Sorting is external-only: `onSort` fires, parent updates `sortKey`/`sortDirection`. Selection supports both controlled (`selectedIds` + `onSelectionChange`) and uncontrolled modes.
+
+---
+
 ## Icon
 
 ```ts
 import { Icon } from "medius-expense-design-system";
 
 name:   string   // "category--icon-name", e.g. "navigation--close"
-size?:  "small" | "medium" | "large"  // 16 / 20 / 24 px  — default: "medium"
+size?:  "small" | "default" | "large"  // 16 / 20 / 24 px  — default: "default"
 ```
 
 Icon names follow the pattern `category--kebab-name`. Key categories:
-`actions` · `alert` · `alerts` · `content` · `editor` · `maps` · `navigation` · `social`
+`actions` · `alert` · `alerts` · `communication` · `content` · `editor` · `maps` · `navigation` · `social`
 
 To verify a name exists before using it:
 ```bash

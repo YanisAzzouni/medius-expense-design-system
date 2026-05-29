@@ -129,6 +129,7 @@ export { default as ActionsLock } from "./ActionsLock";
 export { default as ActionsLoyalty } from "./ActionsLoyalty";
 export { default as ActionsMarkunreadMailbox } from "./ActionsMarkunreadMailbox";
 export { default as ActionsMaximize } from "./ActionsMaximize";
+export { default as ActionsMediusCard } from "./ActionsMediusCard";
 export { default as ActionsMinimize } from "./ActionsMinimize";
 export { default as ActionsMotorcycle } from "./ActionsMotorcycle";
 export { default as ActionsNoEInvoice } from "./ActionsNoEInvoice";

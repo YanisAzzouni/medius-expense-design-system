@@ -667,6 +667,11 @@ export const iconManifest: IconManifestEntry[] = [
     "componentName": "ActionsMaximize"
   },
   {
+    "name": "medius-card",
+    "category": "actions",
+    "componentName": "ActionsMediusCard"
+  },
+  {
     "name": "minimize",
     "category": "actions",
     "componentName": "ActionsMinimize"

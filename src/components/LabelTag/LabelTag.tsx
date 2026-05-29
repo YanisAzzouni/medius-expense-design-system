@@ -8,13 +8,14 @@ export type LabelTagColor =
   | "blue"
   | "green"
   | "orange"
-  | "red";
+  | "red"
+  | "teal";
 
 export type LabelTagSize = "default" | "small";
 
 export interface LabelTagProps {
-  /** Text content of the tag. */
-  label: string;
+  /** Text content of the tag. Omit for icon-only usage. */
+  label?: string;
   /** Colour variant. Defaults to "neutral". */
   color?: LabelTagColor;
   /** Size variant. Defaults to "default". */
@@ -22,15 +23,17 @@ export interface LabelTagProps {
   /** Optional leading icon node. */
   icon?: ReactNode;
   className?: string;
+  title?: string;
+  "aria-label"?: string;
 }
 
-export const LabelTag = forwardRef<HTMLDivElement, LabelTagProps>(
+export const LabelTag = forwardRef<HTMLSpanElement, LabelTagProps>(
   function LabelTag(
-    { label, color = "neutral", size = "default", icon, className },
+    { label, color = "neutral", size = "default", icon, className, title, "aria-label": ariaLabel },
     ref
   ) {
     return (
-      <div
+      <span
         ref={ref}
         className={[
           styles.tag,
@@ -40,14 +43,16 @@ export const LabelTag = forwardRef<HTMLDivElement, LabelTagProps>(
         ]
           .filter(Boolean)
           .join(" ")}
+        title={title}
+        aria-label={ariaLabel}
       >
         {icon && (
           <span className={styles.icon} aria-hidden="true">
             {icon}
           </span>
         )}
-        <span className={styles.label}>{label}</span>
-      </div>
+        {label && <span className={styles.label}>{label}</span>}
+      </span>
     );
   }
 );

@@ -50,6 +50,28 @@ export type { ExpenseModalProps, ExpenseTag } from "./components/ExpenseModal/Ex
 export { NavBar } from "./components/Navbar/Navbar";
 export type { NavBarProps, NavItemKey } from "./components/Navbar/Navbar";
 
+export { AdminPanel, DEFAULT_ADMIN_SECTIONS } from "./components/AdminPanel/AdminPanel";
+export type { AdminPanelProps, AdminSectionDef, AdminSectionItem } from "./components/AdminPanel/AdminPanel";
+
+export { DataTable } from "./components/DataTable/DataTable";
+export type {
+  DataTableProps,
+  ColumnDef,
+  CellType,
+  ColumnSize,
+  RowData,
+  CellData,
+  AlertsCellData,
+  StatusCellData,
+  AmountCellData,
+  ThumbnailCellData,
+  ActionsCellData,
+  TitleCellData,
+  LinkCellData,
+  CheckCellData,
+  AttributeType,
+} from "./components/DataTable/DataTable";
+
 // Icons
 export { Icon } from "./icons/Icon";
 export type { IconProps, IconSize } from "./icons/Icon";

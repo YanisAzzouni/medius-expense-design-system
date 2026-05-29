@@ -23,10 +23,12 @@
   height: 16px;
 }
 
-/* Small: px-4 py-0 rounded-4, 12px icon */
+/* Small: px-4 py-0 rounded-4, 12px icon, 16px total height */
 .size_small {
   padding: 0 4px;
   border-radius: 4px;
+  min-height: 16px;
+  border: none;
 }
 
 .size_small .icon {
@@ -67,6 +69,10 @@
   color: var(--color-chalk-700);
 }
 
+.size_small.color_neutral {
+  box-shadow: 0 0 0 1px var(--color-chalk-200);
+}
+
 .color_grey {
   background: var(--color-chalk-300);
   color: var(--color-chalk-1000);
@@ -90,4 +96,9 @@
 .color_red {
   background: var(--color-red-200);
   color: var(--color-red-700);
+}
+
+.color_teal {
+  background: var(--color-teal-500);
+  color: var(--color-white);
 }

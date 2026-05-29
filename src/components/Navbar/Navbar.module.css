@@ -17,38 +17,14 @@
 .logo {
   display: flex;
   align-items: center;
-  gap: 6px;
   flex-shrink: 0;
   margin-right: 48px;
-  text-decoration: none;
   cursor: pointer;
 }
 
-.logoMark {
-  flex-shrink: 0;
+.logoSvg {
   display: block;
-}
-
-.logoWordmark {
-  display: flex;
-  align-items: baseline;
-  white-space: nowrap;
-}
-
-.logoMedius {
-  font-size: 16px;
-  font-weight: 600;
-  line-height: 24px;
-  letter-spacing: -0.02em;
-  color: var(--color-chalk-900);
-}
-
-.logoExpense {
-  font-size: 16px;
-  font-weight: 500;
-  line-height: 24px;
-  letter-spacing: -0.02em;
-  color: var(--color-chalk-500);
+  flex-shrink: 0;
 }
 
 /* ─── Tabs row ─── */
