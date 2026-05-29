@@ -170,7 +170,7 @@ export function AdminPanel({
               >
                 <span className={styles.sectionHeaderInner}>
                   <span className={styles.sectionIcon} aria-hidden="true">
-                    <Icon name={section.icon as never} size="default" />
+                    <Icon name={section.icon} size="default" />
                   </span>
                   <span className={styles.sectionLabel}>{section.label}</span>
                 </span>
@@ -180,8 +180,8 @@ export function AdminPanel({
                     <Icon
                       name={
                         isExpanded
-                          ? ("hardware--keyboard-arrow-up" as never)
-                          : ("hardware--keyboard-arrow-down" as never)
+                          ? "hardware--keyboard-arrow-up"
+                          : "hardware--keyboard-arrow-down"
                       }
                       size="default"
                     />

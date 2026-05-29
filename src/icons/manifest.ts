@@ -682,7 +682,7 @@ export const iconManifest: IconManifestEntry[] = [
     "componentName": "ActionsMotorcycle"
   },
   {
-    "name": "no e-invoice",
+    "name": "no-e-invoice",
     "category": "actions",
     "componentName": "ActionsNoEInvoice"
   },

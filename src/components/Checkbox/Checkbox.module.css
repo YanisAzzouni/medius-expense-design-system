@@ -60,7 +60,7 @@
 .box_unchecked {
   background: var(--color-white);
   border: 1px solid var(--color-chalk-300);
-  color: white;
+  color: var(--color-white);
 }
 .wrapper:not(.wrapper_disabled):hover .box_unchecked {
   background: var(--color-olive-200);
@@ -71,7 +71,7 @@
 .box_unchecked_danger {
   background: var(--color-red-200);
   border: 1px solid var(--color-red-500);
-  color: white;
+  color: var(--color-white);
 }
 .wrapper:not(.wrapper_disabled):hover .box_unchecked_danger {
   border-color: var(--color-red-600);
@@ -88,7 +88,7 @@
 .box_checked {
   background: var(--color-olive-700);
   border: 1px solid transparent;
-  color: white;
+  color: var(--color-white);
 }
 .wrapper:not(.wrapper_disabled):hover .box_checked {
   background: var(--color-olive-800);
@@ -98,7 +98,7 @@
 .box_checked_danger {
   background: var(--color-red-700);
   border: 1px solid transparent;
-  color: white;
+  color: var(--color-white);
 }
 .wrapper:not(.wrapper_disabled):hover .box_checked_danger {
   background: var(--color-red-800);
@@ -115,8 +115,8 @@
 .labelText {
   font-size: var(--type-body-default-size);   /* 14px */
   font-weight: var(--type-body-default-weight);
-  line-height: 18px;
-  letter-spacing: -0.01em;
+  line-height: 18px; /* intentionally between small (16px) and body (20px) */
+  letter-spacing: var(--type-body-default-letter-spacing);
   color: var(--color-chalk-1000);
 }
 

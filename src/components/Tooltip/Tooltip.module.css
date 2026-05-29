@@ -31,10 +31,10 @@
 
   /* typography */
   font-family: var(--font-family);
-  font-size: 12px;
-  font-weight: 400;
-  line-height: 16px;
-  letter-spacing: -0.01em;
+  font-size: var(--type-small-size);
+  font-weight: var(--type-small-weight);
+  line-height: var(--type-small-line-height);
+  letter-spacing: var(--type-small-letter-spacing);
   color: var(--color-white);
   -webkit-font-smoothing: antialiased;
 

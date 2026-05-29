@@ -4,7 +4,7 @@
 
 1. **Always use existing components from this library first.** Never recreate a UI element that already exists here.
 2. **If a needed component does not exist → stop.** Say explicitly:
-   > "There's no `[X]` component in `medius-expense-design-system` yet. Do you want me to build it in the design system first, or use a one-off?"
+   > "There's no `[X]` component in `@medius-expense/design-system` yet. Do you want me to build it in the design system first, or use a one-off?"
    Do not silently build a custom version.
 3. **Never invent props.** Read the TypeScript interface before using a component.
 4. **When a new component is added to this library, update this file immediately** — add it to the component list below.
@@ -14,12 +14,12 @@
 ## Package
 
 ```
-import { ComponentName } from "medius-expense-design-system";
+import { ComponentName } from "@medius-expense/design-system";
 ```
 
 Styles (app entry point):
 ```ts
-import "medius-expense-design-system/dist/tokens/tokens.css";
+import "@medius-expense/design-system/styles";
 ```
 
 ---
@@ -29,7 +29,7 @@ import "medius-expense-design-system/dist/tokens/tokens.css";
 ### Button
 
 ```ts
-import { Button } from "medius-expense-design-system";
+import { Button } from "@medius-expense/design-system";
 
 hierarchy?: "primary" | "secondary" | "tertiary"   // default: "primary"
 appearance?: "default" | "danger" | "ai"            // default: "default"
@@ -42,7 +42,7 @@ loading?:    boolean
 ### TextInput
 
 ```ts
-import { TextInput } from "medius-expense-design-system";
+import { TextInput } from "@medius-expense/design-system";
 
 label?:     string
 required?:  boolean
@@ -57,7 +57,7 @@ hintType?:  "neutral" | "danger" | "success"
 ### TextArea
 
 ```ts
-import { TextArea } from "medius-expense-design-system";
+import { TextArea } from "@medius-expense/design-system";
 
 label?:     string
 required?:  boolean
@@ -71,8 +71,8 @@ hintType?:  "neutral" | "danger" | "success"
 ### Select
 
 ```ts
-import { Select } from "medius-expense-design-system";
-import type { SelectOption } from "medius-expense-design-system";
+import { Select } from "@medius-expense/design-system";
+import type { SelectOption } from "@medius-expense/design-system";
 
 // SelectOption: { value: string; label: string; icon?: ReactNode }
 
@@ -92,7 +92,7 @@ hintType?:    "neutral" | "danger" | "success"
 ### Banner
 
 ```ts
-import { Banner } from "medius-expense-design-system";
+import { Banner } from "@medius-expense/design-system";
 
 type?:         "information" | "warning" | "error" | "success"  // default: "information"
 title?:        string
@@ -109,7 +109,7 @@ onAction2?:    () => void
 ### StatusTag
 
 ```ts
-import { StatusTag } from "medius-expense-design-system";
+import { StatusTag } from "@medius-expense/design-system";
 
 label:     string
 variant?:  "neutral" | "grey" | "blue" | "green" | "yellow" | "red" | "orange"
@@ -120,11 +120,11 @@ Renders a pill badge with a coloured dot. Use for workflow states (Draft, Submit
 ### LabelTag
 
 ```ts
-import { LabelTag } from "medius-expense-design-system";
+import { LabelTag } from "@medius-expense/design-system";
 
 label:   string
-color?:  "neutral" | "grey" | "blue" | "green" | "orange" | "red"  // default: "neutral"
-size?:   "default" | "small"                                         // default: "default"
+color?:  "neutral" | "grey" | "blue" | "green" | "orange" | "red" | "teal"  // default: "neutral"
+size?:   "default" | "small"                                                   // default: "default"
 icon?:   ReactNode   // optional leading icon
 ```
 
@@ -133,7 +133,7 @@ Use for metadata labels (categories, flags, document types, …).
 ### Tooltip
 
 ```ts
-import { Tooltip } from "medius-expense-design-system";
+import { Tooltip } from "@medius-expense/design-system";
 
 content:     ReactNode
 placement?:  "top" | "right" | "bottom" | "left"  // default: "top"
@@ -145,7 +145,7 @@ CSS-only show/hide (no JS). Wraps the trigger — no extra wrapper div needed.
 ### Tabs + Tab (compound component)
 
 ```ts
-import { Tabs, Tab } from "medius-expense-design-system";
+import { Tabs, Tab } from "@medius-expense/design-system";
 
 // Tabs (container / tablist)
 value:     string          // active tab value
@@ -167,7 +167,7 @@ Keyboard navigation (Arrow Left/Right/Home/End) and roving tabindex are built in
 ### Checkbox
 
 ```ts
-import { Checkbox } from "medius-expense-design-system";
+import { Checkbox } from "@medius-expense/design-system";
 
 checked?:   boolean | "indeterminate"
 onChange?:  (checked: boolean) => void
@@ -180,8 +180,8 @@ disabled?:  boolean   // alias for state="disabled"
 ### NavBar
 
 ```ts
-import { NavBar } from "medius-expense-design-system";
-import type { NavItemKey } from "medius-expense-design-system";
+import { NavBar } from "@medius-expense/design-system";
+import type { NavItemKey } from "@medius-expense/design-system";
 
 // NavItemKey: "dashboard" | "expenses" | "reports" | "requests"
 //           | "manager" | "medius-card" | "admin" | "accountant"
@@ -206,8 +206,8 @@ Tab states: default (white/chalk-600), hover (chalk-200/chalk-900), active (oliv
 ### ExpenseModal
 
 ```ts
-import { ExpenseModal } from "medius-expense-design-system";
-import type { ExpenseTag } from "medius-expense-design-system";
+import { ExpenseModal } from "@medius-expense/design-system";
+import type { ExpenseTag } from "@medius-expense/design-system";
 
 // ExpenseTag: { label: string }
 
@@ -230,8 +230,8 @@ Receipt preview panel is a placeholder — not yet a component.
 ### AdminPanel
 
 ```ts
-import { AdminPanel, DEFAULT_ADMIN_SECTIONS } from "medius-expense-design-system";
-import type { AdminSectionDef, AdminSectionItem } from "medius-expense-design-system";
+import { AdminPanel, DEFAULT_ADMIN_SECTIONS } from "@medius-expense/design-system";
+import type { AdminSectionDef, AdminSectionItem } from "@medius-expense/design-system";
 
 // AdminSectionItem: { key: string; label: string }
 // AdminSectionDef:  { key: string; label: string; icon: string; items?: AdminSectionItem[] }
@@ -254,8 +254,8 @@ Expanded section header: olive-600 text, semibold. Selected sub-item: olive-200 
 ### DataTable
 
 ```ts
-import { DataTable } from "medius-expense-design-system";
-import type { ColumnDef, RowData, CellType, AttributeType } from "medius-expense-design-system";
+import { DataTable } from "@medius-expense/design-system";
+import type { ColumnDef, RowData, CellType, AttributeType } from "@medius-expense/design-system";
 
 columns:             ColumnDef[]   // column definitions (order = render order)
 rows:                RowData[]     // row data — each row must have an `id: string`
@@ -300,7 +300,7 @@ Sorting is external-only: `onSort` fires, parent updates `sortKey`/`sortDirectio
 ## Icon
 
 ```ts
-import { Icon } from "medius-expense-design-system";
+import { Icon } from "@medius-expense/design-system";
 
 name:   string   // "category--icon-name", e.g. "navigation--close"
 size?:  "small" | "default" | "large"  // 16 / 20 / 24 px  — default: "default"
@@ -336,6 +336,6 @@ Families: `chalk` · `olive` · `blue` · `green` · `red` · `orange` · `yello
 
 ## Rules for Consumer Projects
 
-- Import only from `"medius-expense-design-system"` — never from internal paths.
+- Import only from `"@medius-expense/design-system"` — never from internal paths.
 - For layout and custom styling that the design system doesn't cover, plain CSS/CSS Modules are fine — but prefer token CSS variables over hardcoded values.
 - Do not recreate spacing, colours, or typography by hand if a token exists.

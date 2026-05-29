@@ -70,7 +70,7 @@ export const Banner = forwardRef<HTMLDivElement, BannerProps>(function Banner(
         {/* Leading icon */}
         {showIcon && (
           <div className={styles.iconWrapper} aria-hidden="true">
-            <Icon name={TYPE_ICON[type] as never} size="large" />
+            <Icon name={TYPE_ICON[type]} size="large" />
           </div>
         )}
 

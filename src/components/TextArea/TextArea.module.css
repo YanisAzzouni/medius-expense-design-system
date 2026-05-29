@@ -94,6 +94,9 @@
   border-color: var(--color-red-500);
   background: var(--color-red-100);
 }
+.state_danger:hover:not(.state_disabled):not(.state_read_only) {
+  border-color: var(--color-red-600);
+}
 .state_danger:focus-within {
   border-color: var(--color-red-500);
   box-shadow: 0 0 0 2px var(--color-red-200);
@@ -103,6 +106,9 @@
 .state_success {
   border-color: var(--color-green-500);
   background: var(--color-green-100);
+}
+.state_success:hover:not(.state_disabled):not(.state_read_only) {
+  border-color: var(--color-green-600);
 }
 .state_success:focus-within {
   border-color: var(--color-green-500);

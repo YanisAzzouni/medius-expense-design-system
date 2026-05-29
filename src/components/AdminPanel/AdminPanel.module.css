@@ -16,10 +16,10 @@
 /* ─── Company name ─── */
 .companyName {
   padding: 12px;
-  font-size: 18px;
-  font-weight: 500;
-  line-height: 24px;
-  letter-spacing: -0.02em;
+  font-size: var(--type-title-size);
+  font-weight: var(--type-title-weight);
+  line-height: var(--type-title-line-height);
+  letter-spacing: var(--type-title-letter-spacing);
   color: var(--color-chalk-600);
   white-space: nowrap;
   flex-shrink: 0;
@@ -54,8 +54,8 @@
   font-family: var(--font-family);
   font-size: var(--type-body-default-size);
   font-weight: var(--type-body-default-weight);
-  line-height: 20px;
-  letter-spacing: -0.01em;
+  line-height: var(--type-body-default-line-height);
+  letter-spacing: var(--type-body-default-letter-spacing);
   color: var(--color-chalk-700);
   text-align: left;
   transition: background-color 80ms ease, color 80ms ease;
@@ -74,7 +74,7 @@
 /* Expanded / selected state — olive-600 text, semibold */
 .sectionHeader_expanded {
   color: var(--color-olive-600);
-  font-weight: 600;
+  font-weight: var(--type-body-semibold-weight);
 }
 
 /* ─── Section header inner (icon + label) ─── */
@@ -142,8 +142,8 @@
   font-family: var(--font-family);
   font-size: var(--type-body-default-size);
   font-weight: var(--type-body-default-weight);
-  line-height: 20px;
-  letter-spacing: -0.01em;
+  line-height: var(--type-body-default-line-height);
+  letter-spacing: var(--type-body-default-letter-spacing);
   color: var(--color-chalk-700);
   text-align: left;
   transition: background-color 80ms ease, color 80ms ease;

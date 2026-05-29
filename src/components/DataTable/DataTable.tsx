@@ -172,7 +172,7 @@ const ATTRIBUTE_ICON: Record<AttributeType, string> = {
   "medius-card":            "actions--medius-card",
   "e-invoice":              "actions--e-invoice",
   "e-invoice-expected":     "actions--e-invoice",
-  "e-invoice-not-expected": "actions--no e-invoice",
+  "e-invoice-not-expected": "actions--no-e-invoice",
   "transaction-expected":   "actions--transaction",
 };
 
@@ -254,7 +254,7 @@ function HeaderCell({ col, isSorted, sortDirection, onSort }: HeaderCellProps) {
             ].filter(Boolean).join(" ")}
             aria-hidden="true"
           >
-            <Icon name={"navigation--expand-less" as never} size="small" />
+            <Icon name="navigation--expand-less" size="small" />
           </span>
           <span
             className={[
@@ -263,7 +263,7 @@ function HeaderCell({ col, isSorted, sortDirection, onSort }: HeaderCellProps) {
             ].filter(Boolean).join(" ")}
             aria-hidden="true"
           >
-            <Icon name={"navigation--expand-more" as never} size="small" />
+            <Icon name="navigation--expand-more" size="small" />
           </span>
         </button>
       )}
@@ -278,17 +278,17 @@ function AlertsCell({ data }: { data: AlertsCellData }) {
     <div className={styles.alertsCell}>
       {data.warning && (
         <span className={styles.alertIcon_warning} aria-label="Warning" title="Warning">
-          <Icon name={"alert--warning-filled" as never} size="small" />
+          <Icon name="alert--warning-filled" size="small" />
         </span>
       )}
       {data.duplicate && (
         <span className={styles.alertIcon_duplicate} aria-label="Duplicate" title="Duplicate">
-          <Icon name={"content--file-copy" as never} size="small" />
+          <Icon name="content--file-copy" size="small" />
         </span>
       )}
       {data.policyAlert && (
         <span className={styles.alertIcon_policy} aria-label="Policy alert" title="Policy alert">
-          <Icon name={"actions--gavel" as never} size="small" />
+          <Icon name="actions--gavel" size="small" />
         </span>
       )}
     </div>
@@ -333,8 +333,8 @@ function TitleCell({ data }: { data: TitleCellData }) {
           {data.attributes.map((attr) => {
             const iconColor = ATTRIBUTE_ICON_COLOR[attr];
             const iconEl = iconColor
-              ? <span style={{ color: iconColor, display: "inline-flex", alignItems: "center", justifyContent: "center", width: "100%", height: "100%" }}><Icon name={ATTRIBUTE_ICON[attr] as never} size="small" /></span>
-              : <Icon name={ATTRIBUTE_ICON[attr] as never} size="small" />;
+              ? <span style={{ color: iconColor, display: "inline-flex", alignItems: "center", justifyContent: "center", width: "100%", height: "100%" }}><Icon name={ATTRIBUTE_ICON[attr]} size="small" /></span>
+              : <Icon name={ATTRIBUTE_ICON[attr]} size="small" />;
             return (
               <LabelTag
                 key={attr}
@@ -363,7 +363,7 @@ function ActionsCell({ data }: { data: ActionsCellData }) {
         aria-label={data.label ?? "Action"}
         title={data.label}
       >
-        <Icon name={data.icon as never} size="small" />
+        <Icon name={data.icon} size="small" />
       </Button>
       {data.secondary && (
         <Button
@@ -374,7 +374,7 @@ function ActionsCell({ data }: { data: ActionsCellData }) {
           aria-label={data.secondary.label ?? "Action"}
           title={data.secondary.label}
         >
-          <Icon name={data.secondary.icon as never} size="small" />
+          <Icon name={data.secondary.icon} size="small" />
         </Button>
       )}
     </div>
@@ -449,7 +449,7 @@ function DataCell({ col, value }: DataCellProps) {
     case "icon":
       return (
         <div className={base}>
-          {value && <Icon name={(value as string) as never} size="default" />}
+          {value && <Icon name={value as string} size="default" />}
         </div>
       );
     case "actions":

@@ -128,6 +128,18 @@
   --color-pink-900: #41172e;
   --color-pink-1000: #290f1e;
 
+  /* ─── Color: Space (dark blue-grey) ─── */
+  --color-space-100: #f4f6f9;
+  --color-space-200: #dde3ed;
+  --color-space-300: #b8c4d9;
+  --color-space-400: #6b83a8;
+  --color-space-500: #4d6889;
+  --color-space-600: #2f455c;
+  --color-space-700: #243547;
+  --color-space-800: #1b2738;
+  --color-space-900: #111927;
+  --color-space-1000: #0b1018;
+
   /* ─── Typography ─── */
   --font-family: "Inter", sans-serif;
 

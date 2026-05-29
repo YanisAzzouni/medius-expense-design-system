@@ -86,8 +86,8 @@
   white-space: nowrap;
   font-size: var(--type-body-default-size);
   font-weight: var(--type-body-default-weight);
-  line-height: 20px;
-  letter-spacing: -0.01em;
+  line-height: var(--type-body-default-line-height);
+  letter-spacing: var(--type-body-default-letter-spacing);
   color: var(--color-chalk-1000);
 }
 
@@ -223,8 +223,8 @@
 .textCell {
   font-size: var(--type-body-default-size);
   font-weight: var(--type-body-default-weight);
-  line-height: 20px;
-  letter-spacing: -0.01em;
+  line-height: var(--type-body-default-line-height);
+  letter-spacing: var(--type-body-default-letter-spacing);
   color: var(--color-chalk-1000);
   white-space: nowrap;
   overflow: hidden;
@@ -291,8 +291,8 @@
   gap: 4px;
   font-size: var(--type-body-default-size);
   font-weight: var(--type-body-default-weight);
-  line-height: 20px;
-  letter-spacing: -0.01em;
+  line-height: var(--type-body-default-line-height);
+  letter-spacing: var(--type-body-default-letter-spacing);
   white-space: nowrap;
 }
 
@@ -321,8 +321,8 @@
 .titleText {
   font-size: var(--type-body-default-size);
   font-weight: var(--type-body-default-weight);
-  line-height: 20px;
-  letter-spacing: -0.01em;
+  line-height: var(--type-body-default-line-height);
+  letter-spacing: var(--type-body-default-letter-spacing);
   color: var(--color-chalk-1000);
   white-space: nowrap;
   overflow: hidden;
@@ -357,8 +357,8 @@
   text-align: left;
   font-size: var(--type-body-default-size);
   font-weight: var(--type-body-default-weight);
-  line-height: 20px;
-  letter-spacing: -0.01em;
+  line-height: var(--type-body-default-line-height);
+  letter-spacing: var(--type-body-default-letter-spacing);
   color: var(--color-blue-500);
   text-decoration: none;
   background: none;
@@ -394,6 +394,6 @@
 .emptyMessage {
   font-size: var(--type-body-default-size);
   font-weight: var(--type-body-default-weight);
-  line-height: 20px;
+  line-height: var(--type-body-default-line-height);
   color: var(--color-chalk-600);
 }

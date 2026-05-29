@@ -8,7 +8,7 @@
   border-radius: 4px;
   cursor: pointer;
   font-family: var(--font-family);
-  font-weight: 600;
+  font-weight: var(--type-body-semibold-weight);
   white-space: nowrap;
   text-decoration: none;
   outline: none;
@@ -27,17 +27,17 @@
 .sizeDefault {
   height: 40px;
   padding: 0 16px;
-  font-size: 14px;
-  line-height: 20px;
-  letter-spacing: -0.01em;
+  font-size: var(--type-body-default-size);
+  line-height: var(--type-body-default-line-height);
+  letter-spacing: var(--type-body-default-letter-spacing);
 }
 
 .sizeSmall {
   height: 24px;
   padding: 0 8px;
-  font-size: 12px;
-  line-height: 16px;
-  letter-spacing: -0.01em;
+  font-size: var(--type-small-size);
+  line-height: var(--type-small-line-height);
+  letter-spacing: var(--type-small-letter-spacing);
 }
 
 /* ─── Icon-only (square) ─── */

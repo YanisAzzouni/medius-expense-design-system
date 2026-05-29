@@ -85,7 +85,7 @@ function NavTab({ item, isActive, onClick }: NavTabProps) {
       aria-current={isActive ? "page" : undefined}
     >
       <span className={styles.navTabIcon} aria-hidden="true">
-        <Icon name={item.icon as never} size="large" />
+        <Icon name={item.icon} size="large" />
       </span>
       <span className={styles.navTabLabel}>{item.label}</span>
     </button>

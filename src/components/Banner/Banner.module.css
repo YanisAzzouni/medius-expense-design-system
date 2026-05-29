@@ -104,10 +104,10 @@
 .title {
   margin: 0;
   font-family: var(--font-family);
-  font-size: var(--type-body-default-size);     /* 14px */
-  font-weight: var(--type-body-semibold-weight); /* bold / 700 */
-  line-height: 20px;
-  letter-spacing: -0.01em;
+  font-size: var(--type-body-default-size);
+  font-weight: var(--type-body-semibold-weight);
+  line-height: var(--type-body-default-line-height);
+  letter-spacing: var(--type-body-default-letter-spacing);
   color: var(--color-chalk-900);
 }
 
@@ -142,10 +142,10 @@
   border-radius: 4px;
   background: transparent;
   font-family: var(--font-family);
-  font-size: var(--type-small-semibold-size);   /* 12px */
+  font-size: var(--type-small-semibold-size);
   font-weight: var(--type-small-semibold-weight);
-  line-height: 16px;
-  letter-spacing: -0.01em;
+  line-height: var(--type-small-semibold-line-height);
+  letter-spacing: var(--type-small-semibold-letter-spacing);
   color: var(--color-chalk-900);
   white-space: nowrap;
   cursor: pointer;

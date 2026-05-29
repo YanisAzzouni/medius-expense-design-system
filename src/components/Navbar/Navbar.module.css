@@ -53,8 +53,8 @@
   font-family: var(--font-family);
   font-size: var(--type-body-default-size);
   font-weight: var(--type-body-default-weight);
-  line-height: 20px;
-  letter-spacing: -0.01em;
+  line-height: var(--type-body-default-line-height);
+  letter-spacing: var(--type-body-default-letter-spacing);
   color: var(--color-chalk-600);
   white-space: nowrap;
   transition: background-color 80ms ease, color 80ms ease;
@@ -131,10 +131,10 @@
   border: 2px solid var(--color-olive-700);
   background: transparent;
   font-family: var(--font-family);
-  font-size: 14px;
-  font-weight: 600;
-  line-height: 20px;
-  letter-spacing: -0.01em;
+  font-size: var(--type-body-semibold-size);
+  font-weight: var(--type-body-semibold-weight);
+  line-height: var(--type-body-semibold-line-height);
+  letter-spacing: var(--type-body-semibold-letter-spacing);
   color: var(--color-olive-700);
   -webkit-font-smoothing: antialiased;
   transition: border-color 80ms ease, color 80ms ease, background-color 80ms ease;
