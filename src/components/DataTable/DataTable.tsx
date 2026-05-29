@@ -5,6 +5,7 @@ import { StatusTag } from "../StatusTag/StatusTag";
 import type { StatusTagVariant } from "../StatusTag/StatusTag";
 import { LabelTag } from "../LabelTag/LabelTag";
 import type { LabelTagColor } from "../LabelTag/LabelTag";
+import { Tooltip } from "../Tooltip/Tooltip";
 import { Icon } from "../../icons/Icon";
 import styles from "./DataTable.module.css";
 
@@ -277,19 +278,25 @@ function AlertsCell({ data }: { data: AlertsCellData }) {
   return (
     <div className={styles.alertsCell}>
       {data.warning && (
-        <span className={styles.alertIcon_warning} aria-label="Warning" title="Warning">
-          <Icon name="alert--warning-filled" size="small" />
-        </span>
+        <Tooltip content="Warning" placement="right">
+          <span className={styles.alertIcon_warning} aria-label="Warning">
+            <Icon name="alert--warning-filled" size="small" />
+          </span>
+        </Tooltip>
       )}
       {data.duplicate && (
-        <span className={styles.alertIcon_duplicate} aria-label="Duplicate" title="Duplicate">
-          <Icon name="content--file-copy" size="small" />
-        </span>
+        <Tooltip content="Duplicate" placement="right">
+          <span className={styles.alertIcon_duplicate} aria-label="Duplicate">
+            <Icon name="content--file-copy" size="small" />
+          </span>
+        </Tooltip>
       )}
       {data.policyAlert && (
-        <span className={styles.alertIcon_policy} aria-label="Policy alert" title="Policy alert">
-          <Icon name="actions--gavel" size="small" />
-        </span>
+        <Tooltip content="Policy alert" placement="right">
+          <span className={styles.alertIcon_policy} aria-label="Policy alert">
+            <Icon name="actions--gavel" size="small" />
+          </span>
+        </Tooltip>
       )}
     </div>
   );
@@ -336,14 +343,14 @@ function TitleCell({ data }: { data: TitleCellData }) {
               ? <span style={{ color: iconColor, display: "inline-flex", alignItems: "center", justifyContent: "center", width: "100%", height: "100%" }}><Icon name={ATTRIBUTE_ICON[attr]} size="small" /></span>
               : <Icon name={ATTRIBUTE_ICON[attr]} size="small" />;
             return (
-              <LabelTag
-                key={attr}
-                size="small"
-                color={ATTRIBUTE_COLOR[attr]}
-                icon={iconEl}
-                title={ATTRIBUTE_LABEL[attr]}
-                aria-label={ATTRIBUTE_LABEL[attr]}
-              />
+              <Tooltip key={attr} content={ATTRIBUTE_LABEL[attr]} placement="top">
+                <LabelTag
+                  size="small"
+                  color={ATTRIBUTE_COLOR[attr]}
+                  icon={iconEl}
+                  aria-label={ATTRIBUTE_LABEL[attr]}
+                />
+              </Tooltip>
             );
           })}
         </span>
