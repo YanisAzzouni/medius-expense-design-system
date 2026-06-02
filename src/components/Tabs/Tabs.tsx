@@ -24,9 +24,10 @@ export interface TabsProps {
   onChange: (value: string) => void;
   children: ReactNode;
   className?: string;
+  "data-testid"?: string;
 }
 
-export function Tabs({ value, onChange, children, className }: TabsProps) {
+export function Tabs({ value, onChange, children, className, "data-testid": testId }: TabsProps) {
   const listRef = useRef<HTMLDivElement>(null);
 
   /* Arrow-key navigation — moves focus AND activates the tab */
@@ -67,6 +68,8 @@ export function Tabs({ value, onChange, children, className }: TabsProps) {
         role="tablist"
         className={[styles.tablist, className ?? ""].filter(Boolean).join(" ")}
         onKeyDown={handleKeyDown}
+        data-component="Tabs"
+        data-testid={testId}
       >
         {children}
       </div>

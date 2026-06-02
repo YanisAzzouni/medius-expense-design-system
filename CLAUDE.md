@@ -135,12 +135,25 @@ Use for metadata labels (categories, flags, document types, …).
 ```ts
 import { Tooltip } from "medius-expense-design-system";
 
-content:     ReactNode
-placement?:  "top" | "right" | "bottom" | "left"  // default: "top"
-children:    ReactNode   // the trigger element
+content:        ReactNode
+placement?:     "top" | "right" | "bottom" | "left"  // default: "top"
+children:       ReactNode   // the trigger element
+open?:          boolean     // controlled open state; omit for CSS-only hover/focus behavior
+onOpenChange?:  (open: boolean) => void  // called on mouse/focus events when controlled
 ```
 
-CSS-only show/hide (no JS). Wraps the trigger — no extra wrapper div needed.
+Uncontrolled (default): CSS hover/focus drives visibility. No JS state needed.  
+Controlled: pass `open` to drive visibility from JS — useful for agents and tests.
+
+```tsx
+// Controlled example
+const [open, setOpen] = useState(false);
+<Tooltip content="Help text" open={open} onOpenChange={setOpen}>
+  <button>Hover me</button>
+</Tooltip>
+```
+
+Wraps the trigger — no extra wrapper div needed.
 
 ### Tabs + Tab (compound component)
 
@@ -239,12 +252,18 @@ size?:  "small" | "medium" | "large"  // 16 / 20 / 24 px  — default: "medium"
 Icon names follow the pattern `category--kebab-name`. Key categories:
 `actions` · `alert` · `alerts` · `content` · `editor` · `maps` · `navigation` · `social`
 
-To verify a name exists before using it:
+To verify a name exists, use the exported manifest (no shell access required):
+```ts
+import { iconNames } from "medius-expense-design-system";
+// iconNames: string[] — all valid "category--name" identifiers, e.g. "navigation--close"
+```
+
+Or grep in a shell context:
 ```bash
 grep '"name": "your-icon-name"' src/icons/manifest.ts
 ```
 
-Never guess an icon name. If unsure, grep the manifest first.
+Never guess an icon name. If unsure, check `iconNames` or grep the manifest first.
 
 ---
 
@@ -261,6 +280,42 @@ Families: `chalk` · `olive` · `blue` · `green` · `red` · `orange` · `yello
 `--type-small-semibold-{size|weight|line-height|letter-spacing}`
 
 **Font family:** `--font-family`
+
+---
+
+## Agent & Testing Conventions
+
+### data-component
+Every component renders `data-component="ComponentName"` on its root element. Use this to identify which component owns a DOM node when inspecting the tree (e.g. screenshots, DOM queries):
+```ts
+document.querySelector('[data-component="Button"]')
+```
+
+### data-testid
+Pass `data-testid` to any component to attach a stable test selector.
+
+For **Button**, **TextInput**, **TextArea** — `data-testid` flows through `...rest` to the semantic element (`<button>`, `<input>`, `<textarea>`). This is the correct target for interaction-based tests.
+
+For all other components — `data-testid` is an explicit prop and lands on the root element.
+
+```tsx
+<Button data-testid="save-btn">Save</Button>
+<TextInput data-testid="amount-input" label="Amount" />
+<Select data-testid="category-select" options={opts} />
+<Banner data-testid="error-banner" type="error">…</Banner>
+```
+
+### Tooltip controlled mode
+For agent/test scenarios where CSS hover cannot be triggered, use the `open` prop:
+```tsx
+<Tooltip content="Details" open={true}>…</Tooltip>
+```
+
+### Icon discovery (no shell required)
+```ts
+import { iconNames } from "medius-expense-design-system";
+const isValid = iconNames.includes("navigation--close"); // true
+```
 
 ---
 

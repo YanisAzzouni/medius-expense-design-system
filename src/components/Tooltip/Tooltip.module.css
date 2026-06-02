@@ -52,9 +52,16 @@
   border: 7px solid transparent;
 }
 
-/* ─── Show on hover / keyboard focus ─── */
-.wrapper:hover .bubble,
-.wrapper:focus-within .bubble {
+/* ─── Show on hover / keyboard focus (uncontrolled) ─── */
+.wrapper:not([data-open]):hover .bubble,
+.wrapper:not([data-open]):focus-within .bubble {
+  opacity: 1;
+  visibility: visible;
+  pointer-events: auto;
+}
+
+/* ─── Controlled open state ─── */
+.wrapper[data-open="true"] .bubble {
   opacity: 1;
   visibility: visible;
   pointer-events: auto;

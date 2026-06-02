@@ -19,6 +19,7 @@ export interface CheckboxProps {
   name?: string;
   value?: string;
   className?: string;
+  "data-testid"?: string;
 }
 
 export const Checkbox = forwardRef<HTMLInputElement, CheckboxProps>(
@@ -33,6 +34,7 @@ export const Checkbox = forwardRef<HTMLInputElement, CheckboxProps>(
       name,
       value,
       className,
+      "data-testid": testId,
     },
     ref
   ) {
@@ -82,6 +84,8 @@ export const Checkbox = forwardRef<HTMLInputElement, CheckboxProps>(
         ]
           .filter(Boolean)
           .join(" ")}
+        data-component="Checkbox"
+        data-testid={testId}
       >
         {/* Native input — visually hidden but wires up all a11y + form semantics */}
         <input

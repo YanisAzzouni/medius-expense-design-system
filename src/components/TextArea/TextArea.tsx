@@ -54,7 +54,7 @@ export const TextArea = forwardRef<HTMLTextAreaElement, TextAreaProps>(
     const stateClass = styles[`state_${state.replace(/-/g, "_")}`] ?? "";
 
     return (
-      <div className={`${styles.field} ${className ?? ""}`}>
+      <div className={`${styles.field} ${className ?? ""}`} data-component="TextArea">
         {label && (
           <div className={styles.labelColumn}>
             <label htmlFor={id} className={styles.label}>

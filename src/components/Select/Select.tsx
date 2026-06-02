@@ -45,6 +45,7 @@ export interface SelectProps {
   hintType?: SelectHintType;
   className?: string;
   id?: string;
+  "data-testid"?: string;
 }
 
 export const Select = forwardRef<HTMLDivElement, SelectProps>(function Select(
@@ -62,6 +63,7 @@ export const Select = forwardRef<HTMLDivElement, SelectProps>(function Select(
     hintType = "neutral",
     className,
     id: idProp,
+    "data-testid": testId,
   },
   ref
 ) {
@@ -121,7 +123,7 @@ export const Select = forwardRef<HTMLDivElement, SelectProps>(function Select(
   };
 
   return (
-    <div ref={ref} className={`${styles.field} ${className ?? ""}`}>
+    <div ref={ref} className={`${styles.field} ${className ?? ""}`} data-component="Select" data-testid={testId}>
       {label && (
         <div className={styles.labelColumn}>
           <label htmlFor={id} className={styles.label}>

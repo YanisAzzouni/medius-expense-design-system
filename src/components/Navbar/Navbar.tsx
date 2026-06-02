@@ -131,6 +131,7 @@ export interface NavBarProps {
   /** Show the Accountant tab. */
   showAccountant?: boolean;
   className?: string;
+  "data-testid"?: string;
 }
 
 /* ─── Component ─────────────────────────────────────────────────────────── */
@@ -146,6 +147,7 @@ export function NavBar({
   showAdmin = false,
   showAccountant = false,
   className,
+  "data-testid": testId,
 }: NavBarProps) {
   const visibilityMap: Record<NavItemKey, boolean> = {
     dashboard:    true,
@@ -164,6 +166,8 @@ export function NavBar({
     <nav
       className={[styles.navbar, className ?? ""].filter(Boolean).join(" ")}
       aria-label="Main navigation"
+      data-component="NavBar"
+      data-testid={testId}
     >
       {/* ─── Logo ─── */}
       <MediusExpenseLogo />

@@ -16,6 +16,15 @@ export interface TooltipProps {
   /** The element that triggers the tooltip on hover / focus. */
   children: ReactNode;
   className?: string;
+  "data-testid"?: string;
+  /**
+   * Controlled open state. When provided, CSS hover/focus is suppressed and
+   * the tooltip visibility is driven entirely by this prop.
+   * Pair with onOpenChange to handle mouse/focus events.
+   */
+  open?: boolean;
+  /** Called when hover or focus would naturally open or close the tooltip. */
+  onOpenChange?: (open: boolean) => void;
 }
 
 export function Tooltip({
@@ -23,11 +32,28 @@ export function Tooltip({
   placement = "top",
   children,
   className,
+  "data-testid": testId,
+  open,
+  onOpenChange,
 }: TooltipProps) {
   const id = useId();
+  const isControlled = open !== undefined;
 
   return (
-    <span className={`${styles.wrapper} ${className ?? ""}`}>
+    <span
+      className={`${styles.wrapper} ${className ?? ""}`}
+      data-component="Tooltip"
+      data-testid={testId}
+      {...(isControlled ? { "data-open": open ? "true" : "false" } : {})}
+      {...(isControlled && onOpenChange
+        ? {
+            onMouseEnter: () => onOpenChange(true),
+            onMouseLeave: () => onOpenChange(false),
+            onFocus: () => onOpenChange(true),
+            onBlur: () => onOpenChange(false),
+          }
+        : {})}
+    >
       {/*
        * The inner span picks up :focus-within from the wrapper so keyboard
        * users see the tooltip when they tab into the trigger.

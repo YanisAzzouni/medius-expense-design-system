@@ -27,6 +27,7 @@ export interface BannerProps {
   /** Called when the secondary action button is clicked. */
   onAction2?: () => void;
   className?: string;
+  "data-testid"?: string;
 }
 
 const TYPE_ICON: Record<BannerType, string> = {
@@ -49,6 +50,7 @@ export const Banner = forwardRef<HTMLDivElement, BannerProps>(function Banner(
     action2Label,
     onAction2,
     className,
+    "data-testid": testId,
   },
   ref
 ) {
@@ -59,6 +61,8 @@ export const Banner = forwardRef<HTMLDivElement, BannerProps>(function Banner(
       ref={ref}
       role="alert"
       className={[styles.banner, styles[`type_${type}`], className ?? ""].filter(Boolean).join(" ")}
+      data-component="Banner"
+      data-testid={testId}
     >
       {/* Left accent bar */}
       <div className={styles.dashWrapper}>

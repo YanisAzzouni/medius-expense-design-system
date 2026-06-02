@@ -22,11 +22,12 @@ export interface LabelTagProps {
   /** Optional leading icon node. */
   icon?: ReactNode;
   className?: string;
+  "data-testid"?: string;
 }
 
 export const LabelTag = forwardRef<HTMLDivElement, LabelTagProps>(
   function LabelTag(
-    { label, color = "neutral", size = "default", icon, className },
+    { label, color = "neutral", size = "default", icon, className, "data-testid": testId },
     ref
   ) {
     return (
@@ -40,6 +41,8 @@ export const LabelTag = forwardRef<HTMLDivElement, LabelTagProps>(
         ]
           .filter(Boolean)
           .join(" ")}
+        data-component="LabelTag"
+        data-testid={testId}
       >
         {icon && (
           <span className={styles.icon} aria-hidden="true">

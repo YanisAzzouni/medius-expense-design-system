@@ -16,10 +16,11 @@ export interface StatusTagProps {
   /** Colour variant. Defaults to "neutral". */
   variant?: StatusTagVariant;
   className?: string;
+  "data-testid"?: string;
 }
 
 export const StatusTag = forwardRef<HTMLDivElement, StatusTagProps>(
-  function StatusTag({ label, variant = "neutral", className }, ref) {
+  function StatusTag({ label, variant = "neutral", className, "data-testid": testId }, ref) {
     return (
       <div
         ref={ref}
@@ -30,6 +31,8 @@ export const StatusTag = forwardRef<HTMLDivElement, StatusTagProps>(
         ]
           .filter(Boolean)
           .join(" ")}
+        data-component="StatusTag"
+        data-testid={testId}
       >
         <span className={styles.dot} aria-hidden="true" />
         <span className={styles.label}>{label}</span>

@@ -56,7 +56,7 @@ export const TextInput = forwardRef<HTMLInputElement, TextInputProps>(
     const stateClass = styles[`state_${state.replace(/-/g, "_")}`] ?? "";
 
     return (
-      <div className={`${styles.field} ${className ?? ""}`}>
+      <div className={`${styles.field} ${className ?? ""}`} data-component="TextInput">
         {label && (
           <div className={styles.labelColumn}>
             <label htmlFor={id} className={styles.label}>

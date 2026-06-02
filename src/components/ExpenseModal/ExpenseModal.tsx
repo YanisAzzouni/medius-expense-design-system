@@ -129,6 +129,7 @@ export interface ExpenseModalProps {
   /** Called when the → navigate-next button is clicked. */
   onNext?: () => void;
   className?: string;
+  "data-testid"?: string;
 }
 
 /* ─── Component ─────────────────────────────────────────────────────────── */
@@ -148,6 +149,7 @@ export function ExpenseModal({
   onSave,
   onNext,
   className,
+  "data-testid": testId,
 }: ExpenseModalProps) {
   /* Tab state */
   const [activeTab, setActiveTab] = useState("general");
@@ -181,6 +183,8 @@ export function ExpenseModal({
       aria-modal="true"
       aria-label={title}
       className={[styles.modal, className ?? ""].filter(Boolean).join(" ")}
+      data-component="ExpenseModal"
+      data-testid={testId}
     >
       {/* ─── Header ──────────────────────────────────────────────────── */}
       <div className={styles.header}>
