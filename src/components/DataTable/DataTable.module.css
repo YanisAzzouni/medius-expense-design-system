@@ -276,13 +276,89 @@
   height: 100%;
 }
 
+.thumbnailBtn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  background: none;
+  border: none;
+  padding: 0;
+  cursor: pointer;
+  border-radius: 6px;
+  transition: opacity 80ms ease;
+}
+
+.thumbnailBtn:hover {
+  opacity: 0.8;
+}
+
+.thumbnailBtn:focus-visible {
+  outline: 2px solid var(--color-olive-500);
+  outline-offset: 2px;
+  border-radius: 6px;
+}
+
 .thumbnailImg {
   width: 40px;
   height: 56px;
   object-fit: cover;
   border-radius: 4px;
-  border: 2px solid var(--color-space-200);
+  border: 2px solid var(--color-chalk-200);
   display: block;
+}
+
+/* ─── Receipt lightbox ─── */
+.lightboxBackdrop {
+  position: fixed;
+  inset: 0;
+  z-index: 1000;
+  background: rgba(0, 0, 0, 0.65);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.lightboxContent {
+  position: relative;
+  display: inline-flex;
+}
+
+.lightboxImage {
+  max-width: 90vw;
+  max-height: 90vh;
+  object-fit: contain;
+  border-radius: 8px;
+  border: 2px solid var(--color-chalk-200);
+  box-shadow: 0 32px 64px rgba(0, 0, 0, 0.4);
+  display: block;
+}
+
+.lightboxClose {
+  position: absolute;
+  top: -14px;
+  right: -14px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  border: none;
+  background: var(--color-white);
+  color: var(--color-chalk-700);
+  cursor: pointer;
+  transition: background-color 80ms ease, color 80ms ease;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+}
+
+.lightboxClose:hover {
+  background: var(--color-chalk-100);
+  color: var(--color-chalk-1000);
+}
+
+.lightboxClose:focus-visible {
+  outline: 2px solid var(--color-olive-500);
+  outline-offset: 2px;
 }
 
 /* ─── Amount cell ─── */

@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { Button } from "../Button";
 import { Checkbox } from "../Checkbox/Checkbox";
 import { StatusTag } from "../StatusTag/StatusTag";
@@ -303,13 +303,59 @@ function AlertsCell({ data }: { data: AlertsCellData }) {
 }
 
 function ThumbnailCell({ data }: { data: ThumbnailCellData }) {
+  const [open, setOpen] = useState(false);
+
+  useEffect(() => {
+    if (!open) return;
+    function onKeyDown(e: KeyboardEvent) {
+      if (e.key === "Escape") setOpen(false);
+    }
+    document.addEventListener("keydown", onKeyDown);
+    return () => document.removeEventListener("keydown", onKeyDown);
+  }, [open]);
+
   return (
     <div className={styles.thumbnailCell}>
-      <img
-        src={data.src}
-        alt={data.alt ?? "Receipt"}
-        className={styles.thumbnailImg}
-      />
+      <button
+        type="button"
+        className={styles.thumbnailBtn}
+        onClick={(e) => { e.stopPropagation(); setOpen(true); }}
+        aria-label="View receipt"
+      >
+        <img
+          src={data.src}
+          alt={data.alt ?? "Receipt"}
+          className={styles.thumbnailImg}
+        />
+      </button>
+      {open && (
+        <div
+          className={styles.lightboxBackdrop}
+          role="dialog"
+          aria-modal="true"
+          aria-label="Receipt preview"
+          onClick={() => setOpen(false)}
+        >
+          <div
+            className={styles.lightboxContent}
+            onClick={(e) => e.stopPropagation()}
+          >
+            <img
+              src={data.src}
+              alt={data.alt ?? "Receipt"}
+              className={styles.lightboxImage}
+            />
+            <button
+              type="button"
+              className={styles.lightboxClose}
+              onClick={() => setOpen(false)}
+              aria-label="Close receipt preview"
+            >
+              <Icon name="navigation--close" size="default" />
+            </button>
+          </div>
+        </div>
+      )}
     </div>
   );
 }
