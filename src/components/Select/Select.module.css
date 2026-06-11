@@ -184,23 +184,68 @@
   transform: rotate(180deg);
 }
 
-/* ─── Dropdown panel ─── */
-.dropdown {
+/* ─── Dropdown panel wrapper (positions the whole dropdown) ─── */
+.dropdownPanel {
   position: absolute;
   top: calc(100% + 4px);
   left: 0;
   right: 0;
   z-index: 100;
-  margin: 0;
-  padding: 4px 0;
-  list-style: none;
   background: var(--color-white);
   border: 1px solid var(--color-chalk-300);
   border-radius: 4px;
   box-shadow: var(--shadow-16);
+  box-sizing: border-box;
+  overflow: hidden;
+}
+
+/* ─── Search box inside dropdown ─── */
+.searchBox {
+  padding: 8px;
+  border-bottom: 1px solid var(--color-chalk-200);
+}
+
+.searchInput {
+  width: 100%;
+  height: 32px;
+  padding: 0 8px;
+  border: 1px solid var(--color-chalk-300);
+  border-radius: 4px;
+  background: var(--color-white);
+  font-family: var(--font-family);
+  font-size: var(--type-body-default-size);
+  color: var(--color-chalk-900);
+  box-sizing: border-box;
+  outline: none;
+  -webkit-font-smoothing: antialiased;
+}
+
+.searchInput:focus {
+  border-color: var(--color-olive-500);
+  box-shadow: 0 0 0 2px var(--color-olive-200);
+}
+
+.searchInput::placeholder {
+  color: var(--color-chalk-400);
+}
+
+/* ─── Dropdown list ─── */
+.dropdown {
+  margin: 0;
+  padding: 4px 0;
+  list-style: none;
   max-height: 240px;
   overflow-y: auto;
   box-sizing: border-box;
+}
+
+/* ─── No results message ─── */
+.noResults {
+  padding: 10px 12px;
+  font-family: var(--font-family);
+  font-size: var(--type-body-default-size);
+  color: var(--color-chalk-400);
+  list-style: none;
 }
 
 /* ─── Option item ─── */

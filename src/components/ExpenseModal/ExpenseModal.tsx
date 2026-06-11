@@ -44,26 +44,28 @@ function FieldRow({ label, required, htmlFor, children }: FieldRowProps) {
 /* ─── Option lists ──────────────────────────────────────────────────────── */
 
 const CATEGORY_OPTIONS = [
-  {
-    value: "meals",
-    label: "Meals & entertainment",
-    icon: <Icon name="maps--local-dining" size="small" />,
-  },
-  {
-    value: "travel",
-    label: "Travel",
-    icon: <Icon name="maps--flight" size="small" />,
-  },
-  {
-    value: "hotel",
-    label: "Hotel",
-    icon: <Icon name="maps--hotel" size="small" />,
-  },
-  {
-    value: "taxi",
-    label: "Taxi & transport",
-    icon: <Icon name="maps--local-taxi" size="small" />,
-  },
+  { value: "car",            label: "Car",              icon: <Icon name="maps--directions-car"      size="small" /> },
+  { value: "diesel",         label: "Diesel",           icon: <Icon name="maps--local-gas-station"   size="small" /> },
+  { value: "electricity",    label: "Electricity",      icon: <Icon name="actions--offline-bolt"     size="small" /> },
+  { value: "entertainment",  label: "Entertainment",    icon: <Icon name="actions--theaters"         size="small" /> },
+  { value: "equipment",      label: "Equipment",        icon: <Icon name="hardware--computer"        size="small" /> },
+  { value: "flight",         label: "Flight",           icon: <Icon name="maps--flight"              size="small" /> },
+  { value: "fuel",           label: "Fuel",             icon: <Icon name="maps--local-gas-station"   size="small" /> },
+  { value: "gas-utility",    label: "Gas (utility)",    icon: <Icon name="maps--local-gas-station"   size="small" /> },
+  { value: "internet",       label: "Internet",         icon: <Icon name="device--network-wifi"      size="small" /> },
+  { value: "lodging",        label: "Lodging",          icon: <Icon name="maps--hotel"               size="small" /> },
+  { value: "meals",          label: "Meals",            icon: <Icon name="maps--local-dining"        size="small" /> },
+  { value: "mileage",        label: "Mileage expense",  icon: <Icon name="maps--directions-car"      size="small" /> },
+  { value: "misc",           label: "Misc",             icon: <Icon name="navigation--more-vert"     size="small" /> },
+  { value: "parking",        label: "Parking",          icon: <Icon name="maps--local-parking"       size="small" /> },
+  { value: "phone",          label: "Phone",            icon: <Icon name="maps--local-phone"         size="small" /> },
+  { value: "postal-charges", label: "Postal charges",   icon: <Icon name="maps--local-post-office"   size="small" /> },
+  { value: "rent",           label: "Rent",             icon: <Icon name="actions--home"             size="small" /> },
+  { value: "services",       label: "Services",         icon: <Icon name="hardware--headset"         size="small" /> },
+  { value: "taxi",           label: "Taxi",             icon: <Icon name="maps--local-taxi"          size="small" /> },
+  { value: "toll",           label: "Toll",             icon: <Icon name="actions--toll"             size="small" /> },
+  { value: "transportation", label: "Transportation",   icon: <Icon name="maps--train"               size="small" /> },
+  { value: "water",          label: "Water (utility)",  icon: <Icon name="maps--local-drink"         size="small" /> },
 ];
 
 const PAYMENT_OPTIONS = [
@@ -74,11 +76,102 @@ const PAYMENT_OPTIONS = [
 ];
 
 const COUNTRY_OPTIONS = [
-  { value: "se", label: "Sweden (SEK)" },
-  { value: "us", label: "United States (USD)" },
-  { value: "de", label: "Germany (EUR)" },
-  { value: "gb", label: "United Kingdom (GBP)" },
-  { value: "fr", label: "France (EUR)" },
+  { value: "af", label: "Afghanistan" },
+  { value: "al", label: "Albania" },
+  { value: "dz", label: "Algeria" },
+  { value: "ar", label: "Argentina" },
+  { value: "am", label: "Armenia" },
+  { value: "au", label: "Australia" },
+  { value: "at", label: "Austria" },
+  { value: "az", label: "Azerbaijan" },
+  { value: "bh", label: "Bahrain" },
+  { value: "bd", label: "Bangladesh" },
+  { value: "by", label: "Belarus" },
+  { value: "be", label: "Belgium" },
+  { value: "bo", label: "Bolivia" },
+  { value: "ba", label: "Bosnia and Herzegovina" },
+  { value: "br", label: "Brazil" },
+  { value: "bg", label: "Bulgaria" },
+  { value: "kh", label: "Cambodia" },
+  { value: "ca", label: "Canada" },
+  { value: "cl", label: "Chile" },
+  { value: "cn", label: "China" },
+  { value: "co", label: "Colombia" },
+  { value: "hr", label: "Croatia" },
+  { value: "cy", label: "Cyprus" },
+  { value: "cz", label: "Czech Republic" },
+  { value: "dk", label: "Denmark" },
+  { value: "ec", label: "Ecuador" },
+  { value: "eg", label: "Egypt" },
+  { value: "ee", label: "Estonia" },
+  { value: "et", label: "Ethiopia" },
+  { value: "fi", label: "Finland" },
+  { value: "fr", label: "France" },
+  { value: "ge", label: "Georgia" },
+  { value: "de", label: "Germany" },
+  { value: "gh", label: "Ghana" },
+  { value: "gr", label: "Greece" },
+  { value: "gt", label: "Guatemala" },
+  { value: "hk", label: "Hong Kong" },
+  { value: "hu", label: "Hungary" },
+  { value: "in", label: "India" },
+  { value: "id", label: "Indonesia" },
+  { value: "ir", label: "Iran" },
+  { value: "iq", label: "Iraq" },
+  { value: "ie", label: "Ireland" },
+  { value: "il", label: "Israel" },
+  { value: "it", label: "Italy" },
+  { value: "jp", label: "Japan" },
+  { value: "jo", label: "Jordan" },
+  { value: "kz", label: "Kazakhstan" },
+  { value: "ke", label: "Kenya" },
+  { value: "kw", label: "Kuwait" },
+  { value: "lv", label: "Latvia" },
+  { value: "lb", label: "Lebanon" },
+  { value: "lt", label: "Lithuania" },
+  { value: "lu", label: "Luxembourg" },
+  { value: "my", label: "Malaysia" },
+  { value: "mt", label: "Malta" },
+  { value: "mx", label: "Mexico" },
+  { value: "md", label: "Moldova" },
+  { value: "ma", label: "Morocco" },
+  { value: "nl", label: "Netherlands" },
+  { value: "nz", label: "New Zealand" },
+  { value: "ng", label: "Nigeria" },
+  { value: "no", label: "Norway" },
+  { value: "om", label: "Oman" },
+  { value: "pk", label: "Pakistan" },
+  { value: "pa", label: "Panama" },
+  { value: "pe", label: "Peru" },
+  { value: "ph", label: "Philippines" },
+  { value: "pl", label: "Poland" },
+  { value: "pt", label: "Portugal" },
+  { value: "qa", label: "Qatar" },
+  { value: "ro", label: "Romania" },
+  { value: "ru", label: "Russia" },
+  { value: "sa", label: "Saudi Arabia" },
+  { value: "rs", label: "Serbia" },
+  { value: "sg", label: "Singapore" },
+  { value: "sk", label: "Slovakia" },
+  { value: "si", label: "Slovenia" },
+  { value: "za", label: "South Africa" },
+  { value: "kr", label: "South Korea" },
+  { value: "es", label: "Spain" },
+  { value: "lk", label: "Sri Lanka" },
+  { value: "se", label: "Sweden" },
+  { value: "ch", label: "Switzerland" },
+  { value: "tw", label: "Taiwan" },
+  { value: "th", label: "Thailand" },
+  { value: "tn", label: "Tunisia" },
+  { value: "tr", label: "Turkey" },
+  { value: "ua", label: "Ukraine" },
+  { value: "ae", label: "United Arab Emirates" },
+  { value: "gb", label: "United Kingdom" },
+  { value: "us", label: "United States" },
+  { value: "uy", label: "Uruguay" },
+  { value: "uz", label: "Uzbekistan" },
+  { value: "ve", label: "Venezuela" },
+  { value: "vn", label: "Vietnam" },
 ];
 
 const CURRENCY_OPTIONS = [
@@ -349,6 +442,7 @@ export function ExpenseModal({
               value={category}
               onChange={setCategory}
               options={CATEGORY_OPTIONS}
+              searchable
             />
           </FieldRow>
 
@@ -370,6 +464,7 @@ export function ExpenseModal({
               value={country}
               onChange={setCountry}
               options={COUNTRY_OPTIONS}
+              searchable
             />
           </FieldRow>
 

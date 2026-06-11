@@ -43,6 +43,8 @@ export interface SelectProps {
   hint?: string;
   /** Colour variant of the hint message. */
   hintType?: SelectHintType;
+  /** Show a search input inside the dropdown to filter options. */
+  searchable?: boolean;
   className?: string;
   id?: string;
 }
@@ -60,6 +62,7 @@ export const Select = forwardRef<HTMLDivElement, SelectProps>(function Select(
     leadingIcon,
     hint,
     hintType = "neutral",
+    searchable = false,
     className,
     id: idProp,
   },
@@ -71,8 +74,10 @@ export const Select = forwardRef<HTMLDivElement, SelectProps>(function Select(
   const hintId = `${id}-hint`;
 
   const [open, setOpen] = useState(false);
+  const [searchQuery, setSearchQuery] = useState("");
   const wrapperRef = useRef<HTMLDivElement>(null);
   const triggerRef = useRef<HTMLButtonElement>(null);
+  const searchRef = useRef<HTMLInputElement>(null);
 
   const isDisabled = state === "disabled";
   const isReadOnly = state === "read-only";
@@ -83,6 +88,16 @@ export const Select = forwardRef<HTMLDivElement, SelectProps>(function Select(
   // Falls back to the static leadingIcon prop when no selection or the option has no icon.
   const triggerIcon = selectedOption?.icon ?? leadingIcon;
   const stateClass = styles[`state_${state.replace(/-/g, "_")}`] ?? "";
+
+  // Reset search when closed
+  useEffect(() => {
+    if (!open) setSearchQuery("");
+    else if (searchable) setTimeout(() => searchRef.current?.focus(), 0);
+  }, [open, searchable]);
+
+  const filteredOptions = searchable && searchQuery
+    ? options.filter((o) => o.label.toLowerCase().includes(searchQuery.toLowerCase()))
+    : options;
 
   // Close on outside click
   useEffect(() => {
@@ -183,36 +198,57 @@ export const Select = forwardRef<HTMLDivElement, SelectProps>(function Select(
           </button>
 
           {open && (
-            <ul id={listId} role="listbox" aria-label={label} className={styles.dropdown}>
-              {options.map((option) => {
-                const isSelected = option.value === value;
-                return (
-                  <li
-                    key={option.value}
-                    role="option"
-                    aria-selected={isSelected}
-                    tabIndex={0}
-                    className={[styles.option, isSelected ? styles.optionSelected : ""].filter(Boolean).join(" ")}
-                    onClick={() => handleSelect(option.value)}
-                    onMouseDown={(e) => e.preventDefault()}
-                    onKeyDown={(e) => handleOptionKeyDown(e, option.value)}
-                  >
-                    {option.icon && (
-                      <span className={styles.optionIcon} aria-hidden="true">{option.icon}</span>
-                    )}
-                    <span className={styles.optionLabel}>{option.label}</span>
-                    {isSelected && (
-                      <span className={styles.checkmark} aria-hidden="true">
-                        <svg width="14" height="14" viewBox="0 0 24 24" fill="none"
-                          stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
-                          <polyline points="20 6 9 17 4 12" />
-                        </svg>
-                      </span>
-                    )}
-                  </li>
-                );
-              })}
-            </ul>
+            <div className={styles.dropdownPanel}>
+              {searchable && (
+                <div className={styles.searchBox}>
+                  <input
+                    ref={searchRef}
+                    type="text"
+                    className={styles.searchInput}
+                    placeholder="Search…"
+                    value={searchQuery}
+                    onChange={(e) => setSearchQuery(e.target.value)}
+                    onKeyDown={(e) => {
+                      if (e.key === "Escape") { setOpen(false); triggerRef.current?.focus(); }
+                      e.stopPropagation();
+                    }}
+                  />
+                </div>
+              )}
+              <ul id={listId} role="listbox" aria-label={label} className={styles.dropdown}>
+                {filteredOptions.length === 0 && (
+                  <li className={styles.noResults}>No results</li>
+                )}
+                {filteredOptions.map((option) => {
+                  const isSelected = option.value === value;
+                  return (
+                    <li
+                      key={option.value}
+                      role="option"
+                      aria-selected={isSelected}
+                      tabIndex={0}
+                      className={[styles.option, isSelected ? styles.optionSelected : ""].filter(Boolean).join(" ")}
+                      onClick={() => handleSelect(option.value)}
+                      onMouseDown={(e) => e.preventDefault()}
+                      onKeyDown={(e) => handleOptionKeyDown(e, option.value)}
+                    >
+                      {option.icon && (
+                        <span className={styles.optionIcon} aria-hidden="true">{option.icon}</span>
+                      )}
+                      <span className={styles.optionLabel}>{option.label}</span>
+                      {isSelected && (
+                        <span className={styles.checkmark} aria-hidden="true">
+                          <svg width="14" height="14" viewBox="0 0 24 24" fill="none"
+                            stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
+                            <polyline points="20 6 9 17 4 12" />
+                          </svg>
+                        </span>
+                      )}
+                    </li>
+                  );
+                })}
+              </ul>
+            </div>
           )}
         </div>
 
