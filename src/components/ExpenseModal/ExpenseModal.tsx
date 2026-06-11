@@ -296,17 +296,6 @@ export function ExpenseModal({
         ))}
       </Tabs>
 
-      {/* ─── Optional dismissible banner ─────────────────────────────── */}
-      {bannerVisible && (
-        <Banner
-          type="information"
-          dismissible
-          onDismiss={() => setBannerVisible(false)}
-        >
-          {bannerMessage}
-        </Banner>
-      )}
-
       {/* ─── Body ────────────────────────────────────────────────────── */}
       <div className={styles.body}>
 
@@ -324,6 +313,17 @@ export function ExpenseModal({
         {/* General tab → full form */}
         {activeTab === "general" && (
         <div className={styles.formColumn}>
+
+          {/* ─── Banner — scoped to form column only ─── */}
+          {bannerVisible && (
+            <Banner
+              type="information"
+              dismissible
+              onDismiss={() => setBannerVisible(false)}
+            >
+              {bannerMessage}
+            </Banner>
+          )}
           <FieldRow label="Title" required htmlFor={id("title")}>
             <TextInput
               id={id("title")}
