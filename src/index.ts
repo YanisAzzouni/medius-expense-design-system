@@ -45,7 +45,7 @@ export { Checkbox } from "./components/Checkbox/Checkbox";
 export type { CheckboxProps, CheckboxState } from "./components/Checkbox/Checkbox";
 
 export { ExpenseModal } from "./components/ExpenseModal/ExpenseModal";
-export type { ExpenseModalProps, ExpenseTag } from "./components/ExpenseModal/ExpenseModal";
+export type { ExpenseModalProps, ExpenseTag, ExpenseModalInitialData } from "./components/ExpenseModal/ExpenseModal";
 
 export { NavBar } from "./components/Navbar/Navbar";
 export type { NavBarProps, NavItemKey } from "./components/Navbar/Navbar";

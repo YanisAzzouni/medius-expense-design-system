@@ -109,6 +109,24 @@ export interface ExpenseTag {
   label: string;
 }
 
+/** Pre-populated form field values. All fields are optional. */
+export interface ExpenseModalInitialData {
+  title?:             string;
+  date?:              string;
+  category?:          string;
+  paymentInstrument?: string;
+  country?:           string;
+  amount?:            string;
+  currency?:          string;
+  billable?:          boolean;
+  reimburse?:         boolean;
+  credit?:            boolean;
+  vat?:               string;
+  vatPct?:            string;
+  report?:            string;
+  description?:       string;
+}
+
 export interface ExpenseModalProps {
   /** Expense title shown in the modal header. Defaults to "Expense". */
   title?: string;
@@ -122,6 +140,11 @@ export interface ExpenseModalProps {
   showBanner?: boolean;
   /** Info banner message body. */
   bannerMessage?: string;
+  /**
+   * Pre-populate form fields with existing expense data.
+   * Pass a new object (or change the key prop) to reset the form.
+   */
+  initialData?: ExpenseModalInitialData;
   /** Called when the × close button is clicked. */
   onClose?: () => void;
   /** Called when Save is clicked. */
@@ -144,32 +167,35 @@ export function ExpenseModal({
   statusVariant = "neutral",
   showBanner = false,
   bannerMessage = "This expense has been flagged for review. Please verify the details before submitting.",
+  initialData,
   onClose,
   onSave,
   onNext,
   className,
 }: ExpenseModalProps) {
+  const d = initialData ?? {};
+
   /* Tab state */
   const [activeTab, setActiveTab] = useState("general");
 
   /* Banner visibility — starts from prop, user can dismiss */
   const [bannerVisible, setBannerVisible] = useState(showBanner);
 
-  /* Form state */
-  const [expenseTitle, setExpenseTitle] = useState("");
-  const [date, setDate] = useState("");
-  const [category, setCategory] = useState("");
-  const [paymentInstrument, setPaymentInstrument] = useState("");
-  const [country, setCountry] = useState("");
-  const [amount, setAmount] = useState("");
-  const [currency, setCurrency] = useState("eur");
-  const [billable, setBillable] = useState(false);
-  const [reimburse, setReimburse] = useState(false);
-  const [credit, setCredit] = useState(false);
-  const [vat, setVat] = useState("");
-  const [vatPct, setVatPct] = useState("");
-  const [report, setReport] = useState("");
-  const [description, setDescription] = useState("");
+  /* Form state — seeded from initialData when provided */
+  const [expenseTitle, setExpenseTitle] = useState(d.title             ?? "");
+  const [date,         setDate]         = useState(d.date              ?? "");
+  const [category,     setCategory]     = useState(d.category          ?? "");
+  const [paymentInstrument, setPaymentInstrument] = useState(d.paymentInstrument ?? "");
+  const [country,      setCountry]      = useState(d.country           ?? "");
+  const [amount,       setAmount]       = useState(d.amount            ?? "");
+  const [currency,     setCurrency]     = useState(d.currency          ?? "eur");
+  const [billable,     setBillable]     = useState(d.billable          ?? false);
+  const [reimburse,    setReimburse]    = useState(d.reimburse         ?? false);
+  const [credit,       setCredit]       = useState(d.credit            ?? false);
+  const [vat,          setVat]          = useState(d.vat               ?? "");
+  const [vatPct,       setVatPct]       = useState(d.vatPct            ?? "");
+  const [report,       setReport]       = useState(d.report            ?? "");
+  const [description,  setDescription]  = useState(d.description       ?? "");
 
   /* Stable IDs for FieldRow htmlFor linkage */
   const uid = useId();
