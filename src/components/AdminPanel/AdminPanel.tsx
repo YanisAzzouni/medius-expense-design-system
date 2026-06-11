@@ -63,31 +63,55 @@ export const DEFAULT_ADMIN_SECTIONS: AdminSectionDef[] = [
     key: "expenses-requests",
     label: "Expenses and Requests",
     icon: "actions--receipt",
-    items: [],
+    items: [
+      { key: "reports",           label: "Reports"           },
+      { key: "expenses-list",     label: "Expenses list"     },
+      { key: "e-invoices-list",   label: "E-invoices list"   },
+      { key: "budgets",           label: "Budgets"           },
+      { key: "spending-policies", label: "Spending policies" },
+    ],
   },
   {
     key: "payment",
     label: "Payment",
     icon: "editor--monetization-on",
-    items: [],
+    items: [
+      { key: "transactions",         label: "Transactions"         },
+      { key: "advances",             label: "Advances"             },
+      { key: "payment-instruments",  label: "Payment instruments"  },
+      { key: "role-management",      label: "Role management"      },
+      { key: "bank-accounts",        label: "Bank accounts"        },
+    ],
   },
   {
     key: "advanced-settings",
     label: "Advanced Settings",
     icon: "actions--settings",
-    items: [],
+    items: [
+      { key: "categories",    label: "Categories"    },
+      { key: "projects",      label: "Projects"      },
+      { key: "custom-fields", label: "Custom fields" },
+    ],
   },
   {
     key: "rates-vehicles",
     label: "Rates and Vehicles",
     icon: "maps--directions-car",
-    items: [],
+    items: [
+      { key: "mileage-rates", label: "Mileage rates" },
+      { key: "vehicles",      label: "Vehicles"      },
+    ],
   },
   {
     key: "global-settings",
     label: "Global Settings",
     icon: "device--brightness-low",
-    items: [],
+    items: [
+      { key: "expense",           label: "Expense"           },
+      { key: "approval",          label: "Approval"          },
+      { key: "accounting",        label: "Accounting"        },
+      { key: "employee-handbook", label: "Employee Handbook" },
+    ],
   },
   {
     key: "integrations",
@@ -102,8 +126,17 @@ export const DEFAULT_ADMIN_SECTIONS: AdminSectionDef[] = [
   },
   {
     key: "insights",
-    label: "Insights and reporting",
+    label: "Insights and Reporting",
     icon: "editor--bar-chart",
+  },
+  {
+    key: "subscription-bills",
+    label: "Subscription and Bills",
+    icon: "av--subscriptions",
+    items: [
+      { key: "subscription", label: "Subscription" },
+      { key: "bills",        label: "Bills"        },
+    ],
   },
 ];
 
