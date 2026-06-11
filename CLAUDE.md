@@ -251,6 +251,32 @@ Expanded section header: olive-600 text, semibold. Selected sub-item: olive-200 
 
 ---
 
+### Toast + useToast
+
+```ts
+import { Toast, ToastContainer, useToast } from "@medius-expense/design-system";
+import type { ToastItem, ToastVariant } from "@medius-expense/design-system";
+
+// useToast hook — manages toast state
+const { toasts, dismiss, toast, success, error, warning, information } = useToast();
+
+// ToastContainer — renders the fixed bottom-right stack
+<ToastContainer toasts={toasts} onDismiss={dismiss} />
+
+// ToastItem shape:
+{
+  id:           string    // auto-generated
+  variant:      "success" | "error" | "warning" | "information"
+  message:      string
+  description?: string   // optional second line
+  duration?:    number   // ms before auto-dismiss (default: 4000 — use 0 for persistent)
+}
+```
+
+In consumer projects, use `useToastContext` from `src/components/ToastProvider` — `ToastContainer` is already mounted in `AppLayout`.
+
+---
+
 ### DataTable
 
 ```ts
