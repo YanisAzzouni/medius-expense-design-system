@@ -96,12 +96,37 @@ const REPORT_OPTIONS = [
 ];
 
 const MODAL_TABS = [
-  { value: "general", label: "General" },
-  { value: "merchant", label: "Merchant" },
-  { value: "guest", label: "Guest" },
-  { value: "transaction", label: "Transaction", badge: 0 as const },
+  { value: "general",        label: "General" },
+  { value: "merchant",       label: "Merchant" },
+  { value: "guest",          label: "Guest" },
+  { value: "transaction",    label: "Transaction",    badge: 0 as const },
   { value: "attached-files", label: "Attached files", badge: 0 as const },
 ];
+
+/* ─── Per-tab empty-state config ───────────────────────────────────────── */
+
+const TAB_EMPTY_STATE: Record<string, { icon: string; title: string; description: string }> = {
+  merchant: {
+    icon:        "maps--store-mall-directory",
+    title:       "No merchant data",
+    description: "Merchant details will appear here once a merchant is linked to this expense.",
+  },
+  guest: {
+    icon:        "social--people",
+    title:       "No guests added",
+    description: "Add guests to track attendees associated with this expense.",
+  },
+  transaction: {
+    icon:        "actions--credit-card",
+    title:       "No transactions linked",
+    description: "Card transactions matched to this expense will appear here.",
+  },
+  "attached-files": {
+    icon:        "editor--attach-file",
+    title:       "No files attached",
+    description: "Upload receipts or supporting documents to attach them to this expense.",
+  },
+};
 
 /* ─── Public types ──────────────────────────────────────────────────────── */
 
@@ -273,7 +298,20 @@ export function ExpenseModal({
 
       {/* ─── Body ────────────────────────────────────────────────────── */}
       <div className={styles.body}>
-        {/* Left: form fields */}
+
+        {/* Non-General tabs → centred empty state */}
+        {activeTab !== "general" && TAB_EMPTY_STATE[activeTab] && (
+          <div className={styles.tabEmptyState}>
+            <span className={styles.tabEmptyIcon}>
+              <Icon name={TAB_EMPTY_STATE[activeTab].icon as Parameters<typeof Icon>[0]["name"]} size="large" />
+            </span>
+            <span className={styles.tabEmptyTitle}>{TAB_EMPTY_STATE[activeTab].title}</span>
+            <span className={styles.tabEmptyDescription}>{TAB_EMPTY_STATE[activeTab].description}</span>
+          </div>
+        )}
+
+        {/* General tab → full form */}
+        {activeTab === "general" && (
         <div className={styles.formColumn}>
           <FieldRow label="Title" required htmlFor={id("title")}>
             <TextInput
@@ -413,8 +451,10 @@ export function ExpenseModal({
             />
           </FieldRow>
         </div>
+        )}
 
-        {/* Right: receipt placeholder + save actions */}
+        {/* Right: receipt placeholder + save actions — only on General */}
+        {activeTab === "general" && (
         <div className={styles.previewColumn}>
           {/* Receipt placeholder — the real receipt viewer is not a component yet */}
           <div className={styles.receiptPlaceholder} aria-label="Receipt preview area">
@@ -440,6 +480,8 @@ export function ExpenseModal({
             </Button>
           </div>
         </div>
+        )}
+
       </div>
     </div>
   );
