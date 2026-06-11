@@ -163,6 +163,10 @@
   background: var(--color-chalk-100);
 }
 
+.row_clickable {
+  cursor: pointer;
+}
+
 .row_selected {
   background: var(--color-olive-100);
 }

@@ -638,6 +638,7 @@ export function DataTable({
                 className={[
                   styles.row,
                   isSelected ? styles.row_selected : "",
+                  onRowClick  ? styles.row_clickable : "",
                 ].filter(Boolean).join(" ")}
                 role="row"
                 aria-selected={selectable ? isSelected : undefined}
