@@ -4,6 +4,7 @@ import { Banner } from "../Banner/Banner";
 import { Button } from "../Button/Button";
 import { Checkbox } from "../Checkbox/Checkbox";
 import { LabelTag } from "../LabelTag/LabelTag";
+import type { LabelTagColor } from "../LabelTag/LabelTag";
 import { Select } from "../Select/Select";
 import { StatusTag } from "../StatusTag/StatusTag";
 import type { StatusTagVariant } from "../StatusTag/StatusTag";
@@ -131,7 +132,10 @@ const TAB_EMPTY_STATE: Record<string, { icon: string; title: string; description
 /* ─── Public types ──────────────────────────────────────────────────────── */
 
 export interface ExpenseTag {
-  label: string;
+  label:      string;
+  icon?:      ReactNode;
+  color?:     LabelTagColor;
+  iconColor?: string;   // CSS color string, e.g. "var(--color-olive-500)"
 }
 
 /** Pre-populated form field values. All fields are optional. */
@@ -244,7 +248,14 @@ export function ExpenseModal({
                   key={tag.label}
                   label={tag.label}
                   size="small"
-                  color="neutral"
+                  color={tag.color ?? "neutral"}
+                  icon={
+                    tag.icon
+                      ? tag.iconColor
+                        ? <span style={{ color: tag.iconColor, display: "inline-flex", alignItems: "center", justifyContent: "center", width: "100%", height: "100%" }}>{tag.icon}</span>
+                        : tag.icon
+                      : undefined
+                  }
                 />
               ))}
             </div>
