@@ -78,6 +78,8 @@
   gap: 32px;
   align-items: stretch;
   padding: 16px 24px 24px;
+  /* Keep modal height stable when switching tabs */
+  min-height: 580px;
 }
 
 /* ─── Form column ─── */
