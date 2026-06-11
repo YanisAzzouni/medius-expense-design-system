@@ -108,10 +108,23 @@
   justify-content: center;
   flex-shrink: 0;
   color: var(--color-chalk-600);
+  transition: transform 240ms ease, color 80ms ease;
 }
 
 .sectionHeader_expanded .chevron {
   color: var(--color-olive-600);
+  transform: rotate(180deg);
+}
+
+/* ─── Animated accordion wrapper ─── */
+.itemsWrapper {
+  display: grid;
+  grid-template-rows: 0fr;
+  transition: grid-template-rows 240ms ease;
+}
+
+.itemsWrapper_open {
+  grid-template-rows: 1fr;
 }
 
 /* ─── Sub-items list ─── */
@@ -121,6 +134,8 @@
   gap: 2px;
   width: 100%;
   margin-top: 2px;
+  overflow: hidden;
+  min-height: 0;
 }
 
 /* Outer wrapper mirrors Figma's px-[12px] container */

@@ -208,41 +208,41 @@ export function AdminPanel({
 
                 {isCollapsible && (
                   <span className={styles.chevron} aria-hidden="true">
-                    <Icon
-                      name={
-                        isExpanded
-                          ? "hardware--keyboard-arrow-up"
-                          : "hardware--keyboard-arrow-down"
-                      }
-                      size="default"
-                    />
+                    <Icon name="hardware--keyboard-arrow-down" size="default" />
                   </span>
                 )}
               </button>
 
-              {/* Sub-items (only when expanded and there are items) */}
-              {isExpanded && section.items && section.items.length > 0 && (
-                <div className={styles.items} role="list">
-                  {section.items.map((item) => {
-                    const isItemActive =
-                      isSectionActive && item.key === activeItem;
+              {/* Animated wrapper — always rendered so close animation plays */}
+              {isCollapsible && section.items && section.items.length > 0 && (
+                <div
+                  className={[
+                    styles.itemsWrapper,
+                    isExpanded ? styles.itemsWrapper_open : "",
+                  ].filter(Boolean).join(" ")}
+                >
+                  <div className={styles.items} role="list">
+                    {section.items.map((item) => {
+                      const isItemActive =
+                        isSectionActive && item.key === activeItem;
 
-                    return (
-                      <div key={item.key} role="listitem" className={styles.itemOuter}>
-                        <button
-                          type="button"
-                          className={[
-                            styles.item,
-                            isItemActive ? styles.item_selected : "",
-                          ].filter(Boolean).join(" ")}
-                          onClick={() => onNavigate?.(section.key, item.key)}
-                          aria-current={isItemActive ? "page" : undefined}
-                        >
-                          {item.label}
-                        </button>
-                      </div>
-                    );
-                  })}
+                      return (
+                        <div key={item.key} role="listitem" className={styles.itemOuter}>
+                          <button
+                            type="button"
+                            className={[
+                              styles.item,
+                              isItemActive ? styles.item_selected : "",
+                            ].filter(Boolean).join(" ")}
+                            onClick={() => onNavigate?.(section.key, item.key)}
+                            aria-current={isItemActive ? "page" : undefined}
+                          >
+                            {item.label}
+                          </button>
+                        </div>
+                      );
+                    })}
+                  </div>
                 </div>
               )}
             </div>
