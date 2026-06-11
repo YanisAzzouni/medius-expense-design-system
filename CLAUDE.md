@@ -251,6 +251,19 @@ Expanded section header: olive-600 text, semibold. Selected sub-item: olive-200 
 
 ---
 
+### Spinner
+
+```ts
+import { Spinner } from "@medius-expense/design-system";
+
+size?:  "small" | "default" | "large"   // 16 / 24 / 40px — default: "default"
+label?: string                           // accessible aria-label — default: "Loading…"
+```
+
+CSS-only indeterminate spinner using olive-600 on chalk-200 track.
+
+---
+
 ### Toast + useToast
 
 ```ts

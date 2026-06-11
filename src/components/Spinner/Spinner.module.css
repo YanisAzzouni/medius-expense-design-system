@@ -1,0 +1,17 @@
+.spinner {
+  display: inline-block;
+  border-radius: 50%;
+  border: 2px solid var(--color-chalk-200);
+  border-top-color: var(--color-olive-600);
+  animation: spin 700ms linear infinite;
+  flex-shrink: 0;
+}
+
+/* Sizes */
+.spinner_small   { width: 16px; height: 16px; }
+.spinner_default { width: 24px; height: 24px; }
+.spinner_large   { width: 40px; height: 40px; border-width: 3px; }
+
+@keyframes spin {
+  to { transform: rotate(360deg); }
+}

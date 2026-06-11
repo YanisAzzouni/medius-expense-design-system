@@ -75,6 +75,9 @@ export type {
 export { Toast, ToastContainer, useToast } from "./components/Toast/Toast";
 export type { ToastItem, ToastVariant } from "./components/Toast/Toast";
 
+export { Spinner } from "./components/Spinner/Spinner";
+export type { SpinnerProps, SpinnerSize } from "./components/Spinner/Spinner";
+
 // Icons
 export { Icon } from "./icons/Icon";
 export type { IconProps, IconSize } from "./icons/Icon";
