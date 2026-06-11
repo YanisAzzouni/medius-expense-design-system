@@ -160,9 +160,7 @@ export function AdminPanel({
 
   function toggleSection(key: string) {
     setExpandedSections((prev) => {
-      const next = new Set(prev);
-      if (next.has(key)) next.delete(key);
-      else next.add(key);
+      const next = new Set(prev.has(key) ? [] : [key]);
       return next;
     });
   }
