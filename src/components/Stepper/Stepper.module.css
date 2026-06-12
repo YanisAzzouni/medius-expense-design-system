@@ -1,3 +1,39 @@
+/* ─── Keyframes ─── */
+
+@keyframes activeIn {
+  from {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes doneIn {
+  from {
+    opacity: 0;
+    transform: translateY(-6px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes badgePop {
+  0%   { transform: scale(1); }
+  35%  { transform: scale(1.35); }
+  65%  { transform: scale(0.9); }
+  100% { transform: scale(1); }
+}
+
+@keyframes checkIn {
+  from { opacity: 0; transform: scale(0.4) rotate(-20deg); }
+  to   { opacity: 1; transform: scale(1)   rotate(0deg);   }
+}
+
 /* ─── Stepper card ─── */
 .stepper {
   width: 800px;
@@ -50,12 +86,17 @@
   align-items: center;
   justify-content: center;
   box-sizing: border-box;
+  transition: background-color 220ms ease, border-color 220ms ease, color 220ms ease;
 }
 
 .badge_done {
   background: var(--color-green-600);
   border-color: var(--color-green-600);
   color: var(--color-white);
+}
+
+.badge_pop {
+  animation: badgePop 380ms cubic-bezier(0.34, 1.56, 0.64, 1) forwards;
 }
 
 .badge_locked .badgeNumber {
@@ -70,6 +111,17 @@
   color: var(--color-chalk-900);
 }
 
+/* ─── Checkmark icon ─── */
+.checkIcon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.checkIcon_in {
+  animation: checkIn 280ms cubic-bezier(0.34, 1.56, 0.64, 1) 80ms both;
+}
+
 /* ─── Active content ─── */
 .activeContent {
   flex: 1;
@@ -78,6 +130,7 @@
   flex-direction: column;
   gap: 24px;
   padding-bottom: 24px;
+  animation: activeIn 300ms cubic-bezier(0.16, 1, 0.3, 1) both;
 }
 
 .titleBlock {
@@ -161,6 +214,10 @@
   flex-direction: column;
   gap: 4px;
   padding-bottom: 24px;
+}
+
+.doneContent_in {
+  animation: doneIn 220ms cubic-bezier(0.16, 1, 0.3, 1) both;
 }
 
 .titleDone {
