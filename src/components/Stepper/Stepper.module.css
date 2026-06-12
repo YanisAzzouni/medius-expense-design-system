@@ -55,6 +55,12 @@
   flex-direction: column;
 }
 
+/* Active step sits above later steps so its dropdown isn't obscured */
+.stepWrapper_active {
+  position: relative;
+  z-index: 1;
+}
+
 .divider {
   height: 1px;
   background: var(--color-chalk-200);

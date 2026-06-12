@@ -108,7 +108,7 @@ export function Stepper({
         const wasJustDone = justDone === i;
 
         return (
-          <div key={i} className={styles.stepWrapper}>
+          <div key={i} className={[styles.stepWrapper, state === "active" ? styles.stepWrapper_active : ""].filter(Boolean).join(" ")}>
             {i > 0 && <div className={styles.divider} />}
 
             <div className={[
