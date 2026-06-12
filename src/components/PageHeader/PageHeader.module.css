@@ -1,0 +1,25 @@
+.header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  min-height: 60px;
+  padding: 10px 24px;
+  background: var(--color-white);
+  border-bottom: 1px solid var(--color-chalk-200);
+  box-sizing: border-box;
+  width: 100%;
+}
+
+.breadcrumbSlot {
+  flex: 1 0 0;
+  min-width: 0;
+  display: flex;
+  align-items: center;
+}
+
+.actions {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  flex-shrink: 0;
+}

@@ -84,6 +84,9 @@ export type { StepperProps, StepDef } from "./components/Stepper/Stepper";
 export { Breadcrumb } from "./components/Breadcrumb/Breadcrumb";
 export type { BreadcrumbProps, BreadcrumbItem } from "./components/Breadcrumb/Breadcrumb";
 
+export { PageHeader } from "./components/PageHeader/PageHeader";
+export type { PageHeaderProps, PageHeaderAction } from "./components/PageHeader/PageHeader";
+
 // Icons
 export { Icon } from "./icons/Icon";
 export type { IconProps, IconSize } from "./icons/Icon";
