@@ -73,8 +73,8 @@
 }
 
 .headerCell_status {
-  flex: 0 0 auto;
-  min-width: 110px; /* wide enough for any standard status label */
+  flex: 0 0 160px;
+  width: 160px;
 }
 
 .headerCell_date {
@@ -225,9 +225,9 @@
 }
 
 .cell_status {
-  flex: 0 0 auto;
-  min-width: 110px; /* matches headerCell_status for column alignment */
-  align-items: flex-start; /* StatusTag hugs its own content width, not the cell width */
+  flex: 0 0 160px;
+  width: 160px;
+  align-items: flex-start;
 }
 
 /* ─── Text cell ─── */

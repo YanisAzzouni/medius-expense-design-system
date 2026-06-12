@@ -40,6 +40,8 @@ export type ColumnDef = {
    * Fixed-width types (alerts, thumbnail, check, expense-title) ignore this.
    */
   size?: ColumnSize;
+  /** Makes the column grow to fill all remaining horizontal space. */
+  fill?: boolean;
   /** Shows sort chevrons in the header. Fires onSort when clicked. */
   sortable?: boolean;
 };
@@ -232,7 +234,7 @@ function HeaderCell({ col, isSorted, sortDirection, onSort }: HeaderCellProps) {
         col.size === "S" || col.type === "alerts" || col.type === "thumbnail" || col.type === "icon" || col.type === "actions"
           ? styles.headerCell_S : "",
         col.size === "L" || col.type === "text-long" ? styles.headerCell_L : "",
-        col.type === "expense-title" ? styles.headerCell_title : "",
+        col.type === "expense-title" || col.fill ? styles.headerCell_title : "",
         col.type === "check" ? styles.headerCell_check : "",
         col.type === "date" ? styles.headerCell_date : "",
         col.type === "status" ? styles.headerCell_status : "",
@@ -462,7 +464,7 @@ function DataCell({ col, value }: DataCellProps) {
     col.size === "S" || col.type === "alerts" || col.type === "thumbnail" || col.type === "icon" || col.type === "actions"
       ? styles.cell_S : "",
     col.size === "L" || col.type === "text-long" ? styles.cell_L : "",
-    col.type === "expense-title" ? styles.cell_title : "",
+    col.type === "expense-title" || col.fill ? styles.cell_title : "",
     col.type === "check" ? styles.cell_check : "",
     col.type === "date" ? styles.cell_date : "",
     col.type === "status" ? styles.cell_status : "",

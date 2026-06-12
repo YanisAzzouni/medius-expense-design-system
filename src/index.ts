@@ -87,6 +87,9 @@ export type { BreadcrumbProps, BreadcrumbItem } from "./components/Breadcrumb/Br
 export { PageHeader } from "./components/PageHeader/PageHeader";
 export type { PageHeaderProps, PageHeaderAction } from "./components/PageHeader/PageHeader";
 
+export { FeedTile } from "./components/FeedTile/FeedTile";
+export type { FeedTileProps, FeedTileVariant, FeedTileNumberColor } from "./components/FeedTile/FeedTile";
+
 // Icons
 export { Icon } from "./icons/Icon";
 export type { IconProps, IconSize } from "./icons/Icon";

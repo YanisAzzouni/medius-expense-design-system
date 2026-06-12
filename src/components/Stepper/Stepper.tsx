@@ -21,10 +21,15 @@ export interface StepperProps {
   nextLabel?: string;
   /** Disables the primary action button without hiding it. */
   nextDisabled?: boolean;
+  /** Shows a spinner inside the primary action button and disables it. */
+  nextLoading?: boolean;
   /** Optional icon shown inside the primary action button. */
   nextIcon?: ReactNode;
   secondaryActionLabel?: string;
+  secondaryActionIcon?: ReactNode;
   onSecondaryAction?: () => void;
+  /** Shows a spinner on the secondary action button and disables it. */
+  secondaryLoading?: boolean;
   className?: string;
 }
 
@@ -69,9 +74,12 @@ export function Stepper({
   onNext,
   nextLabel,
   nextDisabled = false,
+  nextLoading = false,
   nextIcon,
   secondaryActionLabel,
+  secondaryActionIcon,
   onSecondaryAction,
+  secondaryLoading = false,
   className,
 }: StepperProps) {
   const isLastStep        = activeStep === steps.length - 1;
@@ -147,13 +155,19 @@ export function Stepper({
                     )}
                     <div className={styles.footerActions}>
                       {secondaryActionLabel && (
-                        <Button hierarchy="secondary" onClick={onSecondaryAction}>
+                        <Button
+                          hierarchy="secondary"
+                          icon={secondaryLoading ? undefined : secondaryActionIcon}
+                          loading={secondaryLoading}
+                          onClick={onSecondaryAction}
+                        >
                           {secondaryActionLabel}
                         </Button>
                       )}
                       <Button
                         hierarchy="primary"
-                        icon={nextIcon}
+                        icon={nextLoading ? undefined : nextIcon}
+                        loading={nextLoading}
                         onClick={onNext}
                         disabled={nextDisabled}
                       >

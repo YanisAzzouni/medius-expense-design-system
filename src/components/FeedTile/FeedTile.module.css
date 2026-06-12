@@ -1,0 +1,59 @@
+.tile {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 6px;
+  padding: 10px 12px;
+  background: var(--color-white, #ffffff);
+  border: 1px solid var(--color-chalk-200, #eaeaed);
+  border-radius: 4px;
+}
+
+.label {
+  font-family: var(--font-family);
+  font-size: 12px;
+  font-weight: 400;
+  line-height: 16px;
+  letter-spacing: -0.01em;
+  color: var(--color-chalk-500, #757584);
+  white-space: nowrap;
+}
+
+/* Large bold number — "312" */
+.number {
+  font-family: var(--font-family);
+  font-size: 24px;
+  font-weight: 600;
+  line-height: 1;
+  letter-spacing: -0.02em;
+  color: var(--color-chalk-900, #25252a);
+}
+
+.number_success {
+  color: var(--color-green-500, #388553);
+}
+
+/* Regular body text — "3 May 2026" */
+.text {
+  font-family: var(--font-family);
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 20px;
+  letter-spacing: -0.01em;
+  color: var(--color-chalk-600, #5d5d69);
+}
+
+/* Network logo image */
+.logo {
+  display: block;
+  height: 22px;
+  width: auto;
+  object-fit: contain;
+}
+
+.value {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 30px;
+}
