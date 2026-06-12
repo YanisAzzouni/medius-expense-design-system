@@ -1,0 +1,66 @@
+.breadcrumb {
+  display: inline-flex;
+}
+
+.list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.item {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+
+/* Chevron separator */
+.separator {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 24px;
+  height: 24px;
+  flex-shrink: 0;
+}
+
+.separator_inactive {
+  color: var(--color-chalk-400);
+}
+
+.separator_active {
+  color: var(--color-olive-500);
+}
+
+/* Labels */
+.label_inactive,
+.label_active {
+  font-family: var(--font-family);
+  font-size: 14px;
+  font-weight: 500;
+  line-height: 20px;
+  letter-spacing: -0.01em;
+  white-space: nowrap;
+  text-decoration: none;
+}
+
+.label_inactive {
+  color: var(--color-chalk-400);
+  background: none;
+  border: none;
+  padding: 0;
+  cursor: pointer;
+}
+
+.label_inactive:hover {
+  color: var(--color-olive-500);
+  text-decoration: underline;
+}
+
+.label_active {
+  color: var(--color-olive-500);
+  cursor: default;
+}

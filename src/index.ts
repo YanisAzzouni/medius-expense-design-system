@@ -81,6 +81,9 @@ export type { SpinnerProps, SpinnerSize } from "./components/Spinner/Spinner";
 export { Stepper } from "./components/Stepper/Stepper";
 export type { StepperProps, StepDef } from "./components/Stepper/Stepper";
 
+export { Breadcrumb } from "./components/Breadcrumb/Breadcrumb";
+export type { BreadcrumbProps, BreadcrumbItem } from "./components/Breadcrumb/Breadcrumb";
+
 // Icons
 export { Icon } from "./icons/Icon";
 export type { IconProps, IconSize } from "./icons/Icon";
