@@ -19,6 +19,10 @@ export interface StepperProps {
   onBack?: () => void;
   onNext?: () => void;
   nextLabel?: string;
+  /** Disables the primary action button without hiding it. */
+  nextDisabled?: boolean;
+  /** Optional icon shown inside the primary action button. */
+  nextIcon?: ReactNode;
   secondaryActionLabel?: string;
   onSecondaryAction?: () => void;
   className?: string;
@@ -64,6 +68,8 @@ export function Stepper({
   onBack,
   onNext,
   nextLabel,
+  nextDisabled = false,
+  nextIcon,
   secondaryActionLabel,
   onSecondaryAction,
   className,
@@ -128,21 +134,29 @@ export function Stepper({
                   )}
 
                   <div className={styles.footer}>
-                    <Button
-                      hierarchy="secondary"
-                      icon={<Icon name="navigation--arrow-back" size="small" />}
-                      onClick={onBack}
-                      disabled={!onBack}
-                    >
-                      Back
-                    </Button>
+                    {onBack ? (
+                      <Button
+                        hierarchy="secondary"
+                        icon={<Icon name="navigation--arrow-back" size="small" />}
+                        onClick={onBack}
+                      >
+                        Back
+                      </Button>
+                    ) : (
+                      <span />
+                    )}
                     <div className={styles.footerActions}>
                       {secondaryActionLabel && (
                         <Button hierarchy="secondary" onClick={onSecondaryAction}>
                           {secondaryActionLabel}
                         </Button>
                       )}
-                      <Button hierarchy="primary" onClick={onNext}>
+                      <Button
+                        hierarchy="primary"
+                        icon={nextIcon}
+                        onClick={onNext}
+                        disabled={nextDisabled}
+                      >
                         {resolvedNextLabel}
                       </Button>
                     </div>
