@@ -1,0 +1,178 @@
+/* ─── Stepper card ─── */
+.stepper {
+  width: 800px;
+  max-width: 100%;
+  background: var(--color-white);
+  border: 1px solid var(--color-chalk-200);
+  border-radius: 8px;
+  padding: 24px 0;
+  display: flex;
+  flex-direction: column;
+  font-family: var(--font-family);
+  -webkit-font-smoothing: antialiased;
+  box-sizing: border-box;
+}
+
+/* ─── Step wrapper + divider ─── */
+.stepWrapper {
+  display: flex;
+  flex-direction: column;
+}
+
+.divider {
+  height: 1px;
+  background: var(--color-chalk-200);
+  margin: 0 0;
+}
+
+/* ─── Step row ─── */
+.stepRow {
+  display: flex;
+  align-items: flex-start;
+  gap: 16px;
+  padding: 24px 24px 0;
+}
+
+.stepRow:last-child,
+.stepRow_active {
+  padding-bottom: 0;
+}
+
+/* ─── Badge ─── */
+.badge {
+  flex-shrink: 0;
+  width: 24px;
+  height: 24px;
+  border-radius: 14px;
+  border: 1px solid var(--color-chalk-200);
+  background: var(--color-white);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-sizing: border-box;
+}
+
+.badge_done {
+  background: var(--color-green-600);
+  border-color: var(--color-green-600);
+  color: var(--color-white);
+}
+
+.badge_locked .badgeNumber {
+  color: var(--color-chalk-300);
+}
+
+.badgeNumber {
+  font-size: 14px;
+  font-weight: 600;
+  line-height: 20px;
+  letter-spacing: -0.01em;
+  color: var(--color-chalk-900);
+}
+
+/* ─── Active content ─── */
+.activeContent {
+  flex: 1;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+  padding-bottom: 24px;
+}
+
+.titleBlock {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.title {
+  font-size: 14px;
+  font-weight: 600;
+  line-height: 20px;
+  letter-spacing: -0.01em;
+  color: var(--color-chalk-900);
+}
+
+.description {
+  font-size: 12px;
+  font-weight: 400;
+  line-height: 16px;
+  letter-spacing: -0.01em;
+  color: var(--color-chalk-500);
+}
+
+.contentSlot {
+  width: 100%;
+}
+
+/* ─── Footer ─── */
+.footer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+}
+
+.footerActions {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+/* ─── Locked content ─── */
+.lockedContent {
+  flex: 1;
+  min-width: 0;
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 12px;
+  padding-bottom: 24px;
+}
+
+.lockedText {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.titleLocked {
+  font-size: 14px;
+  font-weight: 600;
+  line-height: 20px;
+  letter-spacing: -0.01em;
+  color: var(--color-chalk-400);
+}
+
+.descriptionLocked {
+  font-size: 12px;
+  font-weight: 400;
+  line-height: 16px;
+  letter-spacing: -0.01em;
+  color: var(--color-chalk-400);
+}
+
+/* ─── Done content ─── */
+.doneContent {
+  flex: 1;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  padding-bottom: 24px;
+}
+
+.titleDone {
+  font-size: 14px;
+  font-weight: 600;
+  line-height: 20px;
+  letter-spacing: -0.01em;
+  color: var(--color-chalk-900);
+}
+
+.doneSummary {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
