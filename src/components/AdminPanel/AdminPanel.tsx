@@ -79,6 +79,7 @@ export const DEFAULT_ADMIN_SECTIONS: AdminSectionDef[] = [
       { key: "transactions",         label: "Transactions"         },
       { key: "advances",             label: "Advances"             },
       { key: "payment-instruments",  label: "Payment instruments"  },
+      { key: "card-feeds",           label: "Card feeds"           },
       { key: "role-management",      label: "Role management"      },
       { key: "bank-accounts",        label: "Bank accounts"        },
     ],
