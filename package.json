@@ -20,7 +20,6 @@
   "scripts": {
     "dev": "storybook dev -p 6006",
     "build": "vite build",
-    "prepare": "vite build",
     "build-storybook": "storybook build",
     "icons:generate": "tsx scripts/generate-icons.ts",
     "lint": "eslint src --ext .ts,.tsx",
