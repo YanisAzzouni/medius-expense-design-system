@@ -1,6 +1,6 @@
 import { ReactNode } from 'react';
 
-export type LabelTagColor = "neutral" | "grey" | "blue" | "green" | "orange" | "red" | "teal";
+export type LabelTagColor = "neutral" | "grey" | "blue" | "green" | "orange" | "red" | "teal" | "yellow";
 export type LabelTagSize = "default" | "small";
 export interface LabelTagProps {
     /** Text content of the tag. Omit for icon-only usage. */

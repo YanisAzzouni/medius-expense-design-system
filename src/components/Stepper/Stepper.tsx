@@ -2,6 +2,7 @@ import { useEffect, useRef, useState } from "react";
 import type { ReactNode } from "react";
 import { Button } from "../Button/Button";
 import { Icon } from "../../icons/Icon";
+import { LabelTag } from "../LabelTag/LabelTag";
 import styles from "./Stepper.module.css";
 
 /* ─── Public types ──────────────────────────────────────────────────────── */
@@ -11,6 +12,8 @@ export interface StepDef {
   description?: string;
   children?: ReactNode;
   lockedMessage?: string;
+  /** Mark this step as waiting (async processing). Renders the yellow hourglass badge and a "Waiting…" tag. */
+  waiting?: boolean;
 }
 
 export interface StepperProps {
@@ -40,7 +43,7 @@ function StepBadge({
   number,
   wasJustDone,
 }: {
-  state: "active" | "done" | "locked";
+  state: "active" | "done" | "locked" | "waiting";
   number: number;
   wasJustDone: boolean;
 }) {
@@ -48,15 +51,20 @@ function StepBadge({
     <div
       className={[
         styles.badge,
-        state === "done"              ? styles.badge_done   : "",
-        state === "locked"            ? styles.badge_locked : "",
-        wasJustDone                   ? styles.badge_pop    : "",
+        state === "done"    ? styles.badge_done    : "",
+        state === "locked"  ? styles.badge_locked  : "",
+        state === "waiting" ? styles.badge_waiting : "",
+        wasJustDone         ? styles.badge_pop     : "",
       ].filter(Boolean).join(" ")}
       aria-hidden="true"
     >
       {state === "done" ? (
         <span className={[styles.checkIcon, wasJustDone ? styles.checkIcon_in : ""].filter(Boolean).join(" ")}>
           <Icon name="navigation--check" size="small" />
+        </span>
+      ) : state === "waiting" ? (
+        <span className={styles.waitingIcon}>
+          <Icon name="actions--hourglass-full" size="small" />
         </span>
       ) : (
         <span className={styles.badgeNumber}>{number}</span>
@@ -108,9 +116,10 @@ export function Stepper({
   return (
     <div className={[styles.stepper, className ?? ""].filter(Boolean).join(" ")}>
       {steps.map((step, i) => {
-        const state: "active" | "done" | "locked" =
-          i < activeStep   ? "done"   :
-          i === activeStep ? "active" : "locked";
+        const state: "active" | "done" | "locked" | "waiting" =
+          i < activeStep        ? "done"    :
+          i === activeStep      ? "active"  :
+          step.waiting          ? "waiting" : "locked";
 
         const stepNumber  = i + 1;
         const wasJustDone = justDone === i;
@@ -175,6 +184,14 @@ export function Stepper({
                       </Button>
                     </div>
                   </div>
+                </div>
+              )}
+
+              {/* ── Waiting ── */}
+              {state === "waiting" && (
+                <div className={styles.waitingContent}>
+                  <span className={styles.titleDone}>{step.title}</span>
+                  <LabelTag label="Waiting…" color="yellow" size="small" />
                 </div>
               )}
 

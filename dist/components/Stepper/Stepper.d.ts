@@ -5,6 +5,8 @@ export interface StepDef {
     description?: string;
     children?: ReactNode;
     lockedMessage?: string;
+    /** Mark this step as waiting (async processing). Renders the yellow hourglass badge and a "Waiting…" tag. */
+    waiting?: boolean;
 }
 export interface StepperProps {
     steps: StepDef[];

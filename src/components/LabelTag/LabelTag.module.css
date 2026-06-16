@@ -106,3 +106,8 @@
   background: var(--color-teal-500);
   color: var(--color-white);
 }
+
+.color_yellow {
+  background: var(--color-yellow-100);
+  color: var(--color-yellow-700);
+}

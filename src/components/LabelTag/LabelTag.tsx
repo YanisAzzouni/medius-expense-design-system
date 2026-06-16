@@ -9,7 +9,8 @@ export type LabelTagColor =
   | "green"
   | "orange"
   | "red"
-  | "teal";
+  | "teal"
+  | "yellow";
 
 export type LabelTagSize = "default" | "small";
 
