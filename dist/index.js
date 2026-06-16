@@ -8877,7 +8877,7 @@ function xu({
         ] }, `active-${S}`),
         V === "waiting" && /* @__PURE__ */ a("div", { className: C.waitingContent, children: [
           /* @__PURE__ */ e("span", { className: C.titleDone, children: x.title }),
-          /* @__PURE__ */ e(V1, { label: "Waiting…", color: "yellow", size: "small" })
+          x.children ?? /* @__PURE__ */ e(V1, { label: "Waiting…", color: "yellow", size: "small" })
         ] }),
         V === "locked" && /* @__PURE__ */ a("div", { className: C.lockedContent, children: [
           /* @__PURE__ */ a("div", { className: C.lockedText, children: [

@@ -192,7 +192,7 @@ export function Stepper({
               {state === "waiting" && (
                 <div className={styles.waitingContent}>
                   <span className={styles.titleDone}>{step.title}</span>
-                  <LabelTag label="Waiting…" color="yellow" size="small" />
+                  {step.children ?? <LabelTag label="Waiting…" color="yellow" size="small" />}
                 </div>
               )}
 
