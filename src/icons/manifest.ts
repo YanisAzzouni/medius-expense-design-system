@@ -897,6 +897,11 @@ export const iconManifest: IconManifestEntry[] = [
     "componentName": "ActionsScanReceipt"
   },
   {
+    "name": "see-invoice",
+    "category": "actions",
+    "componentName": "ActionsSeeInvoice"
+  },
+  {
     "name": "scan",
     "category": "actions",
     "componentName": "ActionsScan"
@@ -1175,6 +1180,11 @@ export const iconManifest: IconManifestEntry[] = [
     "name": "track-changes",
     "category": "actions",
     "componentName": "ActionsTrackChanges"
+  },
+  {
+    "name": "transaction-fees",
+    "category": "actions",
+    "componentName": "ActionsTransactionFees"
   },
   {
     "name": "transaction-refund",

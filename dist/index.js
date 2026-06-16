@@ -1234,6 +1234,11 @@ const W = e1(
     componentName: "ActionsScanReceipt"
   },
   {
+    name: "see-invoice",
+    category: "actions",
+    componentName: "ActionsSeeInvoice"
+  },
+  {
     name: "scan",
     category: "actions",
     componentName: "ActionsScan"
@@ -1512,6 +1517,11 @@ const W = e1(
     name: "track-changes",
     category: "actions",
     componentName: "ActionsTrackChanges"
+  },
+  {
+    name: "transaction-fees",
+    category: "actions",
+    componentName: "ActionsTransactionFees"
   },
   {
     name: "transaction-refund",
