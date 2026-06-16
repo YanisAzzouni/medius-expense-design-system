@@ -125,11 +125,13 @@
 }
 
 /* ─── State: disabled ─── */
-.trigger:disabled {
-  background: var(--color-chalk-200) !important;
-  border-color: var(--color-chalk-200) !important;
-  cursor: not-allowed !important;
-  box-shadow: none !important;
+/* Selector class doubled (.trigger.trigger) to raise specificity so disabled
+   wins the cascade over the hover/highlighted state rules without !important. */
+.trigger.trigger:disabled {
+  background: var(--color-chalk-200);
+  border-color: var(--color-chalk-200);
+  cursor: not-allowed;
+  box-shadow: none;
 }
 
 /* ─── Trigger text ─── */

@@ -15,4 +15,4 @@ export interface FeedTileProps {
     logoAlt?: string;
     className?: string;
 }
-export declare function FeedTile({ label, variant, value, numberColor, logoSrc, logoAlt, className, }: FeedTileProps): import("react/jsx-runtime").JSX.Element;
+export declare const FeedTile: import('react').ForwardRefExoticComponent<FeedTileProps & import('react').RefAttributes<HTMLDivElement>>;

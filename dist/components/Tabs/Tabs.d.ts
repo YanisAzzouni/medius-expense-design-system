@@ -29,5 +29,6 @@ export interface TabProps {
     /** Called when the close button is clicked. */
     onClose?: () => void;
     disabled?: boolean;
+    className?: string;
 }
-export declare function Tab({ value, label, icon, badge, closable, onClose, disabled, }: TabProps): import("react/jsx-runtime").JSX.Element;
+export declare function Tab({ value, label, icon, badge, closable, onClose, disabled, className, }: TabProps): import("react/jsx-runtime").JSX.Element;

@@ -33,6 +33,10 @@ export interface SelectProps {
   value?: string;
   /** Called when the user selects an option. */
   onChange?: (value: string) => void;
+  /** Form field name — emitted via a hidden input so the value participates in form submission. */
+  name?: string;
+  /** Called when the trigger loses focus. */
+  onBlur?: (e: React.FocusEvent) => void;
   /** List of selectable options. */
   options: SelectOption[];
   /** Behavioural state. Defaults to "default". */
@@ -57,6 +61,8 @@ export const Select = forwardRef<HTMLDivElement, SelectProps>(function Select(
     placeholder = "Select…",
     value,
     onChange,
+    name,
+    onBlur,
     options,
     state = "default",
     leadingIcon,
@@ -178,6 +184,7 @@ export const Select = forwardRef<HTMLDivElement, SelectProps>(function Select(
             ].filter(Boolean).join(" ")}
             onClick={handleToggle}
             onKeyDown={handleTriggerKeyDown}
+            onBlur={onBlur}
           >
             {triggerIcon && (
               <span className={styles.leadingIcon} aria-hidden="true">
@@ -196,6 +203,9 @@ export const Select = forwardRef<HTMLDivElement, SelectProps>(function Select(
               </svg>
             </span>
           </button>
+
+          {/* Hidden input so the selected value participates in native form submission */}
+          {name && <input type="hidden" name={name} value={value ?? ""} />}
 
           {open && (
             <div className={styles.dropdownPanel}>

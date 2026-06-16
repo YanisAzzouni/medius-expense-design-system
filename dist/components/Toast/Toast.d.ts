@@ -11,11 +11,11 @@ export interface ToastItem {
     /** Auto-dismiss after this many ms. 0 = never auto-dismiss. Default: 4000. */
     duration?: number;
 }
-interface ToastProps extends ToastItem {
+export interface ToastProps extends ToastItem {
     onDismiss: (id: string) => void;
 }
 export declare function Toast({ id, variant, message, description, duration, onDismiss }: ToastProps): import("react/jsx-runtime").JSX.Element;
-interface ToastContainerProps {
+export interface ToastContainerProps {
     toasts: ToastItem[];
     onDismiss: (id: string) => void;
 }
@@ -29,4 +29,3 @@ export declare function useToast(): {
     warning: (message: string, description?: string) => string;
     information: (message: string, description?: string) => string;
 };
-export {};

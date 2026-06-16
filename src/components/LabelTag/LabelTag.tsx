@@ -18,7 +18,7 @@ export interface LabelTagProps {
   /** Text content of the tag. Omit for icon-only usage. */
   label?: string;
   /** Colour variant. Defaults to "neutral". */
-  color?: LabelTagColor;
+  variant?: LabelTagColor;
   /** Size variant. Defaults to "default". */
   size?: LabelTagSize;
   /** Optional leading icon node. */
@@ -30,7 +30,7 @@ export interface LabelTagProps {
 
 export const LabelTag = forwardRef<HTMLSpanElement, LabelTagProps>(
   function LabelTag(
-    { label, color = "neutral", size = "default", icon, className, title, "aria-label": ariaLabel },
+    { label, variant = "neutral", size = "default", icon, className, title, "aria-label": ariaLabel },
     ref
   ) {
     return (
@@ -39,7 +39,7 @@ export const LabelTag = forwardRef<HTMLSpanElement, LabelTagProps>(
         className={[
           styles.tag,
           styles[`size_${size}`],
-          styles[`color_${color}`],
+          styles[`color_${variant}`],
           className ?? "",
         ]
           .filter(Boolean)

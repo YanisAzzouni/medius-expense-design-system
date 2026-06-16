@@ -1,3 +1,4 @@
+import { forwardRef } from "react";
 import type { ReactNode } from "react";
 import styles from "./FeedTile.module.css";
 
@@ -20,15 +21,19 @@ export interface FeedTileProps {
   className?: string;
 }
 
-export function FeedTile({
-  label,
-  variant = "text",
-  value,
-  numberColor = "default",
-  logoSrc,
-  logoAlt = "",
-  className,
-}: FeedTileProps) {
+export const FeedTile = forwardRef<HTMLDivElement, FeedTileProps>(
+  function FeedTile(
+    {
+      label,
+      variant = "text",
+      value,
+      numberColor = "default",
+      logoSrc,
+      logoAlt = "",
+      className,
+    },
+    ref
+  ) {
   let content: ReactNode;
 
   if (variant === "number") {
@@ -46,9 +51,12 @@ export function FeedTile({
   }
 
   return (
-    <div className={[styles.tile, className].filter(Boolean).join(" ")}>
+    <div ref={ref} className={[styles.tile, className].filter(Boolean).join(" ")}>
       <span className={styles.label}>{label}</span>
       <div className={styles.value}>{content}</div>
     </div>
   );
 }
+);
+
+FeedTile.displayName = "FeedTile";

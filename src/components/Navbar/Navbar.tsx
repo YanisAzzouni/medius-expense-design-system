@@ -1,3 +1,4 @@
+import { forwardRef } from "react";
 import { Icon } from "../../icons/Icon";
 import styles from "./Navbar.module.css";
 
@@ -140,7 +141,7 @@ export interface NavBarProps {
 
 /* ─── Component ─────────────────────────────────────────────────────────── */
 
-export function NavBar({
+export const NavBar = forwardRef<HTMLElement, NavBarProps>(function NavBar({
   activeItem = "dashboard",
   onNavigate,
   userInitials = "YA",
@@ -151,7 +152,7 @@ export function NavBar({
   showAdmin = false,
   showAccountant = false,
   className,
-}: NavBarProps) {
+}, ref) {
   const visibilityMap: Record<NavItemKey, boolean> = {
     dashboard:    true,
     expenses:     true,
@@ -167,6 +168,7 @@ export function NavBar({
 
   return (
     <nav
+      ref={ref}
       className={[styles.navbar, className ?? ""].filter(Boolean).join(" ")}
       aria-label="Main navigation"
     >
@@ -193,4 +195,6 @@ export function NavBar({
       <UserAvatar initials={userInitials} onClick={onUserClick} />
     </nav>
   );
-}
+});
+
+NavBar.displayName = "NavBar";

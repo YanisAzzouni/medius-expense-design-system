@@ -193,17 +193,19 @@
 }
 
 /* ─── Disabled (all variants) ─── */
-.button:disabled {
+/* Selector class doubled (.button.button) to raise specificity so disabled
+   wins the cascade over the variant background rules without !important. */
+.button.button:disabled {
   cursor: not-allowed;
-  background: var(--color-chalk-200) !important;
-  border-color: transparent !important;
-  color: var(--color-chalk-400) !important;
+  background: var(--color-chalk-200);
+  border-color: transparent;
+  color: var(--color-chalk-400);
 }
 
 /* Secondary disabled keeps a faint border */
-.secondary_default:disabled,
-.secondary_danger:disabled {
-  border-color: var(--color-chalk-200) !important;
+.button.secondary_default:disabled,
+.button.secondary_danger:disabled {
+  border-color: var(--color-chalk-200);
 }
 
 /* ─── Loading ─── */

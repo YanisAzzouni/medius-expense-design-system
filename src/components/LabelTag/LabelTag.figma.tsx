@@ -23,7 +23,7 @@ figma.connect(
       showIcon: figma.boolean("Show icon"),
     },
     example: ({ color, size }) => (
-      <LabelTag label="Label tag" color={color} size={size} />
+      <LabelTag label="Label tag" variant={color} size={size} />
     ),
   }
 );

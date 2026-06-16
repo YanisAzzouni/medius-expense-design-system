@@ -27,6 +27,8 @@
   /* visuals */
   background: var(--color-chalk-700);
   border-radius: 8px;
+  /* bespoke tooltip shadow; no matching elevation token */
+  /* uses drop-shadow (not box-shadow) so it follows the bubble + beak shape */
   filter: drop-shadow(0px 4px 5px rgba(59, 53, 84, 0.2));
 
   /* typography */

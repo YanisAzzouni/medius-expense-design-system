@@ -1,4 +1,4 @@
-import { useId } from "react";
+import { forwardRef, useId } from "react";
 import type { ReactNode } from "react";
 import styles from "./Tooltip.module.css";
 
@@ -18,16 +18,12 @@ export interface TooltipProps {
   className?: string;
 }
 
-export function Tooltip({
-  content,
-  placement = "top",
-  children,
-  className,
-}: TooltipProps) {
+export const Tooltip = forwardRef<HTMLSpanElement, TooltipProps>(
+  function Tooltip({ content, placement = "top", children, className }, ref) {
   const id = useId();
 
   return (
-    <span className={`${styles.wrapper} ${className ?? ""}`}>
+    <span ref={ref} className={`${styles.wrapper} ${className ?? ""}`}>
       {/*
        * The inner span picks up :focus-within from the wrapper so keyboard
        * users see the tooltip when they tab into the trigger.
@@ -49,3 +45,6 @@ export function Tooltip({
     </span>
   );
 }
+);
+
+Tooltip.displayName = "Tooltip";

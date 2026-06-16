@@ -1,9 +1,9 @@
 import { ReactNode } from 'react';
 
-export type BannerType = "information" | "warning" | "error" | "success";
+export type BannerVariant = "information" | "warning" | "error" | "success";
 export interface BannerProps {
     /** Visual style / severity of the banner. */
-    type?: BannerType;
+    variant?: BannerVariant;
     /** Optional bold title line rendered above the body. */
     title?: string;
     /** Body text or any React content. */

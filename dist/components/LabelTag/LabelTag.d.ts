@@ -6,7 +6,7 @@ export interface LabelTagProps {
     /** Text content of the tag. Omit for icon-only usage. */
     label?: string;
     /** Colour variant. Defaults to "neutral". */
-    color?: LabelTagColor;
+    variant?: LabelTagColor;
     /** Size variant. Defaults to "default". */
     size?: LabelTagSize;
     /** Optional leading icon node. */

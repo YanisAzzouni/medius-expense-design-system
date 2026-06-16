@@ -227,11 +227,13 @@ interface HeaderCellProps {
   isSorted: boolean;
   sortDirection?: "asc" | "desc";
   onSort?: () => void;
+  role?: string;
 }
 
-function HeaderCell({ col, isSorted, sortDirection, onSort }: HeaderCellProps) {
+function HeaderCell({ col, isSorted, sortDirection, onSort, role }: HeaderCellProps) {
   return (
     <div
+      role={role}
       className={[
         styles.headerCell,
         col.size === "S" || col.type === "alerts" || col.type === "thumbnail" || col.type === "icon" || col.type === "actions"
@@ -397,7 +399,7 @@ function TitleCell({ data }: { data: TitleCellData }) {
               <Tooltip key={attr} content={ATTRIBUTE_LABEL[attr]} placement="top">
                 <LabelTag
                   size="small"
-                  color={ATTRIBUTE_COLOR[attr]}
+                  variant={ATTRIBUTE_COLOR[attr]}
                   icon={iconEl}
                   aria-label={ATTRIBUTE_LABEL[attr]}
                 />
@@ -455,14 +457,57 @@ function LinkCell({ data }: { data: LinkCellData }) {
   );
 }
 
+/* ─── Internal: runtime type guards ─────────────────────────────────────── */
+
+function isObject(v: CellData): v is Record<string, unknown> {
+  return typeof v === "object" && v !== null;
+}
+
+function isAlertsCell(v: CellData): v is AlertsCellData {
+  return isObject(v);
+}
+
+function isStatusCell(v: CellData): v is StatusCellData {
+  return isObject(v) && "label" in v;
+}
+
+function isAmountCell(v: CellData): v is AmountCellData {
+  return isObject(v) && "amount" in v;
+}
+
+function isThumbnailCell(v: CellData): v is ThumbnailCellData {
+  return isObject(v) && "src" in v;
+}
+
+function isActionsCell(v: CellData): v is ActionsCellData {
+  return isObject(v) && "onClick" in v;
+}
+
+function isTitleCell(v: CellData): v is TitleCellData {
+  return isObject(v) && "title" in v;
+}
+
+function isLinkCell(v: CellData): v is LinkCellData {
+  return isObject(v) && "text" in v;
+}
+
+function isCheckCell(v: CellData): v is CheckCellData {
+  return isObject(v) && "checked" in v;
+}
+
+function isString(v: CellData): v is string {
+  return typeof v === "string";
+}
+
 /* ─── Internal: DataCell dispatcher ────────────────────────────────────── */
 
 interface DataCellProps {
   col: ColumnDef;
   value: CellData;
+  role?: string;
 }
 
-function DataCell({ col, value }: DataCellProps) {
+function DataCell({ col, value, role }: DataCellProps) {
   const base = [
     styles.cell,
     col.size === "S" || col.type === "alerts" || col.type === "thumbnail" || col.type === "icon" || col.type === "actions"
@@ -474,84 +519,94 @@ function DataCell({ col, value }: DataCellProps) {
     col.type === "status" ? styles.cell_status : "",
   ].filter(Boolean).join(" ");
 
-  switch (col.type) {
+  const type = col.type;
+  switch (type) {
     case "alerts":
       return (
-        <div className={base}>
-          <AlertsCell data={(value as AlertsCellData) ?? {}} />
+        <div className={base} role={role}>
+          <AlertsCell data={isAlertsCell(value) ? value : {}} />
         </div>
       );
     case "thumbnail":
       return (
-        <div className={base}>
-          {value && <ThumbnailCell data={value as ThumbnailCellData} />}
+        <div className={base} role={role}>
+          {isThumbnailCell(value) && <ThumbnailCell data={value} />}
         </div>
       );
     case "status":
       return (
-        <div className={base}>
-          {value && (
-            (value as StatusCellData).variant !== undefined
-              ? <StatusTag label={(value as StatusCellData).label} variant={(value as StatusCellData).variant} />
-              : <span className={styles.textCell}>{(value as StatusCellData).label}</span>
+        <div className={base} role={role}>
+          {isStatusCell(value) && (
+            value.variant !== undefined
+              ? <StatusTag label={value.label} variant={value.variant} />
+              : <span className={styles.textCell}>{value.label}</span>
           )}
         </div>
       );
     case "amount":
       return (
-        <div className={base}>
-          {value && <AmountCell data={value as AmountCellData} />}
+        <div className={base} role={role}>
+          {isAmountCell(value) && <AmountCell data={value} />}
         </div>
       );
     case "date":
       return (
-        <div className={base}>
-          <span className={styles.textCell}>{value as string}</span>
+        <div className={base} role={role}>
+          <span className={styles.textCell}>{isString(value) ? value : ""}</span>
         </div>
       );
     case "icon":
       return (
-        <div className={base}>
-          {value && <Icon name={value as string} size="default" />}
+        <div className={base} role={role}>
+          {isString(value) && <Icon name={value} size="default" />}
         </div>
       );
     case "actions":
       return (
-        <div className={base}>
-          {value && <ActionsCell data={value as ActionsCellData} />}
+        <div className={base} role={role}>
+          {isActionsCell(value) && <ActionsCell data={value} />}
         </div>
       );
     case "expense-title":
       return (
-        <div className={base}>
-          {value && <TitleCell data={value as TitleCellData} />}
+        <div className={base} role={role}>
+          {isTitleCell(value) && <TitleCell data={value} />}
         </div>
       );
     case "check":
       return (
-        <div className={base}>
-          {value != null && (
+        <div className={base} role={role}>
+          {isCheckCell(value) && (
             <Checkbox
-              checked={(value as CheckCellData).checked}
-              onChange={(checked) => (value as CheckCellData).onChange?.(checked)}
+              checked={value.checked}
+              onChange={(checked) => value.onChange?.(checked)}
             />
           )}
         </div>
       );
     case "text-link":
       return (
-        <div className={base}>
-          {value && <LinkCell data={value as LinkCellData} />}
+        <div className={base} role={role}>
+          {isLinkCell(value) && <LinkCell data={value} />}
         </div>
       );
     case "text":
-    case "text-long":
-    default:
       return (
-        <div className={base}>
-          <span className={styles.textCell}>{value as string}</span>
+        <div className={base} role={role}>
+          <span className={styles.textCell}>{isString(value) ? value : ""}</span>
         </div>
       );
+    case "text-long":
+      return (
+        <div className={base} role={role}>
+          <span className={styles.textCell}>{isString(value) ? value : ""}</span>
+        </div>
+      );
+    default: {
+      const _exhaustive: never = type;
+      void _exhaustive;
+      return null;
+    }
   }
 }
 
@@ -589,11 +644,23 @@ export function DataTable({
     handleSelectionChange(next);
   }
 
+  const selectedSet = new Set<string>(selectedIds);
+  const allSelected = rows.length > 0 && rows.every((r) => selectedSet.has(r.id));
+  const someSelected =
+    !allSelected && rows.some((r) => selectedSet.has(r.id));
+
   function toggleAll() {
-    if (selectedIds.length === rows.length) {
-      handleSelectionChange([]);
+    if (allSelected) {
+      // Remove all visible rows from the selection, preserving any others.
+      const visibleIds = new Set(rows.map((r) => r.id));
+      handleSelectionChange(selectedIds.filter((id) => !visibleIds.has(id)));
     } else {
-      handleSelectionChange(rows.map((r) => r.id));
+      // Union: keep existing selection, add any visible rows not yet selected.
+      const next = [...selectedIds];
+      for (const r of rows) {
+        if (!selectedSet.has(r.id)) next.push(r.id);
+      }
+      handleSelectionChange(next);
     }
   }
 
@@ -602,9 +669,6 @@ export function DataTable({
       sortKey === key && sortDirection === "asc" ? "desc" : "asc";
     onSort?.(key, nextDir);
   }
-
-  const allSelected   = rows.length > 0 && selectedIds.length === rows.length;
-  const someSelected  = selectedIds.length > 0 && selectedIds.length < rows.length;
 
   return (
     <div
@@ -623,14 +687,14 @@ export function DataTable({
           </div>
         )}
         {columns.map((col) => (
-          <div key={col.key} role="columnheader" style={{ display: "contents" }}>
-            <HeaderCell
-              col={col}
-              isSorted={sortKey === col.key}
-              sortDirection={sortDirection}
-              onSort={col.sortable ? () => handleSortClick(col.key) : undefined}
-            />
-          </div>
+          <HeaderCell
+            key={col.key}
+            col={col}
+            role="columnheader"
+            isSorted={sortKey === col.key}
+            sortDirection={sortDirection}
+            onSort={col.sortable ? () => handleSortClick(col.key) : undefined}
+          />
         ))}
       </div>
 
@@ -668,9 +732,7 @@ export function DataTable({
                   </div>
                 )}
                 {columns.map((col) => (
-                  <div key={col.key} role="cell" style={{ display: "contents" }}>
-                    <DataCell col={col} value={row[col.key]} />
-                  </div>
+                  <DataCell key={col.key} col={col} value={row[col.key]} role="cell" />
                 ))}
               </div>
             );

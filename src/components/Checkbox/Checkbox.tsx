@@ -13,8 +13,6 @@ export interface CheckboxProps {
   label?: string;
   /** Visual / validation state. */
   state?: CheckboxState;
-  /** Convenience alias for state="disabled". */
-  disabled?: boolean;
   id?: string;
   name?: string;
   value?: string;
@@ -28,7 +26,6 @@ export const Checkbox = forwardRef<HTMLInputElement, CheckboxProps>(
       onChange,
       label,
       state = "default",
-      disabled: disabledProp,
       id: idProp,
       name,
       value,
@@ -39,7 +36,7 @@ export const Checkbox = forwardRef<HTMLInputElement, CheckboxProps>(
     const generatedId = useId();
     const id = idProp ?? generatedId;
 
-    const isDisabled = disabledProp || state === "disabled";
+    const isDisabled = state === "disabled";
     const isDanger   = state === "danger";
     const isChecked  = checked === true;
     const isIndet    = checked === "indeterminate";

@@ -20,11 +20,13 @@ export interface StepperProps {
     nextLoading?: boolean;
     /** Optional icon shown inside the primary action button. */
     nextIcon?: ReactNode;
-    secondaryActionLabel?: string;
-    secondaryActionIcon?: ReactNode;
-    onSecondaryAction?: () => void;
+    secondaryLabel?: string;
+    secondaryIcon?: ReactNode;
+    onSecondary?: () => void;
     /** Shows a spinner on the secondary action button and disables it. */
     secondaryLoading?: boolean;
+    /** Disables the secondary action button without hiding it. */
+    secondaryDisabled?: boolean;
     className?: string;
 }
-export declare function Stepper({ steps, activeStep, onBack, onNext, nextLabel, nextDisabled, nextLoading, nextIcon, secondaryActionLabel, secondaryActionIcon, onSecondaryAction, secondaryLoading, className, }: StepperProps): import("react/jsx-runtime").JSX.Element;
+export declare const Stepper: import('react').ForwardRefExoticComponent<StepperProps & import('react').RefAttributes<HTMLDivElement>>;

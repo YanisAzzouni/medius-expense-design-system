@@ -6,7 +6,7 @@ figma.connect(
   "https://www.figma.com/design/ul424E6sV0pCsCIxzA7ZMC/Medius-Expense--Components--New-?node-id=24-17615",
   {
     props: {
-      type: figma.enum("Type", {
+      variant: figma.enum("Type", {
         Information: "information",
         Warning:     "warning",
         Error:       "error",
@@ -29,9 +29,9 @@ figma.connect(
         false: undefined,
       }),
     },
-    example: ({ type, title, showIcon, dismissible, action1Label, action2Label }) => (
+    example: ({ variant, title, showIcon, dismissible, action1Label, action2Label }) => (
       <Banner
-        type={type}
+        variant={variant}
         title={title}
         showIcon={showIcon}
         dismissible={dismissible}

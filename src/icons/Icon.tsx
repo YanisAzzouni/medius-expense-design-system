@@ -65,7 +65,7 @@ export function Icon({
       <svg
         width={px}
         height={px}
-        viewBox="0 0 20 20"
+        viewBox="0 0 24 24"
         aria-hidden="true"
         className={className}
         style={{ color }}

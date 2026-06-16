@@ -1,4 +1,4 @@
-import { useState, useId } from "react";
+import { forwardRef, useState, useId } from "react";
 import type { ReactNode } from "react";
 import { Banner } from "../Banner/Banner";
 import { Button } from "../Button/Button";
@@ -278,7 +278,7 @@ export interface ExpenseModalProps {
 
 /* ─── Component ─────────────────────────────────────────────────────────── */
 
-export function ExpenseModal({
+export const ExpenseModal = forwardRef<HTMLDivElement, ExpenseModalProps>(function ExpenseModal({
   title = "Expense",
   tags = [
     { label: "e-invoice" },
@@ -294,7 +294,7 @@ export function ExpenseModal({
   onSave,
   onNext,
   className,
-}: ExpenseModalProps) {
+}, ref) {
   const d = initialData ?? {};
 
   /* Tab state */
@@ -325,6 +325,7 @@ export function ExpenseModal({
 
   return (
     <div
+      ref={ref}
       role="dialog"
       aria-modal="true"
       aria-label={title}
@@ -341,7 +342,7 @@ export function ExpenseModal({
                   key={tag.label}
                   label={tag.label}
                   size="small"
-                  color={tag.color ?? "neutral"}
+                  variant={tag.color ?? "neutral"}
                   icon={
                     tag.icon
                       ? tag.iconColor
@@ -410,7 +411,7 @@ export function ExpenseModal({
           {/* ─── Banner — scoped to form column only ─── */}
           {bannerVisible && (
             <Banner
-              type="information"
+              variant="information"
               dismissible
               onDismiss={() => setBannerVisible(false)}
             >
@@ -591,4 +592,6 @@ export function ExpenseModal({
       </div>
     </div>
   );
-}
+});
+
+ExpenseModal.displayName = "ExpenseModal";

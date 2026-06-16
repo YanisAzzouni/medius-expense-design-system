@@ -8,8 +8,6 @@ export interface CheckboxProps {
     label?: string;
     /** Visual / validation state. */
     state?: CheckboxState;
-    /** Convenience alias for state="disabled". */
-    disabled?: boolean;
     id?: string;
     name?: string;
     value?: string;

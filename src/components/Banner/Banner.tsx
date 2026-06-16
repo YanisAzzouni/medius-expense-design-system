@@ -3,11 +3,11 @@ import type { ReactNode } from "react";
 import { Icon } from "../../icons/Icon";
 import styles from "./Banner.module.css";
 
-export type BannerType = "information" | "warning" | "error" | "success";
+export type BannerVariant = "information" | "warning" | "error" | "success";
 
 export interface BannerProps {
   /** Visual style / severity of the banner. */
-  type?: BannerType;
+  variant?: BannerVariant;
   /** Optional bold title line rendered above the body. */
   title?: string;
   /** Body text or any React content. */
@@ -29,7 +29,7 @@ export interface BannerProps {
   className?: string;
 }
 
-const TYPE_ICON: Record<BannerType, string> = {
+const TYPE_ICON: Record<BannerVariant, string> = {
   information: "actions--info",
   warning:     "alert--warning-filled",
   error:       "alert--error-filled",
@@ -38,7 +38,7 @@ const TYPE_ICON: Record<BannerType, string> = {
 
 export const Banner = forwardRef<HTMLDivElement, BannerProps>(function Banner(
   {
-    type = "information",
+    variant = "information",
     title,
     children,
     showIcon = true,
@@ -58,7 +58,7 @@ export const Banner = forwardRef<HTMLDivElement, BannerProps>(function Banner(
     <div
       ref={ref}
       role="alert"
-      className={[styles.banner, styles[`type_${type}`], className ?? ""].filter(Boolean).join(" ")}
+      className={[styles.banner, styles[`type_${variant}`], className ?? ""].filter(Boolean).join(" ")}
     >
       {/* Left accent bar */}
       <div className={styles.dashWrapper}>
@@ -70,7 +70,7 @@ export const Banner = forwardRef<HTMLDivElement, BannerProps>(function Banner(
         {/* Leading icon */}
         {showIcon && (
           <div className={styles.iconWrapper} aria-hidden="true">
-            <Icon name={TYPE_ICON[type]} size="large" />
+            <Icon name={TYPE_ICON[variant]} size="large" />
           </div>
         )}
 

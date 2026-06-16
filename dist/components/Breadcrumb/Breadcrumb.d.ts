@@ -7,4 +7,4 @@ export interface BreadcrumbProps {
     items: BreadcrumbItem[];
     className?: string;
 }
-export declare function Breadcrumb({ items, className }: BreadcrumbProps): import("react/jsx-runtime").JSX.Element;
+export declare const Breadcrumb: import('react').ForwardRefExoticComponent<BreadcrumbProps & import('react').RefAttributes<HTMLElement>>;

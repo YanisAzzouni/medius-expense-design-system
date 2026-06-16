@@ -51,4 +51,4 @@ export interface ExpenseModalProps {
     onNext?: () => void;
     className?: string;
 }
-export declare function ExpenseModal({ title, tags, statusLabel, statusVariant, showBanner, bannerMessage, initialData, onClose, onSave, onNext, className, }: ExpenseModalProps): import("react/jsx-runtime").JSX.Element;
+export declare const ExpenseModal: import('react').ForwardRefExoticComponent<ExpenseModalProps & import('react').RefAttributes<HTMLDivElement>>;

@@ -21,6 +21,7 @@
   border-radius: 8px;
   border-left: 4px solid transparent;
   background: var(--color-white);
+  /* bespoke toast shadow */
   box-shadow: 0 4px 16px rgba(0, 0, 0, 0.12), 0 1px 4px rgba(0, 0, 0, 0.08);
   box-sizing: border-box;
   pointer-events: all;

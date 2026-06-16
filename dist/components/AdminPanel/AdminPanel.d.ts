@@ -36,4 +36,4 @@ export interface AdminPanelProps {
     className?: string;
 }
 export declare const DEFAULT_ADMIN_SECTIONS: AdminSectionDef[];
-export declare function AdminPanel({ companyName, sections, activeSection, activeItem, onNavigate, className, }: AdminPanelProps): import("react/jsx-runtime").JSX.Element;
+export declare const AdminPanel: import('react').ForwardRefExoticComponent<AdminPanelProps & import('react').RefAttributes<HTMLElement>>;

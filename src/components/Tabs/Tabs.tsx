@@ -9,10 +9,7 @@ interface TabsContextValue {
   onChange: (v: string) => void;
 }
 
-const TabsContext = createContext<TabsContextValue>({
-  value: "",
-  onChange: () => {},
-});
+const TabsContext = createContext<TabsContextValue | null>(null);
 
 /* ───────────────────────────────────────────
    Tabs — container / tablist
@@ -97,6 +94,7 @@ export interface TabProps {
   /** Called when the close button is clicked. */
   onClose?: () => void;
   disabled?: boolean;
+  className?: string;
 }
 
 export function Tab({
@@ -107,8 +105,13 @@ export function Tab({
   closable,
   onClose,
   disabled,
+  className,
 }: TabProps) {
-  const { value: activeValue, onChange } = useContext(TabsContext);
+  const context = useContext(TabsContext);
+  if (context === null) {
+    throw new Error("<Tab> must be rendered inside a <Tabs> component.");
+  }
+  const { value: activeValue, onChange } = context;
   const isActive = activeValue === value;
   const id = useId();
 
@@ -131,6 +134,7 @@ export function Tab({
           styles.tab,
           isActive ? styles.tab_active : "",
           disabled ? styles.tab_disabled : "",
+          className ?? "",
         ]
           .filter(Boolean)
           .join(" ")}

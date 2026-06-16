@@ -21,6 +21,10 @@ export interface SelectProps {
     value?: string;
     /** Called when the user selects an option. */
     onChange?: (value: string) => void;
+    /** Form field name — emitted via a hidden input so the value participates in form submission. */
+    name?: string;
+    /** Called when the trigger loses focus. */
+    onBlur?: (e: React.FocusEvent) => void;
     /** List of selectable options. */
     options: SelectOption[];
     /** Behavioural state. Defaults to "default". */

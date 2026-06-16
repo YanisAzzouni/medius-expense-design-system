@@ -4,43 +4,43 @@
   align-items: center;
   gap: 6px;
   padding: 10px 12px;
-  background: var(--color-white, #ffffff);
-  border: 1px solid var(--color-chalk-200, #eaeaed);
+  background: var(--color-white);
+  border: 1px solid var(--color-chalk-200);
   border-radius: 4px;
 }
 
 .label {
   font-family: var(--font-family);
-  font-size: 12px;
-  font-weight: 400;
-  line-height: 16px;
-  letter-spacing: -0.01em;
-  color: var(--color-chalk-500, #757584);
+  font-size: var(--type-small-size);
+  font-weight: var(--type-small-weight);
+  line-height: var(--type-small-line-height);
+  letter-spacing: var(--type-small-letter-spacing);
+  color: var(--color-chalk-500);
   white-space: nowrap;
 }
 
 /* Large bold number — "312" */
 .number {
   font-family: var(--font-family);
-  font-size: 24px;
+  font-size: 24px; /* no token for 24px display number */
   font-weight: 600;
   line-height: 1;
   letter-spacing: -0.02em;
-  color: var(--color-chalk-900, #25252a);
+  color: var(--color-chalk-900);
 }
 
 .number_success {
-  color: var(--color-green-500, #388553);
+  color: var(--color-green-500);
 }
 
 /* Regular body text — "3 May 2026" */
 .text {
   font-family: var(--font-family);
-  font-size: 14px;
-  font-weight: 400;
-  line-height: 20px;
-  letter-spacing: -0.01em;
-  color: var(--color-chalk-600, #5d5d69);
+  font-size: var(--type-body-default-size);
+  font-weight: var(--type-body-default-weight);
+  line-height: var(--type-body-default-line-height);
+  letter-spacing: var(--type-body-default-letter-spacing);
+  color: var(--color-chalk-600);
 }
 
 /* Network logo image */

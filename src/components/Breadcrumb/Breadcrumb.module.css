@@ -39,7 +39,7 @@
 .label_inactive,
 .label_active {
   font-family: var(--font-family);
-  font-size: 14px;
+  font-size: 14px; /* 14px/500 — no matching type token */
   font-weight: 500;
   line-height: 20px;
   letter-spacing: -0.01em;

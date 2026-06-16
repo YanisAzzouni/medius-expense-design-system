@@ -3,6 +3,8 @@ export interface SpinnerProps {
     size?: SpinnerSize;
     /** Accessible label for screen readers. */
     label?: string;
+    className?: string;
+    style?: React.CSSProperties;
 }
 /**
  * Spinner — indeterminate loading indicator.
@@ -12,4 +14,4 @@ export interface SpinnerProps {
  *   <Spinner size="small" />
  *   <Spinner size="large" label="Loading expenses..." />
  */
-export declare function Spinner({ size, label }: SpinnerProps): import("react/jsx-runtime").JSX.Element;
+export declare const Spinner: import('react').ForwardRefExoticComponent<SpinnerProps & import('react').RefAttributes<HTMLSpanElement>>;

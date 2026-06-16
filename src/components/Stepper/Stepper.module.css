@@ -36,7 +36,7 @@
 
 /* ─── Stepper card ─── */
 .stepper {
-  width: 800px;
+  width: 800px; /* fixed stepper content width */
   max-width: 100%;
   background: var(--color-white);
   border: 1px solid var(--color-chalk-200);
@@ -116,10 +116,10 @@
 }
 
 .badgeNumber {
-  font-size: 14px;
-  font-weight: 600;
-  line-height: 20px;
-  letter-spacing: -0.01em;
+  font-size: var(--type-body-semibold-size);
+  font-weight: var(--type-body-semibold-weight);
+  line-height: var(--type-body-semibold-line-height);
+  letter-spacing: var(--type-body-semibold-letter-spacing);
   color: var(--color-chalk-900);
 }
 
@@ -153,18 +153,18 @@
 }
 
 .title {
-  font-size: 14px;
-  font-weight: 600;
-  line-height: 20px;
-  letter-spacing: -0.01em;
+  font-size: var(--type-body-semibold-size);
+  font-weight: var(--type-body-semibold-weight);
+  line-height: var(--type-body-semibold-line-height);
+  letter-spacing: var(--type-body-semibold-letter-spacing);
   color: var(--color-chalk-900);
 }
 
 .description {
-  font-size: 12px;
-  font-weight: 400;
-  line-height: 16px;
-  letter-spacing: -0.01em;
+  font-size: var(--type-small-size);
+  font-weight: var(--type-small-weight);
+  line-height: var(--type-small-line-height);
+  letter-spacing: var(--type-small-letter-spacing);
   color: var(--color-chalk-500);
 }
 
@@ -204,18 +204,18 @@
 }
 
 .titleLocked {
-  font-size: 14px;
-  font-weight: 600;
-  line-height: 20px;
-  letter-spacing: -0.01em;
+  font-size: var(--type-body-semibold-size);
+  font-weight: var(--type-body-semibold-weight);
+  line-height: var(--type-body-semibold-line-height);
+  letter-spacing: var(--type-body-semibold-letter-spacing);
   color: var(--color-chalk-400);
 }
 
 .descriptionLocked {
-  font-size: 12px;
-  font-weight: 400;
-  line-height: 16px;
-  letter-spacing: -0.01em;
+  font-size: var(--type-small-size);
+  font-weight: var(--type-small-weight);
+  line-height: var(--type-small-line-height);
+  letter-spacing: var(--type-small-letter-spacing);
   color: var(--color-chalk-400);
 }
 
@@ -244,10 +244,10 @@
 }
 
 .titleDone {
-  font-size: 14px;
-  font-weight: 600;
-  line-height: 20px;
-  letter-spacing: -0.01em;
+  font-size: var(--type-body-semibold-size);
+  font-weight: var(--type-body-semibold-weight);
+  line-height: var(--type-body-semibold-line-height);
+  letter-spacing: var(--type-body-semibold-letter-spacing);
   color: var(--color-chalk-900);
 }
 

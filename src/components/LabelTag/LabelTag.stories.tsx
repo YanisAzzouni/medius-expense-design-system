@@ -40,7 +40,7 @@ export const ColorsDefault: Story = {
   render: () => (
     <div style={{ display: "flex", flexWrap: "wrap", gap: 8 }}>
       {COLORS.map((color) => (
-        <LabelTag key={color} color={color} size="default" label={color.charAt(0).toUpperCase() + color.slice(1)} />
+        <LabelTag key={color} variant={color} size="default" label={color.charAt(0).toUpperCase() + color.slice(1)} />
       ))}
     </div>
   ),
@@ -52,7 +52,7 @@ export const ColorsSmall: Story = {
   render: () => (
     <div style={{ display: "flex", flexWrap: "wrap", gap: 8 }}>
       {COLORS.map((color) => (
-        <LabelTag key={color} color={color} size="small" label={color.charAt(0).toUpperCase() + color.slice(1)} />
+        <LabelTag key={color} variant={color} size="small" label={color.charAt(0).toUpperCase() + color.slice(1)} />
       ))}
     </div>
   ),
@@ -63,12 +63,12 @@ export const Sizes: Story = {
   render: () => (
     <div style={{ display: "flex", flexDirection: "column", gap: 12 }}>
       <div style={{ display: "flex", alignItems: "center", gap: 8 }}>
-        <LabelTag size="default" color="blue" label="Default" />
-        <LabelTag size="small"   color="blue" label="Small" />
+        <LabelTag size="default" variant="blue" label="Default" />
+        <LabelTag size="small"   variant="blue" label="Small" />
       </div>
       <div style={{ display: "flex", alignItems: "center", gap: 8 }}>
-        <LabelTag size="default" color="green" label="Default" />
-        <LabelTag size="small"   color="green" label="Small" />
+        <LabelTag size="default" variant="green" label="Default" />
+        <LabelTag size="small"   variant="green" label="Small" />
       </div>
     </div>
   ),
@@ -78,17 +78,17 @@ export const Sizes: Story = {
 export const WithIcons: Story = {
   render: () => (
     <div style={{ display: "flex", flexWrap: "wrap", gap: 8 }}>
-      <LabelTag color="neutral" size="default" label="Attachment"
+      <LabelTag variant="neutral" size="default" label="Attachment"
         icon={<Icon name="editor--attach-file" size="small" />} />
-      <LabelTag color="blue" size="default" label="Info"
+      <LabelTag variant="blue" size="default" label="Info"
         icon={<Icon name="actions--info" size="small" />} />
-      <LabelTag color="green" size="default" label="Approved"
+      <LabelTag variant="green" size="default" label="Approved"
         icon={<Icon name="alerts--check-circle" size="small" />} />
-      <LabelTag color="orange" size="default" label="Review"
+      <LabelTag variant="orange" size="default" label="Review"
         icon={<Icon name="alert--warning-filled" size="small" />} />
-      <LabelTag color="red" size="default" label="Error"
+      <LabelTag variant="red" size="default" label="Error"
         icon={<Icon name="alert--error-filled" size="small" />} />
-      <LabelTag color="grey" size="default" label="Archive"
+      <LabelTag variant="grey" size="default" label="Archive"
         icon={<Icon name="content--archive" size="small" />} />
     </div>
   ),
@@ -98,15 +98,15 @@ export const WithIcons: Story = {
 export const WithIconsSmall: Story = {
   render: () => (
     <div style={{ display: "flex", flexWrap: "wrap", gap: 8 }}>
-      <LabelTag color="neutral" size="small" label="Attachment"
+      <LabelTag variant="neutral" size="small" label="Attachment"
         icon={<Icon name="editor--attach-file" size="small" />} />
-      <LabelTag color="blue" size="small" label="Info"
+      <LabelTag variant="blue" size="small" label="Info"
         icon={<Icon name="actions--info" size="small" />} />
-      <LabelTag color="green" size="small" label="Approved"
+      <LabelTag variant="green" size="small" label="Approved"
         icon={<Icon name="alerts--check-circle" size="small" />} />
-      <LabelTag color="orange" size="small" label="Review"
+      <LabelTag variant="orange" size="small" label="Review"
         icon={<Icon name="alert--warning-filled" size="small" />} />
-      <LabelTag color="red" size="small" label="Error"
+      <LabelTag variant="red" size="small" label="Error"
         icon={<Icon name="alert--error-filled" size="small" />} />
     </div>
   ),
@@ -137,7 +137,7 @@ export const InContext: Story = {
             <span style={{ flex: 1 }}>{item.name}</span>
             <div style={{ display: "flex", gap: 4 }}>
               {item.tags.map((tag, j) => (
-                <LabelTag key={j} color={tag.color} size="small" label={tag.label} />
+                <LabelTag key={j} variant={tag.color} size="small" label={tag.label} />
               ))}
             </div>
           </div>

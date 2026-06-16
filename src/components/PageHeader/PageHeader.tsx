@@ -1,3 +1,4 @@
+import { forwardRef } from "react";
 import type { ReactNode } from "react";
 import { Button } from "../Button/Button";
 import type { ButtonHierarchy } from "../Button/Button";
@@ -21,9 +22,11 @@ export interface PageHeaderProps {
   className?: string;
 }
 
-export function PageHeader({ breadcrumbs, actions, className }: PageHeaderProps) {
+export const PageHeader = forwardRef<HTMLElement, PageHeaderProps>(
+  function PageHeader({ breadcrumbs, actions, className }, ref) {
   return (
     <header
+      ref={ref}
       className={[styles.header, className].filter(Boolean).join(" ")}
     >
       <div className={styles.breadcrumbSlot}>
@@ -53,3 +56,6 @@ export function PageHeader({ breadcrumbs, actions, className }: PageHeaderProps)
     </header>
   );
 }
+);
+
+PageHeader.displayName = "PageHeader";

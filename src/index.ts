@@ -1,3 +1,8 @@
+// Token CSS custom properties (:root variable definitions).
+// Bundled into the extracted stylesheet so `@medius-expense/design-system/styles`
+// ships BOTH the :root token values and the component CSS that consumes them.
+import "./tokens/tokens.css";
+
 // Tokens
 export { colors, generateColorCSSVars } from "./tokens/colors";
 export type { ColorFamily, BaseColors, Colors } from "./tokens/colors";
@@ -27,7 +32,7 @@ export { Select } from "./components/Select/Select";
 export type { SelectProps, SelectOption, SelectState, SelectHintType } from "./components/Select/Select";
 
 export { Banner } from "./components/Banner/Banner";
-export type { BannerProps, BannerType } from "./components/Banner/Banner";
+export type { BannerProps, BannerVariant } from "./components/Banner/Banner";
 
 export { StatusTag } from "./components/StatusTag/StatusTag";
 export type { StatusTagProps, StatusTagVariant } from "./components/StatusTag/StatusTag";
@@ -73,7 +78,7 @@ export type {
 } from "./components/DataTable/DataTable";
 
 export { Toast, ToastContainer, useToast } from "./components/Toast/Toast";
-export type { ToastItem, ToastVariant } from "./components/Toast/Toast";
+export type { ToastItem, ToastVariant, ToastProps, ToastContainerProps } from "./components/Toast/Toast";
 
 export { Spinner } from "./components/Spinner/Spinner";
 export type { SpinnerProps, SpinnerSize } from "./components/Spinner/Spinner";

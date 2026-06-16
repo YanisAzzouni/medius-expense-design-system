@@ -66,8 +66,15 @@
 }
 
 .headerCell_title {
-  flex: 1 0 0;
+  flex: 1 1 0;
   min-width: 220px;
+}
+
+/* In fill mode the title column must be able to shrink below its content
+   width so the table never overflows its container. Inner .headerCellTitle
+   already truncates with ellipsis. */
+.table_fill .headerCell_title {
+  min-width: 0;
 }
 
 .headerCell_check {
@@ -217,8 +224,15 @@
 }
 
 .cell_title {
-  flex: 1 0 0;
+  flex: 1 1 0;
   min-width: 220px;
+}
+
+/* In fill mode the title column must be able to shrink below its content
+   width so the table never overflows its container. Inner .titleText
+   already truncates with ellipsis (min-width:0; overflow:hidden). */
+.table_fill .cell_title {
+  min-width: 0;
 }
 
 .cell_check {
@@ -415,6 +429,7 @@
   line-height: var(--type-body-default-line-height);
   letter-spacing: var(--type-body-default-letter-spacing);
   color: var(--color-chalk-1000);
+  min-width: 0;
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;

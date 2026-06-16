@@ -50,7 +50,7 @@ export const Step2Active: Story = {
           <div style={{ display: "flex", alignItems: "center", gap: 6 }}>
             <LabelTag
               label="Medius AB — registered"
-              color="green"
+              variant="green"
               size="small"
               icon={<Icon name="navigation--check" size="small" />}
             />
@@ -61,7 +61,7 @@ export const Step2Active: Story = {
     ],
     activeStep: 1,
     nextLabel: "Next",
-    secondaryActionLabel: "Save draft",
+    secondaryLabel: "Save draft",
   },
 };
 

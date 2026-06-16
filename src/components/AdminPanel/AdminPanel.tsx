@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { forwardRef, useState } from "react";
 import { Icon } from "../../icons/Icon";
 import styles from "./AdminPanel.module.css";
 
@@ -143,14 +143,14 @@ export const DEFAULT_ADMIN_SECTIONS: AdminSectionDef[] = [
 
 /* ─── Component ─────────────────────────────────────────────────────────── */
 
-export function AdminPanel({
+export const AdminPanel = forwardRef<HTMLElement, AdminPanelProps>(function AdminPanel({
   companyName = "Company name",
   sections = DEFAULT_ADMIN_SECTIONS,
   activeSection,
   activeItem,
   onNavigate,
   className,
-}: AdminPanelProps) {
+}, ref) {
   // Sections that are currently expanded (uncontrolled).
   // Pre-expand the active section on mount.
   const [expandedSections, setExpandedSections] = useState<Set<string>>(() => {
@@ -168,6 +168,7 @@ export function AdminPanel({
 
   return (
     <aside
+      ref={ref}
       className={[styles.panel, className ?? ""].filter(Boolean).join(" ")}
       aria-label="Admin navigation"
     >
@@ -252,4 +253,6 @@ export function AdminPanel({
       </nav>
     </aside>
   );
-}
+});
+
+AdminPanel.displayName = "AdminPanel";

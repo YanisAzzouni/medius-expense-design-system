@@ -20,4 +20,4 @@ export interface NavBarProps {
     showAccountant?: boolean;
     className?: string;
 }
-export declare function NavBar({ activeItem, onNavigate, userInitials, onUserClick, showRequests, showManager, showMediusCard, showAdmin, showAccountant, className, }: NavBarProps): import("react/jsx-runtime").JSX.Element;
+export declare const NavBar: import('react').ForwardRefExoticComponent<NavBarProps & import('react').RefAttributes<HTMLElement>>;

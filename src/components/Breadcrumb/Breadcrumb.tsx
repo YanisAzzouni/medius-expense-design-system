@@ -1,3 +1,4 @@
+import { forwardRef } from "react";
 import type { ReactNode } from "react";
 import { Icon } from "../../icons/Icon";
 import styles from "./Breadcrumb.module.css";
@@ -13,9 +14,11 @@ export interface BreadcrumbProps {
   className?: string;
 }
 
-export function Breadcrumb({ items, className }: BreadcrumbProps) {
+export const Breadcrumb = forwardRef<HTMLElement, BreadcrumbProps>(
+  function Breadcrumb({ items, className }, ref) {
   return (
     <nav
+      ref={ref}
       aria-label="Breadcrumb"
       className={[styles.breadcrumb, className].filter(Boolean).join(" ")}
     >
@@ -61,3 +64,6 @@ export function Breadcrumb({ items, className }: BreadcrumbProps) {
     </nav>
   );
 }
+);
+
+Breadcrumb.displayName = "Breadcrumb";

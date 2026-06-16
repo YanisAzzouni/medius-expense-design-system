@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState } from "react";
+import { forwardRef, useEffect, useRef, useState } from "react";
 import type { ReactNode } from "react";
 import { Button } from "../Button/Button";
 import { Icon } from "../../icons/Icon";
@@ -28,11 +28,13 @@ export interface StepperProps {
   nextLoading?: boolean;
   /** Optional icon shown inside the primary action button. */
   nextIcon?: ReactNode;
-  secondaryActionLabel?: string;
-  secondaryActionIcon?: ReactNode;
-  onSecondaryAction?: () => void;
+  secondaryLabel?: string;
+  secondaryIcon?: ReactNode;
+  onSecondary?: () => void;
   /** Shows a spinner on the secondary action button and disables it. */
   secondaryLoading?: boolean;
+  /** Disables the secondary action button without hiding it. */
+  secondaryDisabled?: boolean;
   className?: string;
 }
 
@@ -75,7 +77,8 @@ function StepBadge({
 
 /* ─── Component ─────────────────────────────────────────────────────────── */
 
-export function Stepper({
+export const Stepper = forwardRef<HTMLDivElement, StepperProps>(
+  function Stepper({
   steps,
   activeStep,
   onBack,
@@ -84,12 +87,13 @@ export function Stepper({
   nextDisabled = false,
   nextLoading = false,
   nextIcon,
-  secondaryActionLabel,
-  secondaryActionIcon,
-  onSecondaryAction,
+  secondaryLabel,
+  secondaryIcon,
+  onSecondary,
   secondaryLoading = false,
+  secondaryDisabled = false,
   className,
-}: StepperProps) {
+}: StepperProps, ref) {
   const isLastStep        = activeStep === steps.length - 1;
   const resolvedNextLabel = nextLabel ?? (isLastStep ? "Submit" : "Next");
 
@@ -114,7 +118,7 @@ export function Stepper({
   }, [justDone]);
 
   return (
-    <div className={[styles.stepper, className ?? ""].filter(Boolean).join(" ")}>
+    <div ref={ref} className={[styles.stepper, className ?? ""].filter(Boolean).join(" ")}>
       {steps.map((step, i) => {
         const state: "active" | "done" | "locked" | "waiting" =
           i < activeStep                    ? "done"    :
@@ -164,14 +168,15 @@ export function Stepper({
                       <span />
                     )}
                     <div className={styles.footerActions}>
-                      {secondaryActionLabel && (
+                      {secondaryLabel && (
                         <Button
                           hierarchy="secondary"
-                          icon={secondaryLoading ? undefined : secondaryActionIcon}
+                          icon={secondaryLoading ? undefined : secondaryIcon}
                           loading={secondaryLoading}
-                          onClick={onSecondaryAction}
+                          disabled={secondaryDisabled}
+                          onClick={onSecondary}
                         >
-                          {secondaryActionLabel}
+                          {secondaryLabel}
                         </Button>
                       )}
                       <Button
@@ -192,7 +197,7 @@ export function Stepper({
               {state === "waiting" && (
                 <div className={styles.waitingContent}>
                   <span className={styles.titleDone}>{step.title}</span>
-                  {step.children ?? <LabelTag label="Waiting…" color="yellow" size="small" />}
+                  {step.children ?? <LabelTag label="Waiting…" variant="yellow" size="small" />}
                 </div>
               )}
 
@@ -228,3 +233,6 @@ export function Stepper({
     </div>
   );
 }
+);
+
+Stepper.displayName = "Stepper";

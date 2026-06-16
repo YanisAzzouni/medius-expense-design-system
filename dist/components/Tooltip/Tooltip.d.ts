@@ -14,4 +14,4 @@ export interface TooltipProps {
     children: ReactNode;
     className?: string;
 }
-export declare function Tooltip({ content, placement, children, className, }: TooltipProps): import("react/jsx-runtime").JSX.Element;
+export declare const Tooltip: import('react').ForwardRefExoticComponent<TooltipProps & import('react').RefAttributes<HTMLSpanElement>>;

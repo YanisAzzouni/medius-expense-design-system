@@ -16,4 +16,4 @@ export interface PageHeaderProps {
     actions?: PageHeaderAction[];
     className?: string;
 }
-export declare function PageHeader({ breadcrumbs, actions, className }: PageHeaderProps): import("react/jsx-runtime").JSX.Element;
+export declare const PageHeader: import('react').ForwardRefExoticComponent<PageHeaderProps & import('react').RefAttributes<HTMLElement>>;

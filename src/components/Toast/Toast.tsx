@@ -19,7 +19,7 @@ export interface ToastItem {
   duration?: number;
 }
 
-interface ToastProps extends ToastItem {
+export interface ToastProps extends ToastItem {
   onDismiss: (id: string) => void;
 }
 
@@ -82,7 +82,7 @@ export function Toast({ id, variant, message, description, duration = 4000, onDi
 
 /* ─── Toast container ────────────────────────────────────────────────────── */
 
-interface ToastContainerProps {
+export interface ToastContainerProps {
   toasts: ToastItem[];
   onDismiss: (id: string) => void;
 }

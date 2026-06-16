@@ -117,7 +117,7 @@
   font-family: var(--font-family);
   font-size: var(--type-body-default-size);
   font-weight: var(--type-body-default-weight);
-  line-height: 18px;
+  line-height: 18px; /* intentionally tighter than the body token (20px) to keep multi-line banner text compact */
   color: var(--color-chalk-900);
 }
 
