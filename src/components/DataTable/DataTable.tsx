@@ -160,6 +160,8 @@ export interface DataTableProps {
   onRowClick?: (id: string) => void;
   /** Shown centred inside the table when rows.length === 0. */
   emptyMessage?: string;
+  /** When true the table stretches to 100% of its container (useful when a fill column is present). */
+  fillWidth?: boolean;
   className?: string;
 }
 
@@ -566,6 +568,7 @@ export function DataTable({
   onSort,
   onRowClick,
   emptyMessage = "No results found.",
+  fillWidth = false,
   className,
 }: DataTableProps) {
   // Uncontrolled selection state (fallback when no controlled ids provided)
@@ -605,7 +608,7 @@ export function DataTable({
 
   return (
     <div
-      className={[styles.table, className ?? ""].filter(Boolean).join(" ")}
+      className={[styles.table, fillWidth ? styles.table_fill : "", className ?? ""].filter(Boolean).join(" ")}
       role="table"
       aria-label="Data table"
     >

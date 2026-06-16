@@ -96,6 +96,8 @@ export interface DataTableProps {
     onRowClick?: (id: string) => void;
     /** Shown centred inside the table when rows.length === 0. */
     emptyMessage?: string;
+    /** When true the table stretches to 100% of its container (useful when a fill column is present). */
+    fillWidth?: boolean;
     className?: string;
 }
-export declare function DataTable({ columns, rows, selectable, selectedIds: controlledSelectedIds, onSelectionChange, sortKey, sortDirection, onSort, onRowClick, emptyMessage, className, }: DataTableProps): import("react/jsx-runtime").JSX.Element;
+export declare function DataTable({ columns, rows, selectable, selectedIds: controlledSelectedIds, onSelectionChange, sortKey, sortDirection, onSort, onRowClick, emptyMessage, fillWidth, className, }: DataTableProps): import("react/jsx-runtime").JSX.Element;
