@@ -117,9 +117,10 @@ export function Stepper({
     <div className={[styles.stepper, className ?? ""].filter(Boolean).join(" ")}>
       {steps.map((step, i) => {
         const state: "active" | "done" | "locked" | "waiting" =
-          i < activeStep        ? "done"    :
-          i === activeStep      ? "active"  :
-          step.waiting          ? "waiting" : "locked";
+          i < activeStep                    ? "done"    :
+          i === activeStep && step.waiting  ? "waiting" :
+          i === activeStep                  ? "active"  :
+          step.waiting                      ? "waiting" : "locked";
 
         const stepNumber  = i + 1;
         const wasJustDone = justDone === i;
