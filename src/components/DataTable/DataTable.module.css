@@ -77,8 +77,8 @@
 }
 
 .headerCell_status {
-  flex: 0 0 160px;
-  width: 160px;
+  flex: 0 0 120px;
+  width: 120px;
 }
 
 .headerCell_date {
@@ -229,8 +229,8 @@
 }
 
 .cell_status {
-  flex: 0 0 160px;
-  width: 160px;
+  flex: 0 0 120px;
+  width: 120px;
   align-items: flex-start;
 }
 
