@@ -44,6 +44,7 @@ export type ActionsCellData = {
     icon: string;
     label?: string;
     onClick: () => void;
+    disabled?: boolean;
     secondary?: {
         icon: string;
         label?: string;

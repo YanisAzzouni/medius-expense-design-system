@@ -76,6 +76,7 @@ export type ActionsCellData = {
   icon: string;
   label?: string;
   onClick: () => void;
+  disabled?: boolean;
   secondary?: {
     icon: string;
     label?: string;
@@ -414,6 +415,7 @@ function ActionsCell({ data }: { data: ActionsCellData }) {
         hierarchy="secondary"
         size="small"
         iconOnly
+        disabled={data.disabled}
         onClick={data.onClick}
         aria-label={data.label ?? "Action"}
         title={data.label}
@@ -486,7 +488,11 @@ function DataCell({ col, value }: DataCellProps) {
     case "status":
       return (
         <div className={base}>
-          {value && <StatusTag label={(value as StatusCellData).label} variant={(value as StatusCellData).variant} />}
+          {value && (
+            (value as StatusCellData).variant !== undefined
+              ? <StatusTag label={(value as StatusCellData).label} variant={(value as StatusCellData).variant} />
+              : <span className={styles.textCell}>{(value as StatusCellData).label}</span>
+          )}
         </div>
       );
     case "amount":
