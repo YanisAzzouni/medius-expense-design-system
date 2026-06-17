@@ -63,6 +63,7 @@
 
 .headerCell_L {
   min-width: 220px;
+  max-width: 220px;
 }
 
 .headerCell_title {
@@ -221,6 +222,7 @@
 
 .cell_L {
   min-width: 220px;
+  max-width: 220px;
 }
 
 .cell_title {
