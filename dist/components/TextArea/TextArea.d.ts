@@ -15,5 +15,7 @@ export interface TextAreaProps extends Omit<TextareaHTMLAttributes<HTMLTextAreaE
     hint?: string;
     /** Colour variant of the hint message. Defaults to "neutral". */
     hintType?: TextAreaHintType;
+    /** Where the label appears relative to the textarea. Defaults to "left". */
+    labelPosition?: "left" | "top";
 }
 export declare const TextArea: import('react').ForwardRefExoticComponent<TextAreaProps & import('react').RefAttributes<HTMLTextAreaElement>>;

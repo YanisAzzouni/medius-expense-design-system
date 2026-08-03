@@ -17,5 +17,7 @@ export interface TextInputProps extends Omit<InputHTMLAttributes<HTMLInputElemen
     hint?: string;
     /** Colour variant of the hint message. Defaults to "neutral". */
     hintType?: TextInputHintType;
+    /** Where the label appears relative to the input. Defaults to "left". */
+    labelPosition?: "left" | "top";
 }
 export declare const TextInput: import('react').ForwardRefExoticComponent<TextInputProps & import('react').RefAttributes<HTMLInputElement>>;

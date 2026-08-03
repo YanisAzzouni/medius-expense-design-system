@@ -27,6 +27,8 @@ export interface TextAreaProps
   hint?: string;
   /** Colour variant of the hint message. Defaults to "neutral". */
   hintType?: TextAreaHintType;
+  /** Where the label appears relative to the textarea. Defaults to "left". */
+  labelPosition?: "left" | "top";
 }
 
 export const TextArea = forwardRef<HTMLTextAreaElement, TextAreaProps>(
@@ -38,6 +40,7 @@ export const TextArea = forwardRef<HTMLTextAreaElement, TextAreaProps>(
       state = "default",
       hint,
       hintType = "neutral",
+      labelPosition = "left",
       className,
       id: idProp,
       rows = 3,
@@ -52,11 +55,12 @@ export const TextArea = forwardRef<HTMLTextAreaElement, TextAreaProps>(
     const isDisabled = state === "disabled";
     const isReadOnly = state === "read-only";
     const stateClass = styles[`state_${state.replace(/-/g, "_")}`] ?? "";
+    const isTop = labelPosition === "top";
 
     return (
-      <div className={`${styles.field} ${className ?? ""}`}>
+      <div className={`${styles.field} ${isTop ? styles.field_top : ""} ${className ?? ""}`}>
         {label && (
-          <div className={styles.labelColumn}>
+          <div className={`${styles.labelColumn} ${isTop ? styles.labelColumn_top : ""}`}>
             <label htmlFor={id} className={styles.label}>
               {label}
               {required && (

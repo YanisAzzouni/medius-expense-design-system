@@ -29,6 +29,8 @@ export interface TextInputProps
   hint?: string;
   /** Colour variant of the hint message. Defaults to "neutral". */
   hintType?: TextInputHintType;
+  /** Where the label appears relative to the input. Defaults to "left". */
+  labelPosition?: "left" | "top";
 }
 
 export const TextInput = forwardRef<HTMLInputElement, TextInputProps>(
@@ -41,6 +43,7 @@ export const TextInput = forwardRef<HTMLInputElement, TextInputProps>(
       unit,
       hint,
       hintType = "neutral",
+      labelPosition = "left",
       className,
       id: idProp,
       ...rest
@@ -54,11 +57,12 @@ export const TextInput = forwardRef<HTMLInputElement, TextInputProps>(
     const isDisabled = state === "disabled";
     const isReadOnly = state === "read-only";
     const stateClass = styles[`state_${state.replace(/-/g, "_")}`] ?? "";
+    const isTop = labelPosition === "top";
 
     return (
-      <div className={`${styles.field} ${className ?? ""}`}>
+      <div className={`${styles.field} ${isTop ? styles.field_top : ""} ${className ?? ""}`}>
         {label && (
-          <div className={styles.labelColumn}>
+          <div className={`${styles.labelColumn} ${isTop ? styles.labelColumn_top : ""}`}>
             <label htmlFor={id} className={styles.label}>
               {label}
               {required && (

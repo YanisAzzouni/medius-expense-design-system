@@ -19,6 +19,19 @@
   box-sizing: border-box;
 }
 
+/* ─── Top label layout ─── */
+.field_top {
+  flex-direction: column;
+  gap: 4px;
+}
+
+.labelColumn_top {
+  flex: unset;
+  min-height: unset;
+  padding-top: 0;
+  padding-right: 0;
+}
+
 .label {
   font-family: var(--font-family);
   font-size: var(--type-small-semibold-size);
