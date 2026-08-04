@@ -239,6 +239,34 @@
   padding-bottom: 24px;
 }
 
+/* ─── Edit button (done step) ─── */
+.editButton {
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 28px;
+  height: 28px;
+  padding: 0;
+  margin-bottom: 24px;
+  border: none;
+  border-radius: 4px;
+  background: transparent;
+  color: var(--color-chalk-400);
+  cursor: pointer;
+  transition: color 120ms ease, background-color 120ms ease;
+}
+
+.editButton:hover {
+  color: var(--color-chalk-700);
+  background: var(--color-chalk-100);
+}
+
+.editButton:focus-visible {
+  outline: 2px solid var(--color-olive-500);
+  outline-offset: 1px;
+}
+
 .doneContent_in {
   animation: doneIn 380ms cubic-bezier(0.16, 1, 0.3, 1) both;
 }

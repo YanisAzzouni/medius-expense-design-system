@@ -14,6 +14,10 @@ const meta: Meta<typeof TextArea> = {
       control: "select",
       options: ["neutral", "danger", "success"],
     },
+    labelPosition: {
+      control: "radio",
+      options: ["left", "top"],
+    },
     label: { control: "text" },
     placeholder: { control: "text" },
     hint: { control: "text" },
@@ -103,6 +107,25 @@ export const Required: Story = {
         placeholder="Explain why this expense is being rejected…"
         required
         rows={4}
+      />
+    </div>
+  ),
+};
+
+/* ─── Label on top ─── */
+export const LabelTop: Story = {
+  render: () => (
+    <div style={{ display: "flex", flexDirection: "column", gap: 16, maxWidth: 400 }}>
+      <TextArea label="Description" placeholder="Enter a description…" labelPosition="top" rows={3} />
+      <TextArea label="Notes" placeholder="Enter notes…" labelPosition="top" required rows={3} />
+      <TextArea
+        label="Rejection reason"
+        placeholder="Explain why…"
+        labelPosition="top"
+        state="danger"
+        hint="This field is required."
+        hintType="danger"
+        rows={3}
       />
     </div>
   ),

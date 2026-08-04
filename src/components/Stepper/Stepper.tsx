@@ -35,6 +35,8 @@ export interface StepperProps {
   secondaryLoading?: boolean;
   /** Disables the secondary action button without hiding it. */
   secondaryDisabled?: boolean;
+  /** When provided, done steps show an "Edit" button that calls this with the step index. */
+  onEdit?: (stepIndex: number) => void;
   className?: string;
 }
 
@@ -92,6 +94,7 @@ export const Stepper = forwardRef<HTMLDivElement, StepperProps>(
   onSecondary,
   secondaryLoading = false,
   secondaryDisabled = false,
+  onEdit,
   className,
 }: StepperProps, ref) {
   const isLastStep        = activeStep === steps.length - 1;
@@ -218,12 +221,24 @@ export const Stepper = forwardRef<HTMLDivElement, StepperProps>(
 
               {/* ── Done ── */}
               {state === "done" && (
-                <div className={[styles.doneContent, wasJustDone ? styles.doneContent_in : ""].filter(Boolean).join(" ")}>
-                  <span className={styles.titleDone}>{step.title}</span>
-                  {step.children && (
-                    <div className={styles.doneSummary}>{step.children}</div>
+                <>
+                  <div className={[styles.doneContent, wasJustDone ? styles.doneContent_in : ""].filter(Boolean).join(" ")}>
+                    <span className={styles.titleDone}>{step.title}</span>
+                    {step.children && (
+                      <div className={styles.doneSummary}>{step.children}</div>
+                    )}
+                  </div>
+                  {onEdit && (
+                    <button
+                      type="button"
+                      className={styles.editButton}
+                      aria-label={`Edit step: ${step.title}`}
+                      onClick={() => onEdit(i)}
+                    >
+                      <Icon name="editor--mode" size="small" />
+                    </button>
                   )}
-                </div>
+                </>
               )}
 
             </div>

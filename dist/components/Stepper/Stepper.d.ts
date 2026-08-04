@@ -27,6 +27,8 @@ export interface StepperProps {
     secondaryLoading?: boolean;
     /** Disables the secondary action button without hiding it. */
     secondaryDisabled?: boolean;
+    /** When provided, done steps show an "Edit" button that calls this with the step index. */
+    onEdit?: (stepIndex: number) => void;
     className?: string;
 }
 export declare const Stepper: import('react').ForwardRefExoticComponent<StepperProps & import('react').RefAttributes<HTMLDivElement>>;

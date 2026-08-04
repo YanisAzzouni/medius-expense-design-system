@@ -14,6 +14,10 @@ const meta: Meta<typeof TextInput> = {
       control: "select",
       options: ["neutral", "danger", "success"],
     },
+    labelPosition: {
+      control: "radio",
+      options: ["left", "top"],
+    },
     label: { control: "text" },
     placeholder: { control: "text" },
     unit: { control: "text" },
@@ -133,6 +137,26 @@ export const NoLabel: Story = {
   render: () => (
     <div style={containerStyle}>
       <TextInput placeholder="Search…" type="search" />
+    </div>
+  ),
+};
+
+/* ─── Label on top ─── */
+export const LabelTop: Story = {
+  render: () => (
+    <div style={{ display: "flex", flexDirection: "column", gap: 16, maxWidth: 320 }}>
+      <TextInput label="Company name" placeholder="Enter company name…" labelPosition="top" />
+      <TextInput label="VAT number" placeholder="e.g. FR 12 345678901" labelPosition="top" required helpIcon />
+      <TextInput label="Amount" placeholder="0.00" unit="EUR" type="number" labelPosition="top" />
+      <TextInput
+        label="Email address"
+        placeholder="you@company.com"
+        type="email"
+        labelPosition="top"
+        state="danger"
+        hint="This field is required."
+        hintType="danger"
+      />
     </div>
   ),
 };
