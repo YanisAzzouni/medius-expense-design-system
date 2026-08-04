@@ -23,6 +23,8 @@ export type SelectHintType = "neutral" | "danger" | "success";
 export interface SelectProps {
   /** Visible label rendered to the left of the trigger. */
   label?: string;
+  /** Controls label placement. Defaults to "left". */
+  labelPosition?: "left" | "top";
   /** Appends an asterisk to the label. */
   required?: boolean;
   /** Shows a help icon next to the label. */
@@ -56,6 +58,7 @@ export interface SelectProps {
 export const Select = forwardRef<HTMLDivElement, SelectProps>(function Select(
   {
     label,
+    labelPosition = "left",
     required = false,
     helpIcon = false,
     placeholder = "Select…",
@@ -85,6 +88,7 @@ export const Select = forwardRef<HTMLDivElement, SelectProps>(function Select(
   const triggerRef = useRef<HTMLButtonElement>(null);
   const searchRef = useRef<HTMLInputElement>(null);
 
+  const isTop = labelPosition === "top";
   const isDisabled = state === "disabled";
   const isReadOnly = state === "read-only";
   const isInteractive = !isDisabled && !isReadOnly;
@@ -142,9 +146,9 @@ export const Select = forwardRef<HTMLDivElement, SelectProps>(function Select(
   };
 
   return (
-    <div ref={ref} className={`${styles.field} ${className ?? ""}`}>
+    <div ref={ref} className={`${styles.field} ${isTop ? styles.field_top : ""} ${className ?? ""}`}>
       {label && (
-        <div className={styles.labelColumn}>
+        <div className={`${styles.labelColumn} ${isTop ? styles.labelColumn_top : ""}`}>
           <label htmlFor={id} className={styles.label}>
             {label}
             {required && (

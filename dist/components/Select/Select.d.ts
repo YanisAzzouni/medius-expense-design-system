@@ -11,6 +11,8 @@ export type SelectHintType = "neutral" | "danger" | "success";
 export interface SelectProps {
     /** Visible label rendered to the left of the trigger. */
     label?: string;
+    /** Controls label placement. Defaults to "left". */
+    labelPosition?: "left" | "top";
     /** Appends an asterisk to the label. */
     required?: boolean;
     /** Shows a help icon next to the label. */
