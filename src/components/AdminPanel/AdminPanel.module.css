@@ -147,7 +147,8 @@
 
 /* The actual clickable button — fills the inner area */
 .item {
-  display: block;
+  display: flex;
+  align-items: center;
   width: 100%;
   padding: 8px 0 8px 28px;
   border: none;
@@ -165,6 +166,17 @@
   -webkit-font-smoothing: antialiased;
   outline-offset: -2px;
   box-sizing: border-box;
+}
+
+/* When a tag is present, stack label + tag vertically */
+.item_withTag {
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 2px;
+}
+
+.itemLabel {
+  display: block;
 }
 
 .item:focus-visible {

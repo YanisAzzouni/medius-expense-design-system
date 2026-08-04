@@ -1,5 +1,6 @@
 import { forwardRef, useState } from "react";
 import { Icon } from "../../icons/Icon";
+import { LabelTag } from "../LabelTag/LabelTag";
 import styles from "./AdminPanel.module.css";
 
 /* ─── Public types ──────────────────────────────────────────────────────── */
@@ -9,6 +10,10 @@ export type AdminSectionItem = {
   key: string;
   /** Display label. */
   label: string;
+  /** Optional tag shown below the label (e.g. "Inheriting", "Custom"). */
+  tag?: string;
+  /** Tag colour variant. Defaults to "neutral". */
+  tagVariant?: "neutral" | "blue" | "green" | "orange" | "red" | "teal" | "yellow" | "grey";
 };
 
 export type AdminSectionDef = {
@@ -235,11 +240,19 @@ export const AdminPanel = forwardRef<HTMLElement, AdminPanelProps>(function Admi
                             className={[
                               styles.item,
                               isItemActive ? styles.item_selected : "",
+                              item.tag ? styles.item_withTag : "",
                             ].filter(Boolean).join(" ")}
                             onClick={() => onNavigate?.(section.key, item.key)}
                             aria-current={isItemActive ? "page" : undefined}
                           >
-                            {item.label}
+                            <span className={styles.itemLabel}>{item.label}</span>
+                            {item.tag && (
+                              <LabelTag
+                                label={item.tag}
+                                variant={item.tagVariant ?? "neutral"}
+                                size="small"
+                              />
+                            )}
                           </button>
                         </div>
                       );

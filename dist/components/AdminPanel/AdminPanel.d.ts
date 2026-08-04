@@ -3,6 +3,10 @@ export type AdminSectionItem = {
     key: string;
     /** Display label. */
     label: string;
+    /** Optional tag shown below the label (e.g. "Inheriting", "Custom"). */
+    tag?: string;
+    /** Tag colour variant. Defaults to "neutral". */
+    tagVariant?: "neutral" | "blue" | "green" | "orange" | "red" | "teal" | "yellow" | "grey";
 };
 export type AdminSectionDef = {
     /** Unique identifier for this section. */
