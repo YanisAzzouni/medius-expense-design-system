@@ -58,6 +58,9 @@ export type { NavBarProps, NavItemKey } from "./components/Navbar/Navbar";
 export { AdminPanel, DEFAULT_ADMIN_SECTIONS } from "./components/AdminPanel/AdminPanel";
 export type { AdminPanelProps, AdminSectionDef, AdminSectionItem } from "./components/AdminPanel/AdminPanel";
 
+export { RadioOption } from "./components/RadioOption/RadioOption";
+export type { RadioOptionProps } from "./components/RadioOption/RadioOption";
+
 export { DataTable } from "./components/DataTable/DataTable";
 export type {
   DataTableProps,

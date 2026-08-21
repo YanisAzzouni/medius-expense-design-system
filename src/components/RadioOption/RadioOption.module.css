@@ -1,0 +1,155 @@
+/* ─── Wrapper (label element) ─── */
+.wrapper {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  height: 64px;
+  padding: 16px;
+  border: 1px solid var(--color-chalk-200);
+  border-radius: 4px;
+  background: var(--color-white);
+  cursor: pointer;
+  user-select: none;
+  font-family: var(--font-family);
+  -webkit-font-smoothing: antialiased;
+  box-sizing: border-box;
+  transition: background-color 80ms ease, border-color 80ms ease;
+  overflow: hidden;
+}
+
+.wrapper:not(.wrapper_disabled):hover {
+  background: var(--color-chalk-100);
+}
+
+.wrapper_selected {
+  background: var(--color-olive-100);
+  border-color: var(--color-olive-700);
+}
+
+.wrapper_selected:not(.wrapper_disabled):hover {
+  background: var(--color-olive-200);
+  border-color: var(--color-olive-500);
+}
+
+.wrapper_disabled {
+  cursor: not-allowed;
+  opacity: 0.5;
+}
+
+/* ─── Visually-hidden native input ─── */
+.input {
+  position: absolute;
+  opacity: 0;
+  width: 1px;
+  height: 1px;
+  margin: -1px;
+  padding: 0;
+  border: 0;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  white-space: nowrap;
+  pointer-events: none;
+}
+
+/* Focus ring via general sibling — .input is always before .radio */
+.input:focus-visible ~ .radio {
+  box-shadow: 0 0 0 1px var(--color-olive-500), 0 0 3px 0 var(--color-olive-600);
+}
+
+/* ─── Icon slot ─── */
+.icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  width: 20px;
+  height: 20px;
+  color: var(--color-chalk-600);
+}
+
+.wrapper_selected .icon {
+  color: var(--color-olive-700);
+}
+
+/* ─── Text block ─── */
+.textBlock {
+  flex: 1;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+}
+
+.label {
+  font-size: var(--type-body-semibold-size);
+  font-weight: var(--type-body-semibold-weight);
+  line-height: var(--type-body-semibold-line-height);
+  letter-spacing: var(--type-body-semibold-letter-spacing);
+  color: var(--color-chalk-700);
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.wrapper_selected .label {
+  color: var(--color-olive-700);
+}
+
+.wrapper_disabled .label {
+  color: var(--color-chalk-500);
+}
+
+.description {
+  font-size: var(--type-small-size);
+  font-weight: var(--type-small-weight);
+  line-height: var(--type-small-line-height);
+  letter-spacing: var(--type-small-letter-spacing);
+  color: var(--color-chalk-500);
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.wrapper_selected .description {
+  color: var(--color-olive-700);
+  opacity: 0.87;
+}
+
+/* ─── Radio circle ─── */
+.radio {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  border: 2px solid var(--color-chalk-300);
+  background: var(--color-white);
+  box-sizing: border-box;
+  transition: border-color 80ms ease, background-color 80ms ease,
+    box-shadow 80ms ease;
+}
+
+.wrapper:not(.wrapper_disabled):hover .radio {
+  border-color: var(--color-chalk-400);
+}
+
+.radio_checked {
+  border-color: var(--color-olive-700);
+  background: var(--color-olive-700);
+}
+
+.wrapper_selected:not(.wrapper_disabled):hover .radio_checked {
+  border-color: var(--color-olive-500);
+  background: var(--color-olive-500);
+}
+
+/* Inner white dot when checked */
+.radioDot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: var(--color-white);
+  flex-shrink: 0;
+}
