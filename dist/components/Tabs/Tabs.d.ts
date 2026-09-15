@@ -17,12 +17,6 @@ export interface TabProps {
     /** Optional leading icon. */
     icon?: ReactNode;
     /**
-     * When set, renders a circular step-number badge before the label
-     * (active = filled dark, inactive = chalk, disabled = muted).
-     * Takes precedence over `icon` when both are provided.
-     */
-    stepBadge?: number;
-    /**
      * Optional counter badge shown to the right of the label.
      * Pass a number or short string.
      */
@@ -37,4 +31,4 @@ export interface TabProps {
     disabled?: boolean;
     className?: string;
 }
-export declare function Tab({ value, label, icon, stepBadge, badge, closable, onClose, disabled, className, }: TabProps): import("react/jsx-runtime").JSX.Element;
+export declare function Tab({ value, label, icon, badge, closable, onClose, disabled, className, }: TabProps): import("react/jsx-runtime").JSX.Element;

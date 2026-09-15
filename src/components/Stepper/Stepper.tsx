@@ -1,253 +1,44 @@
-import { forwardRef, useEffect, useRef, useState } from "react";
-import type { ReactNode } from "react";
-import { Button } from "../Button/Button";
-import { Icon } from "../../icons/Icon";
-import { LabelTag } from "../LabelTag/LabelTag";
 import styles from "./Stepper.module.css";
 
-/* ─── Public types ──────────────────────────────────────────────────────── */
-
 export interface StepDef {
-  title: string;
-  description?: string;
-  children?: ReactNode;
-  lockedMessage?: string;
-  /** Mark this step as waiting (async processing). Renders the yellow hourglass badge and a "Waiting…" tag. */
-  waiting?: boolean;
+  value: string;
+  label: string;
 }
 
 export interface StepperProps {
   steps: StepDef[];
-  activeStep: number;
-  onBack?: () => void;
-  onNext?: () => void;
-  nextLabel?: string;
-  /** Disables the primary action button without hiding it. */
-  nextDisabled?: boolean;
-  /** Shows a spinner inside the primary action button and disables it. */
-  nextLoading?: boolean;
-  /** Optional icon shown inside the primary action button. */
-  nextIcon?: ReactNode;
-  secondaryLabel?: string;
-  secondaryIcon?: ReactNode;
-  onSecondary?: () => void;
-  /** Shows a spinner on the secondary action button and disables it. */
-  secondaryLoading?: boolean;
-  /** Disables the secondary action button without hiding it. */
-  secondaryDisabled?: boolean;
-  /** When provided, done steps show an "Edit" button that calls this with the step index. */
-  onEdit?: (stepIndex: number) => void;
+  /** Value of the currently active step. */
+  value: string;
+  /** Called when the user clicks a step. */
+  onChange?: (value: string) => void;
   className?: string;
 }
 
-/* ─── Internal: badge ───────────────────────────────────────────────────── */
-
-function StepBadge({
-  state,
-  number,
-  wasJustDone,
-}: {
-  state: "active" | "done" | "locked" | "waiting";
-  number: number;
-  wasJustDone: boolean;
-}) {
+export function Stepper({ steps, value, onChange, className }: StepperProps) {
   return (
     <div
-      className={[
-        styles.badge,
-        state === "done"    ? styles.badge_done    : "",
-        state === "locked"  ? styles.badge_locked  : "",
-        state === "waiting" ? styles.badge_waiting : "",
-        wasJustDone         ? styles.badge_pop     : "",
-      ].filter(Boolean).join(" ")}
-      aria-hidden="true"
+      role="tablist"
+      aria-label="Steps"
+      className={[styles.stepper, className ?? ""].filter(Boolean).join(" ")}
     >
-      {state === "done" ? (
-        <span className={[styles.checkIcon, wasJustDone ? styles.checkIcon_in : ""].filter(Boolean).join(" ")}>
-          <Icon name="navigation--check" size="small" />
-        </span>
-      ) : state === "waiting" ? (
-        <span className={styles.waitingIcon}>
-          <Icon name="actions--hourglass-full" size="small" />
-        </span>
-      ) : (
-        <span className={styles.badgeNumber}>{number}</span>
-      )}
-    </div>
-  );
-}
-
-/* ─── Component ─────────────────────────────────────────────────────────── */
-
-export const Stepper = forwardRef<HTMLDivElement, StepperProps>(
-  function Stepper({
-  steps,
-  activeStep,
-  onBack,
-  onNext,
-  nextLabel,
-  nextDisabled = false,
-  nextLoading = false,
-  nextIcon,
-  secondaryLabel,
-  secondaryIcon,
-  onSecondary,
-  secondaryLoading = false,
-  secondaryDisabled = false,
-  onEdit,
-  className,
-}: StepperProps, ref) {
-  const isLastStep        = activeStep === steps.length - 1;
-  const resolvedNextLabel = nextLabel ?? (isLastStep ? "Submit" : "Next");
-
-  // Track which step was just completed so we can trigger the badge pop + check animation
-  const prevRef        = useRef(activeStep);
-  const [justDone, setJustDone] = useState<number | null>(null);
-
-  useEffect(() => {
-    const prev = prevRef.current;
-    if (activeStep !== prev) {
-      // Going forward: the step we just left becomes "done" → pop its badge
-      if (activeStep > prev) setJustDone(prev);
-      prevRef.current = activeStep;
-    }
-  }, [activeStep]);
-
-  // Clear the "just done" marker after the animation plays (400ms)
-  useEffect(() => {
-    if (justDone === null) return;
-    const id = setTimeout(() => setJustDone(null), 400);
-    return () => clearTimeout(id);
-  }, [justDone]);
-
-  return (
-    <div ref={ref} className={[styles.stepper, className ?? ""].filter(Boolean).join(" ")}>
       {steps.map((step, i) => {
-        const state: "active" | "done" | "locked" | "waiting" =
-          i < activeStep                    ? "done"    :
-          i === activeStep && step.waiting  ? "waiting" :
-          i === activeStep                  ? "active"  :
-          step.waiting                      ? "waiting" : "locked";
-
-        const stepNumber  = i + 1;
-        const wasJustDone = justDone === i;
-
+        const isActive = step.value === value;
         return (
-          <div key={i} className={[styles.stepWrapper, state === "active" ? styles.stepWrapper_active : ""].filter(Boolean).join(" ")}>
-            {i > 0 && <div className={styles.divider} />}
-
-            <div className={[
-              styles.stepRow,
-              state === "active" ? styles.stepRow_active : "",
-            ].filter(Boolean).join(" ")}>
-
-              <StepBadge state={state} number={stepNumber} wasJustDone={wasJustDone} />
-
-              {/* ── Active ── */}
-              {state === "active" && (
-                // key forces remount → CSS entrance animation fires on every step change
-                <div key={`active-${i}`} className={styles.activeContent}>
-                  <div className={styles.titleBlock}>
-                    <span className={styles.title}>{step.title}</span>
-                    {step.description && (
-                      <span className={styles.description}>{step.description}</span>
-                    )}
-                  </div>
-
-                  {step.children && (
-                    <div className={styles.contentSlot}>{step.children}</div>
-                  )}
-
-                  <div className={styles.footer}>
-                    {onBack ? (
-                      <Button
-                        hierarchy="secondary"
-                        icon={<Icon name="navigation--arrow-back" size="small" />}
-                        onClick={onBack}
-                      >
-                        Back
-                      </Button>
-                    ) : (
-                      <span />
-                    )}
-                    <div className={styles.footerActions}>
-                      {secondaryLabel && (
-                        <Button
-                          hierarchy="secondary"
-                          icon={secondaryLoading ? undefined : secondaryIcon}
-                          loading={secondaryLoading}
-                          disabled={secondaryDisabled}
-                          onClick={onSecondary}
-                        >
-                          {secondaryLabel}
-                        </Button>
-                      )}
-                      <Button
-                        hierarchy="primary"
-                        icon={nextLoading ? undefined : nextIcon}
-                        loading={nextLoading}
-                        onClick={onNext}
-                        disabled={nextDisabled}
-                      >
-                        {resolvedNextLabel}
-                      </Button>
-                    </div>
-                  </div>
-                </div>
-              )}
-
-              {/* ── Waiting ── */}
-              {state === "waiting" && (
-                <div className={styles.waitingContent}>
-                  <span className={styles.titleDone}>{step.title}</span>
-                  {step.children ?? <LabelTag label="Waiting…" variant="yellow" size="small" />}
-                </div>
-              )}
-
-              {/* ── Locked ── */}
-              {state === "locked" && (
-                <div className={styles.lockedContent}>
-                  <div className={styles.lockedText}>
-                    <span className={styles.titleLocked}>{step.title}</span>
-                    {step.description && (
-                      <span className={styles.descriptionLocked}>{step.description}</span>
-                    )}
-                  </div>
-                  <Button hierarchy="primary" disabled>
-                    {step.lockedMessage ?? `Complete step ${activeStep + 1} first`}
-                  </Button>
-                </div>
-              )}
-
-              {/* ── Done ── */}
-              {state === "done" && (
-                <>
-                  <div className={[styles.doneContent, wasJustDone ? styles.doneContent_in : ""].filter(Boolean).join(" ")}>
-                    <span className={styles.titleDone}>{step.title}</span>
-                    {step.children && (
-                      <div className={styles.doneSummary}>{step.children}</div>
-                    )}
-                  </div>
-                  {onEdit && (
-                    <button
-                      type="button"
-                      className={styles.editButton}
-                      aria-label={`Edit step: ${step.title}`}
-                      onClick={() => onEdit(i)}
-                    >
-                      <Icon name="editor--mode" size="small" />
-                    </button>
-                  )}
-                </>
-              )}
-
-            </div>
-          </div>
+          <button
+            key={step.value}
+            type="button"
+            role="tab"
+            aria-selected={isActive}
+            className={[styles.step, isActive ? styles.step_active : ""].filter(Boolean).join(" ")}
+            onClick={() => onChange?.(step.value)}
+          >
+            <span className={styles.stepBadge} aria-hidden="true">
+              {i + 1}
+            </span>
+            <span className={styles.stepLabel}>{step.label}</span>
+          </button>
         );
       })}
     </div>
   );
 }
-);
-
-Stepper.displayName = "Stepper";
