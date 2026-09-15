@@ -82,6 +82,12 @@ export interface TabProps {
   /** Optional leading icon. */
   icon?: ReactNode;
   /**
+   * When set, renders a circular step-number badge before the label
+   * (active = filled dark, inactive = chalk, disabled = muted).
+   * Takes precedence over `icon` when both are provided.
+   */
+  stepBadge?: number;
+  /**
    * Optional counter badge shown to the right of the label.
    * Pass a number or short string.
    */
@@ -101,6 +107,7 @@ export function Tab({
   value,
   label,
   icon,
+  stepBadge,
   badge,
   closable,
   onClose,
@@ -140,11 +147,15 @@ export function Tab({
           .join(" ")}
         onClick={() => !disabled && onChange(value)}
       >
-        {icon && (
+        {stepBadge !== undefined ? (
+          <span className={styles.tabStepBadge} aria-hidden="true">
+            {stepBadge}
+          </span>
+        ) : icon ? (
           <span className={styles.tabIcon} aria-hidden="true">
             {icon}
           </span>
-        )}
+        ) : null}
         <span className={styles.tabLabel}>{label}</span>
         {badge !== undefined && (
           <span className={styles.tabBadge}>{badge}</span>
