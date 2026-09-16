@@ -1,7 +1,7 @@
 import { StatusTagVariant } from '../StatusTag/StatusTag';
 
 export type ColumnSize = "S" | "M" | "L";
-export type CellType = "alerts" | "thumbnail" | "status" | "amount" | "date" | "icon" | "actions" | "expense-title" | "check" | "text-link" | "text" | "text-long";
+export type CellType = "custom" | "alerts" | "thumbnail" | "status" | "amount" | "date" | "icon" | "actions" | "expense-title" | "check" | "text-link" | "text" | "text-long";
 export type ColumnDef = {
     /** Unique key — also used to look up cell data in RowData. */
     key: string;
@@ -19,6 +19,8 @@ export type ColumnDef = {
     fill?: boolean;
     /** Shows sort chevrons in the header. Fires onSort when clicked. */
     sortable?: boolean;
+    /** Custom cell renderer — required when type is "custom". Receives the row id. */
+    render?: (id: string) => React.ReactNode;
 };
 export type AlertsCellData = {
     warning?: boolean;

@@ -14,6 +14,7 @@ import styles from "./DataTable.module.css";
 export type ColumnSize = "S" | "M" | "L";
 
 export type CellType =
+  | "custom" // render prop required on ColumnDef
   | "alerts"
   | "thumbnail"
   | "status"
@@ -44,6 +45,8 @@ export type ColumnDef = {
   fill?: boolean;
   /** Shows sort chevrons in the header. Fires onSort when clicked. */
   sortable?: boolean;
+  /** Custom cell renderer — required when type is "custom". Receives the row id. */
+  render?: (id: string) => React.ReactNode;
 };
 
 /* ─── Per-type cell data ────────────────────────────────────────────────── */
@@ -507,7 +510,7 @@ interface DataCellProps {
   role?: string;
 }
 
-function DataCell({ col, value, role }: DataCellProps) {
+function DataCell({ col, value, role, rowId }: DataCellProps & { rowId?: string }) {
   const base = [
     styles.cell,
     col.size === "S" || col.type === "alerts" || col.type === "thumbnail" || col.type === "icon" || col.type === "actions"
@@ -600,6 +603,12 @@ function DataCell({ col, value, role }: DataCellProps) {
       return (
         <div className={base} role={role}>
           <span className={styles.textCell}>{isString(value) ? value : ""}</span>
+        </div>
+      );
+    case "custom":
+      return (
+        <div className={base} role={role}>
+          {col.render?.(rowId ?? "")}
         </div>
       );
     default: {
@@ -732,7 +741,7 @@ export function DataTable({
                   </div>
                 )}
                 {columns.map((col) => (
-                  <DataCell key={col.key} col={col} value={row[col.key]} role="cell" />
+                  <DataCell key={col.key} col={col} value={row[col.key]} role="cell" rowId={row.id} />
                 ))}
               </div>
             );

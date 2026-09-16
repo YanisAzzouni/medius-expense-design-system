@@ -1,9 +1,9 @@
 /* ─── Wrapper (label element) ─── */
 .wrapper {
   display: flex;
-  align-items: center;
+  align-items: flex-start;
   gap: 10px;
-  height: 64px;
+  min-height: 64px;
   padding: 16px;
   border: 1px solid var(--color-chalk-200);
   border-radius: 4px;
@@ -14,7 +14,6 @@
   -webkit-font-smoothing: antialiased;
   box-sizing: border-box;
   transition: background-color 80ms ease, border-color 80ms ease;
-  overflow: hidden;
 }
 
 .wrapper:not(.wrapper_disabled):hover {
@@ -104,9 +103,7 @@
   line-height: var(--type-small-line-height);
   letter-spacing: var(--type-small-letter-spacing);
   color: var(--color-chalk-500);
-  overflow: hidden;
-  text-overflow: ellipsis;
-  white-space: nowrap;
+  white-space: normal;
 }
 
 .wrapper_selected .description {
@@ -121,6 +118,7 @@
   align-items: center;
   justify-content: center;
   flex-shrink: 0;
+  margin-top: 1px;
   width: 24px;
   height: 24px;
   border-radius: 50%;
