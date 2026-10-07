@@ -8185,7 +8185,7 @@ const eg = [
   );
 });
 lg.displayName = "ExpenseModal";
-const rg = "_navbar_1c4tr_2", ig = "_logo_1c4tr_17", sg = "_logoSvg_1c4tr_25", mg = "_tabs_1c4tr_31", hg = "_navTab_1c4tr_43", vg = "_navTab_active_1c4tr_70", dg = "_navTabIcon_1c4tr_82", wg = "_navTabLabel_1c4tr_90", gg = "_spacer_1c4tr_95", pg = "_userBtn_1c4tr_101", ug = "_avatar_1c4tr_124", K = {
+const rg = "_navbar_1ehtw_2", ig = "_logo_1ehtw_17", sg = "_logoSvg_1ehtw_25", mg = "_tabs_1ehtw_31", hg = "_navTab_1ehtw_43", vg = "_navTab_active_1ehtw_70", dg = "_navTabIcon_1ehtw_82", wg = "_navTabLabel_1ehtw_90", gg = "_spacer_1ehtw_95", pg = "_userBtn_1ehtw_101", ug = "_avatar_1ehtw_124", K = {
   navbar: rg,
   logo: ig,
   logoSvg: sg,

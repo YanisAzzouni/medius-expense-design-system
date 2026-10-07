@@ -31,7 +31,7 @@
 .tabs {
   display: flex;
   align-items: center;
-  gap: 0;           /* tabs sit flush; gap is handled via padding on each tab */
+  gap: 4px;
   flex-shrink: 0;
   height: 48px;
   list-style: none;
