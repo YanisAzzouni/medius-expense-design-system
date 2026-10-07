@@ -2,6 +2,7 @@
 .stepper {
   display: flex;
   align-items: center;
+  gap: 4px;
   font-family: var(--font-family);
   -webkit-font-smoothing: antialiased;
 }
