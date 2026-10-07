@@ -164,6 +164,30 @@ disabled?: boolean
 
 Keyboard navigation (Arrow Left/Right/Home/End) and roving tabindex are built in.
 
+### ContentSwitch + ContentSwitchItem (compound component)
+
+```ts
+import { ContentSwitch, ContentSwitchItem } from "@medius-expense/design-system";
+
+// ContentSwitch (container / radiogroup)
+value:      string          // selected item's value
+onChange:   (v: string) => void
+label?:     string           // optional label rendered above the control
+fullWidth?: boolean          // stretches to fill container, items share width evenly
+children:   ReactNode
+
+// ContentSwitchItem (individual item)
+value:      string
+label?:     string           // omit for icon-only (requires ariaLabel)
+icon?:      ReactNode
+ariaLabel?: string           // required when there's no visible label
+tooltip?:   ReactNode        // shown on hover/focus, most useful for icon-only items
+disabled?:  boolean
+```
+
+Segmented-control / pill-switch pattern ported from NorthStar's "Segmented Control (ContentSwitch)".
+Keyboard navigation (Arrow Left/Right/Up/Down/Home/End) and roving tabindex are built in, mirroring `Tabs`/`Tab`.
+
 ### Checkbox
 
 ```ts

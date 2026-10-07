@@ -46,6 +46,9 @@ export type { TooltipProps, TooltipPlacement } from "./components/Tooltip/Toolti
 export { Tabs, Tab } from "./components/Tabs/Tabs";
 export type { TabsProps, TabProps } from "./components/Tabs/Tabs";
 
+export { ContentSwitch, ContentSwitchItem } from "./components/ContentSwitch/ContentSwitch";
+export type { ContentSwitchProps, ContentSwitchItemProps } from "./components/ContentSwitch/ContentSwitch";
+
 export { Checkbox } from "./components/Checkbox/Checkbox";
 export type { CheckboxProps, CheckboxState } from "./components/Checkbox/Checkbox";
 

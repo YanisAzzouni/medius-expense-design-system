@@ -1,0 +1,119 @@
+/* ─── Wrapper (label + stack) ─── */
+.wrapper {
+  display: inline-flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 4px;
+}
+
+/* ─── Label ─── */
+.label {
+  font-family: var(--font-family);
+  font-size: var(--type-small-size); /* 12px */
+  font-weight: var(--type-small-weight);
+  line-height: var(--type-small-line-height);
+  letter-spacing: -0.01em;
+  color: var(--color-chalk-900);
+}
+
+/* ─── Stack (the pill-shaped group) ─── */
+.stack {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  padding: 2px;
+  border-radius: 8px;
+  background: var(--color-chalk-100);
+  box-sizing: border-box;
+}
+
+.stack_fullWidth {
+  display: flex;
+  width: 100%;
+}
+
+.stack_fullWidth .item {
+  flex: 1 1 0;
+}
+
+/* ─── Item ─── */
+.item {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 4px;
+  height: 28px;
+  padding: 4px 16px;
+
+  border: 1px solid transparent;
+  border-radius: 8px;
+  background: transparent;
+  cursor: pointer;
+  outline: none;
+
+  font-family: var(--font-family);
+  font-size: var(--type-body-default-size); /* 14px */
+  font-weight: var(--type-body-default-weight);
+  line-height: 18px; /* item-specific line-height; no matching type token */
+  letter-spacing: -0.01em;
+  color: var(--color-chalk-900);
+  white-space: nowrap;
+  -webkit-font-smoothing: antialiased;
+  transition: background-color 100ms ease, border-color 100ms ease, color 100ms ease;
+}
+
+.item_iconOnly {
+  padding: 4px 8px;
+}
+
+/* Hover (unselected) */
+.item:hover:not(:disabled):not(.item_selected) {
+  background: var(--color-olive-100);
+}
+
+/* Focus-visible: olive glow ring, matches Tabs/focus pattern */
+.item:focus-visible {
+  box-shadow: 0 0 0 1px var(--color-olive-500), 0 0 3px 0 var(--color-olive-600);
+  z-index: 1;
+}
+
+/* ─── Selected state ─── */
+.item_selected {
+  background: var(--color-white);
+  border-color: var(--color-chalk-300);
+}
+
+.item_selected:hover:not(:disabled) {
+  background: rgba(227, 236, 236, 0.6); /* olive-200 @ 60% */
+  border-color: var(--color-olive-600);
+}
+
+/* ─── Disabled state ─── */
+.item:disabled:not(.item_selected) {
+  background: var(--color-chalk-200);
+  color: var(--color-chalk-500);
+  cursor: not-allowed;
+}
+
+.item_selected:disabled {
+  background: transparent;
+  border-color: var(--color-chalk-300);
+  color: var(--color-chalk-500);
+  cursor: not-allowed;
+}
+
+/* ─── Icon ─── */
+.itemIcon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  width: 16px;
+  height: 16px;
+  color: inherit;
+}
+
+/* ─── Label ─── */
+.itemLabel {
+  flex: 0 0 auto;
+}
