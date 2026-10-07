@@ -1,0 +1,91 @@
+/* ─── Base row ─── */
+.item {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  width: 100%;
+  height: 40px;
+  box-sizing: border-box;
+  border: none;
+  border-radius: 8px;
+  background: var(--color-white);
+  cursor: pointer;
+  font-family: var(--font-family);
+  font-size: var(--type-body-default-size);
+  font-weight: var(--type-body-default-weight);
+  line-height: var(--type-body-default-line-height);
+  letter-spacing: var(--type-body-default-letter-spacing);
+  text-align: left;
+  color: var(--color-chalk-700);
+  transition: background-color 80ms ease, color 80ms ease;
+}
+
+/* ─── Parent row ─── */
+.item_parent {
+  padding: 8px;
+}
+
+.item_parent:hover:not(.item_parent_active) {
+  background: var(--color-chalk-50, #f9fafb);
+}
+
+.item_parent_active {
+  background: var(--color-olive-200);
+  color: var(--color-olive-900);
+}
+
+.icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  width: 16px;
+  height: 16px;
+  color: inherit;
+}
+
+.label {
+  flex: 1 0 0;
+  min-width: 0;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.chevron {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  width: 16px;
+  height: 16px;
+  color: inherit;
+  transition: transform 120ms ease;
+}
+
+.chevron_expanded { transform: scaleY(-1); }
+
+/* ─── Child row ─── */
+.item_child {
+  gap: 16px;
+  padding: 8px 8px 8px 20px;
+}
+
+.item_child:hover:not(.item_child_active) {
+  background: var(--color-chalk-50, #f9fafb);
+}
+
+.item_child_active {
+  color: var(--color-chalk-900);
+}
+
+.bar {
+  flex-shrink: 0;
+  width: 1px;
+  align-self: stretch;
+  background: var(--color-chalk-300);
+}
+
+.bar_active {
+  background: var(--color-olive-900);
+}

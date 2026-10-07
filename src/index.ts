@@ -55,6 +55,9 @@ export type { SwitchProps } from "./components/Switch/Switch";
 export { BoxSwitch } from "./components/BoxSwitch/BoxSwitch";
 export type { BoxSwitchProps } from "./components/BoxSwitch/BoxSwitch";
 
+export { NavItem } from "./components/NavItem/NavItem";
+export type { NavItemProps } from "./components/NavItem/NavItem";
+
 export { Checkbox } from "./components/Checkbox/Checkbox";
 export type { CheckboxProps, CheckboxState } from "./components/Checkbox/Checkbox";
 
