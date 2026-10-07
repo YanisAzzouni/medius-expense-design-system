@@ -33,15 +33,17 @@ export const Tooltip = forwardRef<HTMLSpanElement, TooltipProps>(
         {children}
       </span>
 
-      <span
-        id={id}
-        role="tooltip"
-        className={[styles.bubble, styles[`placement_${placement}`]]
-          .filter(Boolean)
-          .join(" ")}
-      >
-        {content}
-      </span>
+      {content != null && content !== "" && (
+        <span
+          id={id}
+          role="tooltip"
+          className={[styles.bubble, styles[`placement_${placement}`]]
+            .filter(Boolean)
+            .join(" ")}
+        >
+          {content}
+        </span>
+      )}
     </span>
   );
 }

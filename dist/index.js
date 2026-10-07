@@ -7306,7 +7306,7 @@ const ih = "_field_10bt2_2", sh = "_labelColumn_10bt2_11", mh = "_field_top_10bt
     const i = J();
     return /* @__PURE__ */ r("span", { ref: l, className: `${B1.wrapper} ${t ?? ""}`, children: [
       /* @__PURE__ */ e("span", { className: B1.trigger, "aria-describedby": i, children: a }),
-      /* @__PURE__ */ e(
+      n != null && n !== "" && /* @__PURE__ */ e(
         "span",
         {
           id: i,
