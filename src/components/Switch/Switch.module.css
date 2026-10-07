@@ -1,0 +1,65 @@
+/* ─── Wrapper ─── */
+.wrapper {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  cursor: pointer;
+}
+
+.wrapper_disabled { cursor: not-allowed; }
+
+/* ─── Native input — visually hidden but still interactive ─── */
+.input {
+  position: absolute;
+  opacity: 0;
+  width: 1px;
+  height: 1px;
+  margin: -1px;
+  overflow: hidden;
+}
+
+/* ─── Track ─── */
+.track {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  flex-shrink: 0;
+  width: 32px;
+  height: 20px;
+  border-radius: 10px;
+  padding: 2px;
+  box-sizing: border-box;
+  /* No matching Medius token for this neutral-blue off-state — literal value from the Figma source. */
+  background: #c0c6d6;
+  transition: background-color 150ms ease;
+}
+
+.track_checked { background: var(--color-olive-700); }
+
+.track_disabled { opacity: 0.5; }
+
+/* Focus ring on the track, driven by the hidden input's focus state */
+.input:focus-visible ~ .track {
+  box-shadow: 0 0 0 1px var(--color-olive-500), 0 0 3px 0 var(--color-olive-600);
+}
+
+/* ─── Thumb ─── */
+.thumb {
+  width: 16px;
+  height: 16px;
+  border-radius: 50%;
+  background: var(--color-white);
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.15);
+  transition: transform 150ms ease;
+  flex-shrink: 0;
+}
+
+.track_checked .thumb { transform: translateX(12px); }
+
+/* ─── Label ─── */
+.labelText {
+  font-family: var(--font-family);
+  font-size: var(--type-body-default-size);
+  font-weight: var(--type-body-default-weight);
+  color: var(--color-chalk-900);
+}

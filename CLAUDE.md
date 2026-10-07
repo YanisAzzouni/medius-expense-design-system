@@ -201,6 +201,37 @@ disabled?:  boolean   // alias for state="disabled"
 // + id, name, value, className
 ```
 
+### Switch
+
+```ts
+import { Switch } from "@medius-expense/design-system";
+
+checked?:   boolean   // default: false
+onChange?:  (checked: boolean) => void
+label?:     string     // optional label rendered to the right
+disabled?:  boolean
+// + id, name, value, className
+```
+
+Pill toggle switch ported from the "Box switch" / Toggle button component (Figma: Expense Library (New), node 361:6633).
+On = `--color-olive-700` track; off uses a literal `#c0c6d6` (no matching Medius neutral-blue token exists for this state).
+
+### BoxSwitch
+
+```ts
+import { BoxSwitch } from "@medius-expense/design-system";
+
+label:        string
+description?: string
+checked:      boolean
+onChange:     (checked: boolean) => void
+children?:    ReactNode   // revealed below the header when checked is true
+disabled?:    boolean
+```
+
+Bordered card (white bg, chalk-200 border, 4px radius) with a label/description header and a `Switch` on the right.
+Use for collapsible on/off sections — e.g. "Distance ranges", "Vehicle characteristics" in the mileage rate editor.
+
 ### NavBar
 
 ```ts

@@ -49,6 +49,12 @@ export type { TabsProps, TabProps } from "./components/Tabs/Tabs";
 export { ContentSwitch, ContentSwitchItem } from "./components/ContentSwitch/ContentSwitch";
 export type { ContentSwitchProps, ContentSwitchItemProps } from "./components/ContentSwitch/ContentSwitch";
 
+export { Switch } from "./components/Switch/Switch";
+export type { SwitchProps } from "./components/Switch/Switch";
+
+export { BoxSwitch } from "./components/BoxSwitch/BoxSwitch";
+export type { BoxSwitchProps } from "./components/BoxSwitch/BoxSwitch";
+
 export { Checkbox } from "./components/Checkbox/Checkbox";
 export type { CheckboxProps, CheckboxState } from "./components/Checkbox/Checkbox";
 
