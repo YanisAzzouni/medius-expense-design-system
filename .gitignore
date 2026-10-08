@@ -5,3 +5,4 @@ storybook-static
 *.local
 .claude
 .vercel
+.env*
