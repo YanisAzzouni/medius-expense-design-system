@@ -77,13 +77,14 @@
 
 .item_child_active {
   color: var(--color-chalk-900);
+  font-weight: var(--type-body-semibold-weight);
 }
 
 .bar {
   flex-shrink: 0;
   width: 1px;
   align-self: stretch;
-  background: var(--color-chalk-300);
+  background: var(--color-chalk-200);
 }
 
 .bar_active {
